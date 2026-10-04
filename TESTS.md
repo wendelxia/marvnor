@@ -12,15 +12,6 @@ Marvnor 接在大模型旁边，帮它核对关键判断：有依据就确认，
 
 ProofWriter 200 题含 TRUE 92 题、FALSE 93 题、UNKNOWN 15 题；[逐题成绩表](data/proofwriter-200-scorecard.csv)列出了参考答案和两条路径的结果。它不含账号凭证、请求内容或服务内部信息。该轮 Marvnor 单次调用延迟中位数约 281 毫秒，不是完整回答时间。
 
-## Marvnor 自己做得怎么样
-
-| 测试 | 结果 | 说明 |
-|---|---:|---|
-| [ClosureBench](https://github.com/egolabs-ai/closurebench) 84 题 | 84/84 | 其中 48 题使用 Marvnor 的关系判断并在外层组合答案；另 36 题还用了本地计算，不能算作 Marvnor 独立完成。 |
-| [SciFact](https://github.com/allenai/scifact) 科研证据检索 60 题 | 60/60 | 已核验的支持、反驳关系事先录入；验证的是保存和返回证据，不是自动读懂论文。 |
-| 持久关系长链，512、1024、2048 步 | 每组 7/7 | 在已写入的关系上检查正向可达和不可达；这是工具能力测试，不是自然语言问答成绩。 |
-| 含相反证据的 512 步长链 | 3/3 | 在这组查询中保留了 UNKNOWN，没有把相互矛盾的证据强行写成确定答案。 |
-
 这些测试显示，Marvnor 能核对已经交给它的资料，并在合适的接入流程中帮助模型改正答案。表中的成绩不等于 Marvnor 自己读懂原题，也不是对所有场景的效果承诺。欢迎用自己的题目复测，结果和反例都可以发到 [wendelxia@gmail.com](mailto:wendelxia@gmail.com)；请勿发送账号密钥或无授权的敏感资料。
 
 [返回首页](README.md) · [查看使用方法](USAGE.md)
