@@ -1,16 +1,16 @@
 # Marvnor
 
-## 守真专用模型系统
+## Truth-Preserving Model System
 
-大模型可以读资料、写答案；关键判断还需要分清有依据、依据不足和资料冲突。Marvnor 与现有大模型协同，接收应用提供的问题和相关依据，返回可供程序使用的判断结果。模型继续负责表达，应用决定下一步。
+Large language models can read material and write answers. For critical judgments, however, an application still needs to distinguish supported claims, insufficient evidence, and conflicting sources. Marvnor works alongside an existing LLM: it receives the application’s question and relevant evidence, then returns judgment results that software can use. The model handles wording; the application decides what happens next.
 
-它适合企业 RAG、智能客服、合规审查和数据分析。遇到互相矛盾的资料，Marvnor 会明确标出冲突，而不是让模型选一边硬答。
+It is designed for enterprise RAG, intelligent customer service, compliance review, and data analysis. When sources contradict one another, Marvnor marks the conflict instead of forcing the model to choose a side and answer anyway.
 
-默认返回六项结果：结论、依据类型、冲突、原因、处理信号和依据路径。[了解六项结果](INTRODUCTION.md)。
+By default, it returns six results: conclusion, evidence type, conflict, reason, decision signal, and evidence path. [See the six results](INTRODUCTION.md).
 
-[打开用户端](https://marvnor.com) · [查看使用方法](USAGE.md) · [查看公开测试](TESTS.md)
+[Open the user portal](https://marvnor.com) · [Read the usage guide](USAGE.md) · [View public tests](TESTS.md)
 
-## 欢迎来测
+## Try it
 
-拿一个你能核对答案的问题，分别测试模型单独作答与接入 Marvnor 后的结果。测得好、测出问题，都欢迎发来题目来源、测试方法和结果：[wendelxia@gmail.com](mailto:wendelxia@gmail.com)。请勿发送账号密钥或未经授权的敏感资料。
+Choose a question whose answer you can verify, then compare the model on its own with the same workflow connected to Marvnor. Whether it works well or exposes a problem, you are welcome to send the source, method, and result to [wendelxia@gmail.com](mailto:wendelxia@gmail.com). Please do not send account keys or sensitive material you are not authorized to share.
 

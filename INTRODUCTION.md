@@ -1,24 +1,24 @@
-# Marvnor 守真专用模型系统
+# Marvnor Truth-Preserving Model System
 
-当大模型面对长资料、复杂条件或相互矛盾的记录，回答流畅不代表判断可靠。Marvnor 与现有大模型协同，核对应用交来的问题和相关依据，帮助应用分清结论成立、不成立、资料不足和依据冲突。
+When an LLM faces long documents, complex conditions, or contradictory records, a fluent answer is not necessarily a reliable judgment. Marvnor works alongside an existing LLM, checks the question and relevant evidence supplied by the application, and helps it distinguish supported conclusions, refuted conclusions, insufficient evidence, and conflicting sources.
 
-适用于企业 RAG、智能客服、合规审查和数据分析等需要有据作答的场景。应用不必更换主模型，也不必先准备覆盖整个业务的知识图谱。
+It is intended for evidence-based use cases such as enterprise RAG, intelligent customer service, compliance review, and data analysis. The application does not need to replace its main model or build a knowledge graph covering the entire business in advance.
 
-## 六项结果
+## Six results
 
-| 返回项 | 它告诉应用什么 |
+| Result | What it tells the application |
 |---|---|
-| `conclusion` | 结论是 `TRUE`、`FALSE`，还是暂时无法判断的 `UNKNOWN`。 |
-| `evidence_kind` | 依据属于直接、间接、组合、冲突还是未知。 |
-| `conflict` | 资料之间是否出现相互矛盾的依据。 |
-| `reason` | 得出当前判断的原因。 |
-| `decision` | 下一步处理信号；最终动作由应用决定。 |
-| `path` | 可以回看的依据路径；没有可用路径时可以为空。 |
+| `conclusion` | Whether the conclusion is `TRUE`, `FALSE`, or temporarily undetermined as `UNKNOWN`. |
+| `evidence_kind` | Whether the evidence is direct, indirect, composite, conflicting, or unknown. |
+| `conflict` | Whether the supplied sources contain mutually contradictory evidence. |
+| `reason` | Why the current judgment was reached. |
+| `decision` | A signal for the next handling step; the application decides the final action. |
+| `path` | A traceable evidence path; it may be empty when no usable path is available. |
 
-例如，两份资料对同一问题给出相反依据，Marvnor 会返回 `UNKNOWN` 并标出冲突。应用可以让模型说明冲突、继续补问，或交给人复核。它不会凭空补齐没有交给它的资料。
+For example, if two sources provide opposite evidence for the same question, Marvnor returns `UNKNOWN` and marks the conflict. The application can ask the model to explain the conflict, ask for more information, or route the case to a human reviewer. Marvnor does not invent material that was not supplied to it.
 
-## 已看到的效果
+## Observed results
 
-在项目方一次 10 题对照中的 5 道上下文任务里，模型接入 Marvnor 后平均分由 94.44 提升至 100；翻译任务由 88.89 提升至 100，项目规则代码任务由 83.33 提升至 100。同轮创作、数学和学术等题没有掉分。[查看其他公开测试](TESTS.md)。
+In one 10-question comparison run by the project team, the average score on five context tasks rose from 94.44 to 100 after Marvnor was connected; the translation task rose from 88.89 to 100, and the project-rule code task rose from 83.33 to 100. The same run showed no score drop on the creative, mathematics, or academic questions. [See the other public tests](TESTS.md).
 
-[打开用户端](https://marvnor.com) · [查看使用方法](USAGE.md) · [联系测试](mailto:wendelxia@gmail.com)
+[Open the user portal](https://marvnor.com) · [Read the usage guide](USAGE.md) · [Contact us about testing](mailto:wendelxia@gmail.com)

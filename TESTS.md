@@ -1,21 +1,21 @@
-# Marvnor 守真专用模型系统公开测试
+# Marvnor Truth-Preserving Model System Public Tests
 
-Marvnor 接在大模型旁边，帮它核对关键判断：有依据就确认，资料打架就不贸然下结论，没把握就不硬答。以下是项目方在 2026 年 10 月 4—5 日用公开数据集和实际服务做的测试；不是第三方独立审计。
+Marvnor works beside an LLM to check critical judgments: it confirms supported claims, avoids jumping to a conclusion when sources conflict, and does not force an answer when the evidence is insufficient. The project team ran the tests below on October 4–5, 2026, using public datasets and the live service. This is not an independent third-party audit.
 
-## 接入模型后，回答有什么变化
+## What changed after connecting the model
 
-| 测试 | 模型单独回答 | 接入 Marvnor 的流程 | 结果该怎么看 |
+| Test | Model alone | Workflow connected to Marvnor | How to read the result |
 |---|---:|---:|---|
-| [ProofWriter](https://aclanthology.org/2021.findings-acl.317/) 30 题 | 12/30 | 30/30 | 模型读到工具结果后，改正了首答中的 18 题；规则推导结果已由测试程序预先算出。 |
-| ProofWriter 200 题 | 52/200 | 200/200 | 模型首答中的 148 题经工具结果触发修正。 |
-| [NLGraph](https://github.com/Arthur-Heng/NLGraph) 连通性 90 题 | 78/90 | 90/90 | 模型直接读原题；工具接收从原题提取的关系后作判断。多答对的 12 题说明这套工具流程有用。 |
+| [ProofWriter](https://aclanthology.org/2021.findings-acl.317/) — 30 questions | 12/30 | 30/30 | After seeing the tool result, the model corrected 18 of its initial answers; the rule-inference results were precomputed by the test program. |
+| ProofWriter — 200 questions | 52/200 | 200/200 | Tool results triggered corrections to 148 of the model’s initial answers. |
+| [NLGraph](https://github.com/Arthur-Heng/NLGraph) connectivity — 90 questions | 78/90 | 90/90 | The model read the original question directly; the tool judged relationships extracted from that question. The 12 additional correct answers indicate that this tool workflow was useful. |
 
-ProofWriter 200 题含 TRUE 92 题、FALSE 93 题、UNKNOWN 15 题；[逐题成绩表](data/proofwriter-200-scorecard.csv)列出了参考答案和两条路径的结果。它不含账号凭证、请求内容或服务内部信息。该轮 Marvnor 单次调用延迟中位数约 281 毫秒，不是完整回答时间。
+The 200 ProofWriter questions contain 92 `TRUE`, 93 `FALSE`, and 15 `UNKNOWN` cases. The [per-question scorecard](data/proofwriter-200-scorecard.csv) lists the reference answer and the results from both paths. It contains no account credentials, request content, or internal service information. The median latency for a single Marvnor call in this run was about 281 ms; this is not the end-to-end answer time.
 
-## 通用能力对照
+## General capability comparison
 
-项目方另做了一组 10 题对照。其中 5 道上下文任务的平均得分从 94.44 提升至 100；翻译任务从 88.89 提升至 100，项目规则代码任务从 83.33 提升至 100。创作、数学和学术等题没有出现分数回退。
+The project team also ran a separate 10-question comparison. The average score on five context tasks rose from 94.44 to 100; the translation task rose from 88.89 to 100, and the project-rule code task rose from 83.33 to 100. The creative, mathematics, and academic questions showed no score regression.
 
-这些测试显示，Marvnor 能核对已经交给它的资料，并在合适的接入流程中帮助模型改正答案。表中的成绩不等于 Marvnor 自己读懂原题，也不是对所有场景的效果承诺。欢迎用自己的题目复测，结果和反例都可以发到 [wendelxia@gmail.com](mailto:wendelxia@gmail.com)；请勿发送账号密钥或无授权的敏感资料。
+These tests show that Marvnor can check material supplied to it and, with an appropriate integration workflow, help a model correct its answers. The scores do not mean that Marvnor independently understood the original question, and they are not a performance guarantee for every scenario. You are welcome to repeat the tests with your own questions and send results or counterexamples to [wendelxia@gmail.com](mailto:wendelxia@gmail.com). Please do not send account keys or sensitive material you are not authorized to share.
 
-[返回首页](README.md) · [查看使用方法](USAGE.md)
+[Back to the home page](README.md) · [Read the usage guide](USAGE.md)
