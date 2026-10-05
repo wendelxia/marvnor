@@ -8,7 +8,7 @@ It is designed for enterprise RAG, intelligent customer service, compliance revi
 
 By default, it returns six results: conclusion, evidence type, conflict, reason, decision signal, and evidence path. [See the six results](INTRODUCTION.md).
 
-[Open the user portal](https://marvnor.com) · [Read the usage guide](USAGE.md) · [View public tests](TESTS.md)
+[Open the user portal](https://marvnor.com) · [Read the usage guide](USAGE.md) · [View public tests](TESTS.md) · [Read the news release](NEWS.md)
 
 ## Try it
 
