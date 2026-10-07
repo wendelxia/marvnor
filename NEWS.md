@@ -1,12 +1,12 @@
-# Marvnor Announces Public Launch of a Truth-Preserving Model System
+# Marvnor Announces Public Launch of a Truth-Preserving Decision Gateway
 
 **October 5, 2026**
 
-Marvnor today opened its user portal to developers building evidence-based applications with large language models (LLMs). Marvnor is designed to work alongside an existing model and help an application distinguish supported conclusions, insufficient evidence, and conflicting sources before deciding what to do next.
+Marvnor today opened its user portal to developers building evidence-based applications with large language models (LLMs). Marvnor is designed to work as a gateway alongside an existing model and help an application distinguish supported conclusions, insufficient evidence, and conflicting sources before deciding what to do next.
 
 ## A practical control layer for LLM applications
 
-When an LLM works with long documents, complex conditions, or contradictory records, a fluent answer is not always a reliable judgment. Marvnor accepts the application’s question and relevant evidence, then returns six machine-readable results:
+When an LLM works with long documents, complex conditions, or contradictory records, a fluent answer is not always a reliable judgment. Marvnor accepts the application’s question and relevant evidence through the gateway, then returns six machine-readable results:
 
 - `conclusion`
 - `evidence_kind`
