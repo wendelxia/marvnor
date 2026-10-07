@@ -1,6 +1,6 @@
-# Marvnor Truth-Preserving Model System
+# Marvnor Truth-Preserving Decision Gateway
 
-When an LLM faces long documents, complex conditions, or contradictory records, a fluent answer is not necessarily a reliable judgment. Marvnor works alongside an existing LLM, checks the question and relevant evidence supplied by the application, and helps it distinguish supported conclusions, refuted conclusions, insufficient evidence, and conflicting sources.
+When an LLM faces long documents, complex conditions, or contradictory records, a fluent answer is not necessarily a reliable judgment. Marvnor is a gateway alongside an existing LLM: the application sends the question and relevant evidence through it, and receives judgment results that help distinguish supported conclusions, refuted conclusions, insufficient evidence, and conflicting sources.
 
 It is intended for evidence-based use cases such as enterprise RAG, intelligent customer service, compliance review, and data analysis. The application does not need to replace its main model or build a knowledge graph covering the entire business in advance.
 
