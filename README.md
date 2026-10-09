@@ -8,6 +8,8 @@ Use it to check project dependencies, business states, time-sensitive evidence a
 
 [Open the user portal](https://api.marvnor.com/) · [Quickstart](USER_QUICKSTART.md) · [Eight tested benefits](docs/benchmarks/2026-10-10/highlights.md)
 
+Latest news, October 10: [Marvnor reports stronger fact verification and a 98.2% input reduction in a long-history test](NEWS.md) · [中文新闻稿](docs/news/2026-10-10-benchmark-results.zh-CN.md)
+
 ## Results that show the difference
 
 October 10, 2026 rerun:
