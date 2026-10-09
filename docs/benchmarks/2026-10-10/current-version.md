@@ -2,6 +2,8 @@
 
 Checked on October 10, 2026 (Asia/Shanghai).
 
+Archive note: this was the earlier same-day local review. A later [fresh public and model rerun](rerun.md) now supplies model scores, short-run public latency and token usage. The local results and original scope below are retained; statements about what this review did not rerun refer only to this earlier review.
+
 ## Summary
 
 The review replayed saved test cases against an isolated local instance and checked behaviors that had changed since earlier tests. All **500 expected verdicts across 25 sequential requests** matched, and **14 targeted feature checks** passed.

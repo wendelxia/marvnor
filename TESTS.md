@@ -1,14 +1,16 @@
 # Marvnor Truth-Preserving Model System Public Tests
 
-## Latest reviewed evidence: October 10, 2026
+## Latest live rerun: October 10, 2026
 
-[Eight benefits and their evidence](docs/benchmarks/2026-10-10/highlights.md) · [Methods and full comparisons](docs/benchmarks/2026-10-10/methods.md) · [Sanitized question-level data](docs/benchmarks/2026-10-10/data.json)
+[Eight benefits and their evidence](docs/benchmarks/2026-10-10/highlights.md) · [Fresh report and full comparisons](docs/benchmarks/2026-10-10/rerun.md) · [Fresh sanitized data](docs/benchmarks/2026-10-10/rerun-results.json)
 
-The [current-version review](docs/benchmarks/2026-10-10/current-version.md) passed 500/500 local replay verdicts and 14/14 targeted feature checks using source files matched to the live release. The count includes variants and repeated templates, not 500 independent new questions. Saved-record single-value conflicts, candidate queries, scoped compound logic, five-hop `supports`, and custom-attribute editing were verified. [Current per-question results](docs/benchmarks/2026-10-10/current-version.json).
+The fresh rerun completed 62 scored public requests with HTTP 200 and 1,227/1,227 expected verdicts, including variants and concurrent repetitions, not 1,227 independent questions. In A and B, live Marvnor scored 20/20 each. Three fresh DeepSeek runs scored 16/20 each in A and 14/20, 15/20 and 15/20 in B. The [report](docs/benchmarks/2026-10-10/rerun.md) includes every comparison question and the observed errors. These are structured verification versus model text answers, not an end-to-end LLM capability uplift score.
 
-The collection also retains eight dated evidence groups covering model comparisons, randomized variants, short concurrency runs, long-history input, local confirmation workflows, and memory maintenance. Model answers, production performance, token usage, and total cost were not refreshed by the current-code replay.
+All eight groups were rerun: model comparisons, input variants, short public concurrency runs, final-query token usage, local Qwen confirmation workflows and local memory maintenance. The earlier temporal and five-hop `supports` failures also passed their reruns. Total cost and sustained production capacity were not measured. A 98.2% final-query input reduction was repeated, but the 160-turn full-history cache hits rose to 5,120 tokens, so equal fee savings cannot be inferred.
 
-The older aggregate reports below are retained as historical reports. They were not revalidated by this review and are not used as audited evidence for general model-capability gains in the new collection. The complete original run records for the NLGraph and 10-question general-capability summaries were not available for this review; the linked ProofWriter scorecard does not by itself reproduce the entire workflow.
+The [earlier same-day local review](docs/benchmarks/2026-10-10/current-version.md) remains separately documented: 500/500 replay verdicts and 14/14 feature checks, including saved-record conflicts, candidate queries and editing. [Local data](docs/benchmarks/2026-10-10/current-version.json) · [Historical methods](docs/benchmarks/2026-10-10/methods.md).
+
+The older aggregate reports below are retained as historical reports. They were not rerun in this collection and are not used as audited evidence for current general model-capability gains. The complete original run records for the NLGraph and 10-question general-capability summaries were not available for the earlier review; the linked ProofWriter scorecard does not by itself reproduce the entire workflow.
 
 ## Historical reports: October 4 to 5, 2026
 

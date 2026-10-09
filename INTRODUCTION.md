@@ -21,10 +21,10 @@ Ordinary custom attributes are single-valued by default: incompatible values in 
 
 ## Observed results
 
-On October 10, 2026, an isolated local replay matched 500/500 expected verdicts across 25 requests, and 14/14 targeted feature checks passed. The tested source files matched the active public-service release. Counts include variants and repeated question templates, not 500 independent tasks.
+On October 10, 2026, a fresh live rerun matched 1,227/1,227 expected verdicts across 62 scored public requests. Counts include variants and repeated question templates, not 1,227 independent tasks. In two 20-question groups, live Marvnor scored 20/20 each; three fresh DeepSeek runs scored 16/20 each in A and 14/20, 15/20 and 15/20 in B.
 
-The checks covered long dependency chains, scoped time/context logic, persisted single-value conflicts, candidate-value queries, and correction and targeted deletion of saved facts. See the [current-version review](docs/benchmarks/2026-10-10/current-version.md) and [eight test-backed benefits](docs/benchmarks/2026-10-10/highlights.md).
+The live checks covered long chains, scoped logic, input variants and short concurrent workloads. Separate local checks covered saved-record conflicts, candidate queries, correction and targeted deletion. See the [fresh report](docs/benchmarks/2026-10-10/rerun.md), [local feature review](docs/benchmarks/2026-10-10/current-version.md) and [eight test-backed benefits](docs/benchmarks/2026-10-10/highlights.md).
 
-These are structured functional tests, not a new head-to-head model benchmark or proof of broad writing, translation, mathematics, or coding improvement. Earlier model comparisons and token figures remain [dated historical evidence](TESTS.md); current production latency and total customer cost were not measured here.
+The comparison is structured verification versus model text answers, not the same LLM with and without Marvnor. It does not establish broad writing, translation, mathematics or coding improvement. Fresh latency and token measurements retain their workload limits; the 98.2% input reduction in one final-query example is not a total-cost reduction. Older aggregate benchmarks remain [historical evidence](TESTS.md).
 
 [Open the user portal](https://api.marvnor.com/) · [Run the quickstart](USER_QUICKSTART.md) · [Read the usage guide](USAGE.md) · [Contact us about testing](mailto:wendelxia@gmail.com)
