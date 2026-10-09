@@ -17,6 +17,13 @@ English customer documentation, synchronized with the October 10, 2026 service d
 - [Record management](docs/customer/record-management.md): in-place correction, targeted deletion, and chunked imports.
 - [LLM integration](docs/customer/llm-integration.md): forward only the current question and relevant results; account for quality and total cost.
 
+Test evidence [reviewed against current source on October 10, 2026](docs/benchmarks/2026-10-10/README.md):
+
+- [Eight benefits with supporting tests](docs/benchmarks/2026-10-10/highlights.md): structured verification, long chains, scoped logic, saved-record conflicts, stable conclusions, reusable facts, and maintainable memory.
+- [Current-version review](docs/benchmarks/2026-10-10/current-version.md): 500/500 local replay verdicts and 14/14 feature checks; source identity checked against the live release. Repeated templates and variants are included, and historical model, latency, and token figures were not rerun.
+- [Methods and complete comparisons](docs/benchmarks/2026-10-10/methods.md): eight test groups, all 40 questions from two model comparisons, and the conditions behind each result.
+- [Current replay data](docs/benchmarks/2026-10-10/current-version.json) and [historical question-level data](docs/benchmarks/2026-10-10/data.json): sanitized results with clear dates and counting rules.
+
 [Chinese web documentation](https://api.marvnor.com/docs) · [Product introduction](INTRODUCTION.md) · [Public materials license](LICENSE)
 
 ## Try it
