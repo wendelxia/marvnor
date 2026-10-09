@@ -2,6 +2,8 @@
 
 Marvnor works beside an LLM to check critical judgments: it confirms supported claims, avoids jumping to a conclusion when sources conflict, and does not force an answer when the evidence is insufficient. The project team ran the tests below on October 4–5, 2026, using public datasets and the live service. This is not an independent third-party audit.
 
+The October 10, 2026 [customer documentation update](USAGE.md) does not rerun these benchmarks. Results below describe the historical test workflows, not validation of every behavior in the current [API contract](PUBLIC_EVALUATION_API.md).
+
 ## What changed after connecting the model
 
 | Test | Model alone | Workflow connected to Marvnor | How to read the result |

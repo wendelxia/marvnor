@@ -2,6 +2,8 @@
 
 **October 5, 2026**
 
+Documentation update, October 10, 2026: English [customer guides](USAGE.md) and the [current API reference](PUBLIC_EVALUATION_API.md) are now available. The launch announcement and historical results below retain their original date.
+
 Marvnor today opened its user portal to developers building evidence-based applications with large language models (LLMs). Marvnor is designed to work as a gateway alongside an existing model and help an application distinguish supported conclusions, insufficient evidence, and conflicting sources before deciding what to do next.
 
 ## A practical control layer for LLM applications
