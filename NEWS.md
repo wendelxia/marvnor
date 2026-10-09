@@ -4,6 +4,8 @@
 
 Documentation update, October 10, 2026: English [customer guides](USAGE.md) and the [current API reference](PUBLIC_EVALUATION_API.md) are now available. The launch announcement and historical results below retain their original date.
 
+Test evidence update, October 10, 2026: the [current-version review](docs/benchmarks/2026-10-10/current-version.md) reports 500/500 local replay verdicts and 14/14 feature checks, with tested source files matched to the active release. See the [revised benefits](docs/benchmarks/2026-10-10/highlights.md), [historical methods](docs/benchmarks/2026-10-10/methods.md), and [current replay data](docs/benchmarks/2026-10-10/current-version.json). Counts include variants, not 500 independent questions. This does not revalidate the older aggregate results quoted below; complete original run records for some older summaries were unavailable. Historical model, latency, and token figures are not current-version measurements.
+
 Marvnor today opened its user portal to developers building evidence-based applications with large language models (LLMs). Marvnor is designed to work as a gateway alongside an existing model and help an application distinguish supported conclusions, insufficient evidence, and conflicting sources before deciding what to do next.
 
 ## A practical control layer for LLM applications

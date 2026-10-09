@@ -1,5 +1,17 @@
 # Marvnor Truth-Preserving Model System Public Tests
 
+## Latest reviewed evidence: October 10, 2026
+
+[Eight benefits and their evidence](docs/benchmarks/2026-10-10/highlights.md) · [Methods and full comparisons](docs/benchmarks/2026-10-10/methods.md) · [Sanitized question-level data](docs/benchmarks/2026-10-10/data.json)
+
+The [current-version review](docs/benchmarks/2026-10-10/current-version.md) passed 500/500 local replay verdicts and 14/14 targeted feature checks using source files matched to the live release. The count includes variants and repeated templates, not 500 independent new questions. Saved-record single-value conflicts, candidate queries, scoped compound logic, five-hop `supports`, and custom-attribute editing were verified. [Current per-question results](docs/benchmarks/2026-10-10/current-version.json).
+
+The collection also retains eight dated evidence groups covering model comparisons, randomized variants, short concurrency runs, long-history input, local confirmation workflows, and memory maintenance. Model answers, production performance, token usage, and total cost were not refreshed by the current-code replay.
+
+The older aggregate reports below are retained as historical reports. They were not revalidated by this review and are not used as audited evidence for general model-capability gains in the new collection. The complete original run records for the NLGraph and 10-question general-capability summaries were not available for this review; the linked ProofWriter scorecard does not by itself reproduce the entire workflow.
+
+## Historical reports: October 4 to 5, 2026
+
 Marvnor works beside an LLM to check critical judgments: it confirms supported claims, avoids jumping to a conclusion when sources conflict, and does not force an answer when the evidence is insufficient. The project team ran the tests below on October 4–5, 2026, using public datasets and the live service. This is not an independent third-party audit.
 
 The October 10, 2026 [customer documentation update](USAGE.md) does not rerun these benchmarks. Results below describe the historical test workflows, not validation of every behavior in the current [API contract](PUBLIC_EVALUATION_API.md).

@@ -1,0 +1,3875 @@
+{
+  "review_date": "2026-10-10",
+  "timezone": "Asia/Shanghai",
+  "checked_at_utc": "2026-10-09T20:23:50.332331+00:00",
+  "environment": "isolated localhost HTTP, temporary memory",
+  "production_api_requests": 0,
+  "model_requests": 0,
+  "source_identity": {
+    "deployment_checked_on": "2026-10-10",
+    "runtime_source_files_compared": 21,
+    "matching_files": 21,
+    "scope": "Imported Python source files used in this local replay matched the active public-service release. Runtime configuration, dependencies, production data and performance were not matched or retested."
+  },
+  "internal_record_sha256": "901c8eed0ae0c70f3d3ee2691d47f52d728d9ec6f42f8aa5e06730b0978c1d7a",
+  "summary": {
+    "replay_requests": 25,
+    "replay_judgments": 500,
+    "replay_correct": 500,
+    "feature_checks": 14,
+    "feature_passed": 14
+  },
+  "counting_note": "500 verdicts in 25 sequential local requests, including repeated question templates and input variants. Not 500 independent new questions and not a new LLM comparison or concurrency test.",
+  "replay_input_note": "A, B and D reused saved request payloads. C and E were regenerated from the archived deterministic generators with local synthetic namespaces; expected answers were checked against saved expectations. E shape also matched the saved shape.",
+  "replays": [
+    {
+      "group": "A",
+      "http_status": 200,
+      "total": 20,
+      "correct": 20,
+      "rows": [
+        {
+          "id": "q01_chain_forward",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q02_chain_reverse",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q03_chain_mid",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q04_branch_converges",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q05_scc_forward",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q06_scc_reverse",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q07_direct_conflict",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": true,
+          "six_fields": true
+        },
+        {
+          "id": "q08_direct_negative",
+          "expected": "FALSE",
+          "actual": "FALSE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q09_noise_isolated",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q10_chinese_forward",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q11_chinese_reverse",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q12_composite_and_true",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q13_composite_and_unknown",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q14_composite_or_true",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q15_composite_not_true",
+          "expected": "FALSE",
+          "actual": "FALSE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q16_implies_true",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q17_implies_vacuous",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q18_nested_conflict",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": true,
+          "six_fields": true
+        },
+        {
+          "id": "q19_composite_deep",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q20_redundant_path",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        }
+      ]
+    },
+    {
+      "group": "B",
+      "http_status": 200,
+      "total": 20,
+      "correct": 20,
+      "rows": [
+        {
+          "id": "q01_long_chain_july",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q02_long_chain_march",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q03_long_chain_october",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q04_long_chain_reverse",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q05_chain_middle",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q06_alternate_july",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q07_alternate_february",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q08_context_production",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q09_context_staging",
+          "expected": "FALSE",
+          "actual": "FALSE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q10_mixed_context",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q11_conflict_june",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": true,
+          "six_fields": true
+        },
+        {
+          "id": "q12_conflict_february",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q13_conflict_september",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q14_explicit_negative",
+          "expected": "FALSE",
+          "actual": "FALSE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q15_scc_reverse_july",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q16_scc_reverse_march",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q17_noise_unknown",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q18_and_true",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q19_and_unknown",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q20_nested_conflict",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": true,
+          "six_fields": true
+        }
+      ]
+    },
+    {
+      "group": "D",
+      "http_status": 200,
+      "total": 20,
+      "correct": 20,
+      "rows": [
+        {
+          "id": "q01_unicode_chain_in",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q02_chain_before",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q03_chain_after",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q04_chain_reverse",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q05_path_explosion",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q06_conflict_in",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": true,
+          "six_fields": true
+        },
+        {
+          "id": "q07_conflict_before",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q08_context_prod",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q09_context_stage",
+          "expected": "FALSE",
+          "actual": "FALSE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q10_scc_in",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q11_nested_and",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q12_nested_or",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q13_nested_and_unknown",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q14_nested_not_or",
+          "expected": "FALSE",
+          "actual": "FALSE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q15_depth10_not",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q16_depth_or_and",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q17_conflict_and",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": true,
+          "six_fields": true
+        },
+        {
+          "id": "q18_conflict_or_unknown",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": true,
+          "six_fields": true
+        },
+        {
+          "id": "q19_implies_unknown",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q20_implies_to_unknown",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        }
+      ]
+    },
+    {
+      "group": "E",
+      "http_status": 200,
+      "total": 20,
+      "correct": 20,
+      "rows": [
+        {
+          "id": "q01_dense_production",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q02_dense_reverse",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q03_dense_staging_negative",
+          "expected": "FALSE",
+          "actual": "FALSE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q04_temporal_inside",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q05_temporal_before",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q06_temporal_after",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q07_temporal_reverse",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q08_direct_conflict",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": true,
+          "six_fields": true
+        },
+        {
+          "id": "q09_conflict_after_window",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q10_clean_alternative",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q11_context_production",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q12_context_staging",
+          "expected": "FALSE",
+          "actual": "FALSE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q13_scc_reverse",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q14_supports_direct",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q15_supports_transitive",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q16_part_of_direct",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q17_part_of_reverse",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q18_wide_or_440",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q19_not_depth64",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q20_composite_conflict",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": true,
+          "six_fields": true
+        }
+      ]
+    },
+    {
+      "group": "C/7000/base",
+      "http_status": 200,
+      "total": 20,
+      "correct": 20,
+      "rows": [
+        {
+          "id": "q01_chain_in",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q02_chain_before",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q03_chain_after",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q04_chain_reverse",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q05_chain_mid",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q06_tenant_right",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q07_tenant_wrong",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q08_tenant_staging",
+          "expected": "FALSE",
+          "actual": "FALSE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q09_conflict_in",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": true,
+          "six_fields": true
+        },
+        {
+          "id": "q10_conflict_before",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q11_conflict_after",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q12_cycle_in",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q13_cycle_out",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q14_cross_namespace",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q15_missing",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q16_chain_boundary",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q17_chain_boundary_after",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q18_chain_boundary_out",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q19_tenant_reverse",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q20_noise_cross",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        }
+      ]
+    },
+    {
+      "group": "C/7000/shuffled",
+      "http_status": 200,
+      "total": 20,
+      "correct": 20,
+      "rows": [
+        {
+          "id": "q01_chain_in",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q02_chain_before",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q03_chain_after",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q04_chain_reverse",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q05_chain_mid",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q06_tenant_right",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q07_tenant_wrong",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q08_tenant_staging",
+          "expected": "FALSE",
+          "actual": "FALSE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q09_conflict_in",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": true,
+          "six_fields": true
+        },
+        {
+          "id": "q10_conflict_before",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q11_conflict_after",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q12_cycle_in",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q13_cycle_out",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q14_cross_namespace",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q15_missing",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q16_chain_boundary",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q17_chain_boundary_after",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q18_chain_boundary_out",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q19_tenant_reverse",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q20_noise_cross",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        }
+      ]
+    },
+    {
+      "group": "C/7000/duplicated",
+      "http_status": 200,
+      "total": 20,
+      "correct": 20,
+      "rows": [
+        {
+          "id": "q01_chain_in",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q02_chain_before",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q03_chain_after",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q04_chain_reverse",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q05_chain_mid",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q06_tenant_right",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q07_tenant_wrong",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q08_tenant_staging",
+          "expected": "FALSE",
+          "actual": "FALSE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q09_conflict_in",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": true,
+          "six_fields": true
+        },
+        {
+          "id": "q10_conflict_before",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q11_conflict_after",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q12_cycle_in",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q13_cycle_out",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q14_cross_namespace",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q15_missing",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q16_chain_boundary",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q17_chain_boundary_after",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q18_chain_boundary_out",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q19_tenant_reverse",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q20_noise_cross",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        }
+      ]
+    },
+    {
+      "group": "C/7001/base",
+      "http_status": 200,
+      "total": 20,
+      "correct": 20,
+      "rows": [
+        {
+          "id": "q01_chain_in",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q02_chain_before",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q03_chain_after",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q04_chain_reverse",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q05_chain_mid",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q06_tenant_right",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q07_tenant_wrong",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q08_tenant_staging",
+          "expected": "FALSE",
+          "actual": "FALSE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q09_conflict_in",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": true,
+          "six_fields": true
+        },
+        {
+          "id": "q10_conflict_before",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q11_conflict_after",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q12_cycle_in",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q13_cycle_out",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q14_cross_namespace",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q15_missing",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q16_chain_boundary",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q17_chain_boundary_after",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q18_chain_boundary_out",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q19_tenant_reverse",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q20_noise_cross",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        }
+      ]
+    },
+    {
+      "group": "C/7001/shuffled",
+      "http_status": 200,
+      "total": 20,
+      "correct": 20,
+      "rows": [
+        {
+          "id": "q01_chain_in",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q02_chain_before",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q03_chain_after",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q04_chain_reverse",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q05_chain_mid",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q06_tenant_right",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q07_tenant_wrong",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q08_tenant_staging",
+          "expected": "FALSE",
+          "actual": "FALSE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q09_conflict_in",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": true,
+          "six_fields": true
+        },
+        {
+          "id": "q10_conflict_before",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q11_conflict_after",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q12_cycle_in",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q13_cycle_out",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q14_cross_namespace",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q15_missing",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q16_chain_boundary",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q17_chain_boundary_after",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q18_chain_boundary_out",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q19_tenant_reverse",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q20_noise_cross",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        }
+      ]
+    },
+    {
+      "group": "C/7001/duplicated",
+      "http_status": 200,
+      "total": 20,
+      "correct": 20,
+      "rows": [
+        {
+          "id": "q01_chain_in",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q02_chain_before",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q03_chain_after",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q04_chain_reverse",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q05_chain_mid",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q06_tenant_right",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q07_tenant_wrong",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q08_tenant_staging",
+          "expected": "FALSE",
+          "actual": "FALSE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q09_conflict_in",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": true,
+          "six_fields": true
+        },
+        {
+          "id": "q10_conflict_before",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q11_conflict_after",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q12_cycle_in",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q13_cycle_out",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q14_cross_namespace",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q15_missing",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q16_chain_boundary",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q17_chain_boundary_after",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q18_chain_boundary_out",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q19_tenant_reverse",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q20_noise_cross",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        }
+      ]
+    },
+    {
+      "group": "C/7002/base",
+      "http_status": 200,
+      "total": 20,
+      "correct": 20,
+      "rows": [
+        {
+          "id": "q01_chain_in",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q02_chain_before",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q03_chain_after",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q04_chain_reverse",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q05_chain_mid",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q06_tenant_right",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q07_tenant_wrong",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q08_tenant_staging",
+          "expected": "FALSE",
+          "actual": "FALSE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q09_conflict_in",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": true,
+          "six_fields": true
+        },
+        {
+          "id": "q10_conflict_before",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q11_conflict_after",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q12_cycle_in",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q13_cycle_out",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q14_cross_namespace",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q15_missing",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q16_chain_boundary",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q17_chain_boundary_after",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q18_chain_boundary_out",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q19_tenant_reverse",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q20_noise_cross",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        }
+      ]
+    },
+    {
+      "group": "C/7002/shuffled",
+      "http_status": 200,
+      "total": 20,
+      "correct": 20,
+      "rows": [
+        {
+          "id": "q01_chain_in",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q02_chain_before",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q03_chain_after",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q04_chain_reverse",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q05_chain_mid",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q06_tenant_right",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q07_tenant_wrong",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q08_tenant_staging",
+          "expected": "FALSE",
+          "actual": "FALSE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q09_conflict_in",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": true,
+          "six_fields": true
+        },
+        {
+          "id": "q10_conflict_before",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q11_conflict_after",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q12_cycle_in",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q13_cycle_out",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q14_cross_namespace",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q15_missing",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q16_chain_boundary",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q17_chain_boundary_after",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q18_chain_boundary_out",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q19_tenant_reverse",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q20_noise_cross",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        }
+      ]
+    },
+    {
+      "group": "C/7002/duplicated",
+      "http_status": 200,
+      "total": 20,
+      "correct": 20,
+      "rows": [
+        {
+          "id": "q01_chain_in",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q02_chain_before",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q03_chain_after",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q04_chain_reverse",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q05_chain_mid",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q06_tenant_right",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q07_tenant_wrong",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q08_tenant_staging",
+          "expected": "FALSE",
+          "actual": "FALSE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q09_conflict_in",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": true,
+          "six_fields": true
+        },
+        {
+          "id": "q10_conflict_before",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q11_conflict_after",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q12_cycle_in",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q13_cycle_out",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q14_cross_namespace",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q15_missing",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q16_chain_boundary",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q17_chain_boundary_after",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q18_chain_boundary_out",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q19_tenant_reverse",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q20_noise_cross",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        }
+      ]
+    },
+    {
+      "group": "C/7003/base",
+      "http_status": 200,
+      "total": 20,
+      "correct": 20,
+      "rows": [
+        {
+          "id": "q01_chain_in",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q02_chain_before",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q03_chain_after",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q04_chain_reverse",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q05_chain_mid",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q06_tenant_right",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q07_tenant_wrong",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q08_tenant_staging",
+          "expected": "FALSE",
+          "actual": "FALSE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q09_conflict_in",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": true,
+          "six_fields": true
+        },
+        {
+          "id": "q10_conflict_before",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q11_conflict_after",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q12_cycle_in",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q13_cycle_out",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q14_cross_namespace",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q15_missing",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q16_chain_boundary",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q17_chain_boundary_after",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q18_chain_boundary_out",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q19_tenant_reverse",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q20_noise_cross",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        }
+      ]
+    },
+    {
+      "group": "C/7003/shuffled",
+      "http_status": 200,
+      "total": 20,
+      "correct": 20,
+      "rows": [
+        {
+          "id": "q01_chain_in",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q02_chain_before",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q03_chain_after",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q04_chain_reverse",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q05_chain_mid",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q06_tenant_right",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q07_tenant_wrong",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q08_tenant_staging",
+          "expected": "FALSE",
+          "actual": "FALSE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q09_conflict_in",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": true,
+          "six_fields": true
+        },
+        {
+          "id": "q10_conflict_before",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q11_conflict_after",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q12_cycle_in",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q13_cycle_out",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q14_cross_namespace",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q15_missing",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q16_chain_boundary",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q17_chain_boundary_after",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q18_chain_boundary_out",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q19_tenant_reverse",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q20_noise_cross",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        }
+      ]
+    },
+    {
+      "group": "C/7003/duplicated",
+      "http_status": 200,
+      "total": 20,
+      "correct": 20,
+      "rows": [
+        {
+          "id": "q01_chain_in",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q02_chain_before",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q03_chain_after",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q04_chain_reverse",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q05_chain_mid",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q06_tenant_right",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q07_tenant_wrong",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q08_tenant_staging",
+          "expected": "FALSE",
+          "actual": "FALSE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q09_conflict_in",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": true,
+          "six_fields": true
+        },
+        {
+          "id": "q10_conflict_before",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q11_conflict_after",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q12_cycle_in",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q13_cycle_out",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q14_cross_namespace",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q15_missing",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q16_chain_boundary",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q17_chain_boundary_after",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q18_chain_boundary_out",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q19_tenant_reverse",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q20_noise_cross",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        }
+      ]
+    },
+    {
+      "group": "C/7004/base",
+      "http_status": 200,
+      "total": 20,
+      "correct": 20,
+      "rows": [
+        {
+          "id": "q01_chain_in",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q02_chain_before",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q03_chain_after",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q04_chain_reverse",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q05_chain_mid",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q06_tenant_right",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q07_tenant_wrong",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q08_tenant_staging",
+          "expected": "FALSE",
+          "actual": "FALSE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q09_conflict_in",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": true,
+          "six_fields": true
+        },
+        {
+          "id": "q10_conflict_before",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q11_conflict_after",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q12_cycle_in",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q13_cycle_out",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q14_cross_namespace",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q15_missing",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q16_chain_boundary",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q17_chain_boundary_after",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q18_chain_boundary_out",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q19_tenant_reverse",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q20_noise_cross",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        }
+      ]
+    },
+    {
+      "group": "C/7004/shuffled",
+      "http_status": 200,
+      "total": 20,
+      "correct": 20,
+      "rows": [
+        {
+          "id": "q01_chain_in",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q02_chain_before",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q03_chain_after",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q04_chain_reverse",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q05_chain_mid",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q06_tenant_right",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q07_tenant_wrong",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q08_tenant_staging",
+          "expected": "FALSE",
+          "actual": "FALSE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q09_conflict_in",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": true,
+          "six_fields": true
+        },
+        {
+          "id": "q10_conflict_before",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q11_conflict_after",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q12_cycle_in",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q13_cycle_out",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q14_cross_namespace",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q15_missing",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q16_chain_boundary",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q17_chain_boundary_after",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q18_chain_boundary_out",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q19_tenant_reverse",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q20_noise_cross",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        }
+      ]
+    },
+    {
+      "group": "C/7004/duplicated",
+      "http_status": 200,
+      "total": 20,
+      "correct": 20,
+      "rows": [
+        {
+          "id": "q01_chain_in",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q02_chain_before",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q03_chain_after",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q04_chain_reverse",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q05_chain_mid",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q06_tenant_right",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q07_tenant_wrong",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q08_tenant_staging",
+          "expected": "FALSE",
+          "actual": "FALSE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q09_conflict_in",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": true,
+          "six_fields": true
+        },
+        {
+          "id": "q10_conflict_before",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q11_conflict_after",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q12_cycle_in",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q13_cycle_out",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q14_cross_namespace",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q15_missing",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q16_chain_boundary",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q17_chain_boundary_after",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q18_chain_boundary_out",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q19_tenant_reverse",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q20_noise_cross",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        }
+      ]
+    },
+    {
+      "group": "C/7005/base",
+      "http_status": 200,
+      "total": 20,
+      "correct": 20,
+      "rows": [
+        {
+          "id": "q01_chain_in",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q02_chain_before",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q03_chain_after",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q04_chain_reverse",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q05_chain_mid",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q06_tenant_right",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q07_tenant_wrong",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q08_tenant_staging",
+          "expected": "FALSE",
+          "actual": "FALSE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q09_conflict_in",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": true,
+          "six_fields": true
+        },
+        {
+          "id": "q10_conflict_before",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q11_conflict_after",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q12_cycle_in",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q13_cycle_out",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q14_cross_namespace",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q15_missing",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q16_chain_boundary",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q17_chain_boundary_after",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q18_chain_boundary_out",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q19_tenant_reverse",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q20_noise_cross",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        }
+      ]
+    },
+    {
+      "group": "C/7005/shuffled",
+      "http_status": 200,
+      "total": 20,
+      "correct": 20,
+      "rows": [
+        {
+          "id": "q01_chain_in",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q02_chain_before",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q03_chain_after",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q04_chain_reverse",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q05_chain_mid",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q06_tenant_right",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q07_tenant_wrong",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q08_tenant_staging",
+          "expected": "FALSE",
+          "actual": "FALSE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q09_conflict_in",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": true,
+          "six_fields": true
+        },
+        {
+          "id": "q10_conflict_before",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q11_conflict_after",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q12_cycle_in",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q13_cycle_out",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q14_cross_namespace",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q15_missing",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q16_chain_boundary",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q17_chain_boundary_after",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q18_chain_boundary_out",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q19_tenant_reverse",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q20_noise_cross",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        }
+      ]
+    },
+    {
+      "group": "C/7005/duplicated",
+      "http_status": 200,
+      "total": 20,
+      "correct": 20,
+      "rows": [
+        {
+          "id": "q01_chain_in",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q02_chain_before",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q03_chain_after",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q04_chain_reverse",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q05_chain_mid",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q06_tenant_right",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q07_tenant_wrong",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q08_tenant_staging",
+          "expected": "FALSE",
+          "actual": "FALSE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q09_conflict_in",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": true,
+          "six_fields": true
+        },
+        {
+          "id": "q10_conflict_before",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q11_conflict_after",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q12_cycle_in",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q13_cycle_out",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q14_cross_namespace",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q15_missing",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q16_chain_boundary",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q17_chain_boundary_after",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q18_chain_boundary_out",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q19_tenant_reverse",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q20_noise_cross",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        }
+      ]
+    },
+    {
+      "group": "C/7006/base",
+      "http_status": 200,
+      "total": 20,
+      "correct": 20,
+      "rows": [
+        {
+          "id": "q01_chain_in",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q02_chain_before",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q03_chain_after",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q04_chain_reverse",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q05_chain_mid",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q06_tenant_right",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q07_tenant_wrong",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q08_tenant_staging",
+          "expected": "FALSE",
+          "actual": "FALSE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q09_conflict_in",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": true,
+          "six_fields": true
+        },
+        {
+          "id": "q10_conflict_before",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q11_conflict_after",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q12_cycle_in",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q13_cycle_out",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q14_cross_namespace",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q15_missing",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q16_chain_boundary",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q17_chain_boundary_after",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q18_chain_boundary_out",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q19_tenant_reverse",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q20_noise_cross",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        }
+      ]
+    },
+    {
+      "group": "C/7006/shuffled",
+      "http_status": 200,
+      "total": 20,
+      "correct": 20,
+      "rows": [
+        {
+          "id": "q01_chain_in",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q02_chain_before",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q03_chain_after",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q04_chain_reverse",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q05_chain_mid",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q06_tenant_right",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q07_tenant_wrong",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q08_tenant_staging",
+          "expected": "FALSE",
+          "actual": "FALSE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q09_conflict_in",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": true,
+          "six_fields": true
+        },
+        {
+          "id": "q10_conflict_before",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q11_conflict_after",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q12_cycle_in",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q13_cycle_out",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q14_cross_namespace",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q15_missing",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q16_chain_boundary",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q17_chain_boundary_after",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q18_chain_boundary_out",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q19_tenant_reverse",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q20_noise_cross",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        }
+      ]
+    },
+    {
+      "group": "C/7006/duplicated",
+      "http_status": 200,
+      "total": 20,
+      "correct": 20,
+      "rows": [
+        {
+          "id": "q01_chain_in",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q02_chain_before",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q03_chain_after",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q04_chain_reverse",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q05_chain_mid",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q06_tenant_right",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q07_tenant_wrong",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q08_tenant_staging",
+          "expected": "FALSE",
+          "actual": "FALSE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q09_conflict_in",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": true,
+          "six_fields": true
+        },
+        {
+          "id": "q10_conflict_before",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q11_conflict_after",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q12_cycle_in",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q13_cycle_out",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q14_cross_namespace",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q15_missing",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q16_chain_boundary",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q17_chain_boundary_after",
+          "expected": "TRUE",
+          "actual": "TRUE",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q18_chain_boundary_out",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q19_tenant_reverse",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        },
+        {
+          "id": "q20_noise_cross",
+          "expected": "UNKNOWN",
+          "actual": "UNKNOWN",
+          "conflict": false,
+          "six_fields": true
+        }
+      ]
+    }
+  ],
+  "current_features": [
+    {
+      "id": "scoped_compound_in_window",
+      "passed": true,
+      "http_status": 200,
+      "expected": "TRUE",
+      "actual": "TRUE",
+      "conflict": false,
+      "path_items": 0,
+      "six_fields": true
+    },
+    {
+      "id": "scoped_compound_before_window",
+      "passed": true,
+      "http_status": 200,
+      "expected": "UNKNOWN",
+      "actual": "UNKNOWN",
+      "conflict": false,
+      "path_items": 0,
+      "six_fields": true
+    },
+    {
+      "id": "scoped_compound_wrong_context",
+      "passed": true,
+      "http_status": 200,
+      "expected": "UNKNOWN",
+      "actual": "UNKNOWN",
+      "conflict": false,
+      "path_items": 0,
+      "six_fields": true
+    },
+    {
+      "id": "undated_facts_in_temporal_compound",
+      "passed": true,
+      "http_status": 200,
+      "expected": "TRUE",
+      "actual": "TRUE",
+      "conflict": false,
+      "path_items": 0,
+      "six_fields": true
+    },
+    {
+      "id": "unsupported_outer_wrapper_still_rejected",
+      "passed": true,
+      "http_status": 400,
+      "expected": null,
+      "actual": null,
+      "conflict": null,
+      "path_items": 0,
+      "six_fields": null
+    },
+    {
+      "id": "supports_five_hop",
+      "passed": true,
+      "http_status": 200,
+      "expected": "TRUE",
+      "actual": "TRUE",
+      "conflict": false,
+      "path_items": 6,
+      "six_fields": true
+    },
+    {
+      "id": "persisted_single_value_conflict_Name-A",
+      "passed": true,
+      "http_status": 200,
+      "expected": "UNKNOWN",
+      "actual": "UNKNOWN",
+      "conflict": true,
+      "path_items": 2,
+      "six_fields": true
+    },
+    {
+      "id": "persisted_single_value_conflict_Name-B",
+      "passed": true,
+      "http_status": 200,
+      "expected": "UNKNOWN",
+      "actual": "UNKNOWN",
+      "conflict": true,
+      "path_items": 2,
+      "six_fields": true
+    },
+    {
+      "id": "known_candidate_values",
+      "passed": true,
+      "http_status": 200,
+      "expected": "UNKNOWN",
+      "actual": "UNKNOWN",
+      "conflict": true,
+      "path_items": 2,
+      "six_fields": true
+    },
+    {
+      "id": "targeted_delete_resolves_persisted_conflict",
+      "passed": true,
+      "http_status": 200,
+      "expected": "TRUE",
+      "actual": "TRUE",
+      "conflict": false,
+      "path_items": 2,
+      "six_fields": true
+    },
+    {
+      "id": "custom_attribute_edit_new_value",
+      "passed": true,
+      "http_status": 200,
+      "expected": "TRUE",
+      "actual": "TRUE",
+      "conflict": false,
+      "path_items": 2,
+      "six_fields": true
+    },
+    {
+      "id": "custom_attribute_edit_old_value",
+      "passed": true,
+      "http_status": 200,
+      "expected": "UNKNOWN",
+      "actual": "UNKNOWN",
+      "conflict": false,
+      "path_items": 0,
+      "six_fields": true
+    },
+    {
+      "id": "targeted_delete_old_claim_unknown",
+      "passed": true,
+      "http_status": 200,
+      "expected": "UNKNOWN",
+      "actual": "UNKNOWN",
+      "conflict": false,
+      "path_items": 0,
+      "six_fields": true
+    },
+    {
+      "id": "targeted_delete_preserves_other_memory",
+      "passed": true,
+      "http_status": 200,
+      "expected": "TRUE",
+      "actual": "TRUE",
+      "conflict": false,
+      "path_items": 2,
+      "six_fields": true
+    }
+  ],
+  "not_rerun": [
+    "DeepSeek model answers and end-to-end model quality",
+    "Concurrent load, throughput and public-service latency",
+    "Token usage, extraction cost, cache pricing and total customer cost",
+    "Local Qwen gateway workflow",
+    "Older ProofWriter, NLGraph and 10-question general-capability comparisons"
+  ]
+}

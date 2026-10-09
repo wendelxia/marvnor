@@ -21,6 +21,10 @@ Ordinary custom attributes are single-valued by default: incompatible values in 
 
 ## Observed results
 
-In one 10-question comparison run by the project team, the average score on five context tasks rose from 94.44 to 100 after Marvnor was connected; the translation task rose from 88.89 to 100, and the project-rule code task rose from 83.33 to 100. The same run showed no score drop on the creative, mathematics, or academic questions. [See the other public tests](TESTS.md).
+On October 10, 2026, an isolated local replay matched 500/500 expected verdicts across 25 requests, and 14/14 targeted feature checks passed. The tested source files matched the active public-service release. Counts include variants and repeated question templates, not 500 independent tasks.
+
+The checks covered long dependency chains, scoped time/context logic, persisted single-value conflicts, candidate-value queries, and correction and targeted deletion of saved facts. See the [current-version review](docs/benchmarks/2026-10-10/current-version.md) and [eight test-backed benefits](docs/benchmarks/2026-10-10/highlights.md).
+
+These are structured functional tests, not a new head-to-head model benchmark or proof of broad writing, translation, mathematics, or coding improvement. Earlier model comparisons and token figures remain [dated historical evidence](TESTS.md); current production latency and total customer cost were not measured here.
 
 [Open the user portal](https://api.marvnor.com/) · [Run the quickstart](USER_QUICKSTART.md) · [Read the usage guide](USAGE.md) · [Contact us about testing](mailto:wendelxia@gmail.com)
