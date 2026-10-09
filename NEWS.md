@@ -1,40 +1,52 @@
-# Marvnor Announces Public Launch of a Truth-Preserving Decision Gateway
+# Marvnor reports stronger fact verification and a 98.2% input reduction in a long-history test
 
-**October 5, 2026**
+October 10, 2026
 
-Documentation update, October 10, 2026: English [customer guides](USAGE.md) and the [current API reference](PUBLIC_EVALUATION_API.md) are now available. The launch announcement and historical results below retain their original date.
+[中文版](docs/news/2026-10-10-benchmark-results.zh-CN.md)
 
-Test evidence update, October 10, 2026: the [local review](docs/benchmarks/2026-10-10/current-version.md) passed 500/500 replay verdicts and 14/14 feature checks, including saved-record conflicts, candidate queries and editing.
+Marvnor today published new test results for its truth-preserving specialized model system. Its structured verification answered all 40 questions correctly across two fact-checking sets, outperforming DeepSeek's direct text answers in each set. In a separate 160-turn synthetic-history example, using prepared relevant facts reduced the model's final-query input from 5,328 to 95 tokens while preserving the correct answer.
 
-Later rerun update, October 10, 2026: [fresh tests](docs/benchmarks/2026-10-10/rerun.md) matched 1,227/1,227 expected verdicts across 62 public requests, including variants and repetitions. Marvnor scored 20/20 in both fact-verification sets, ahead of DeepSeek's text answers in all three runs. The 160-turn synthetic-history example reduced final-query model input by 98.2% while keeping the answer correct. Read the [eight tested benefits](docs/benchmarks/2026-10-10/highlights.md) and [new data](docs/benchmarks/2026-10-10/rerun-results.json). The October 5 announcement below remains an archive of its original results.
+Marvnor works in front of an existing large language model. It verifies facts, detects conflicting records and maintains reusable project memory. The application sends the current question and relevant Marvnor results to the LLM, which writes the answer.
 
-Marvnor today opened its user portal to developers building evidence-based applications with large language models (LLMs). Marvnor is designed to work as a gateway alongside an existing model and help an application distinguish supported conclusions, insufficient evidence, and conflicting sources before deciding what to do next.
+## More accurate judgments on complex facts
 
-## A practical control layer for LLM applications
+The comparison covered long dependency chains, time constraints, environments, explicit negatives and conflicting evidence. Both systems received the same facts and questions: Marvnor as structured input, DeepSeek as text.
 
-When an LLM works with long documents, complex conditions, or contradictory records, a fluent answer is not always a reliable judgment. Marvnor accepts the application’s question and relevant evidence through the gateway, then returns six machine-readable results:
+| Test set | Marvnor | DeepSeek text answers, three fresh runs |
+| --- | ---: | --- |
+| Long chains, conflicts and compound logic | 20/20 | 16/20, 16/20, 16/20 |
+| Time, environments and compound logic | 20/20 | 14/20, 15/20, 15/20 |
 
-- `conclusion`
-- `evidence_kind`
-- `conflict`
-- `reason`
-- `decision`
-- `path`
+Marvnor correctly separated supported claims, explicit negatives and insufficient evidence. It also preserved conflict signals inside compound judgments. The results show more accurate fact verification on these tasks, giving applications a clear basis for answering or requesting clarification.
 
-The application remains in control. It can let the model answer, ask for more information, or route a case to a human reviewer. Marvnor does not require replacing the main model or building a full business knowledge graph in advance.
+## Less repeated reading in long conversations
 
-## Public test results
+The history experiment compared the same final question using full conversation history and prepared relevant results. At 8, 40 and 160 synthetic history turns, model input fell by 69.4%, 93.0% and 98.2%, respectively. Both paths answered correctly at every length.
 
-In tests run by the project team using public datasets and the live service:
+This demonstrates the value of reusable facts: the model can receive the information needed for the current question without repeatedly reading the entire conversation. The 160-turn example used 95 input tokens instead of 5,328.
 
-- ProofWriter, 30 questions: 12/30 with the model alone versus 30/30 in the connected workflow.
-- ProofWriter, 200 questions: 52/200 versus 200/200.
-- NLGraph connectivity, 90 questions: 78/90 versus 90/90.
+## Conflict management that continues across saved records
 
-The project team also reported higher scores on its separate 10-question comparison for context, translation, and project-rule code tasks, with no score drop on its creative, mathematics, and academic questions. These results are project-run tests, not an independent third-party audit or a guarantee for every scenario. Full methods and data are available in the [public test report](TESTS.md).
+Local saved-memory tests confirmed that Marvnor detects incompatible values stored for the same single-valued attribute. Both queries were marked as conflicting, and a candidate query returned the competing values. Removing one conflicting record restored support for the remaining value.
 
-## Try Marvnor
+In-place correction and targeted deletion also passed. Applications can update outdated facts or remove test data while keeping unrelated project memory. All 23 memory-interface checks and four customer-example checks passed.
 
-Marvnor is available at [marvnor.com](https://marvnor.com). Developers and researchers are invited to test questions whose answers they can verify and share results or counterexamples at [wendelxia@gmail.com](mailto:wendelxia@gmail.com). Please do not send account keys or sensitive material you are not authorized to share.
+## Stable results across variants and concurrent requests
 
-[Read the introduction](INTRODUCTION.md) · [Read the usage guide](USAGE.md) · [View the public tests](TESTS.md)
+Seven datasets tested in original, shuffled and duplicated forms produced 420/420 expected judgments. Other cases verified a 99-hop dependency chain and time-scoped compound logic.
+
+In a short run of 20 concurrent requests, each containing 20 complex questions, every judgment matched its expected result. Median whole-request time was 603 milliseconds. Across the complete public rerun, all 62 scored requests succeeded and all 1,227 expected judgments matched, including input variants and concurrent repetitions.
+
+## Available to developers
+
+Marvnor is available through its [public API and customer portal](https://api.marvnor.com/). Developers can connect it to an existing LLM application over HTTPS without installing a Marvnor client. Each verification answer provides six fields covering the conclusion, evidence category, conflict, reason, decision signal and evidence path.
+
+The project has published the [full report and methods](docs/benchmarks/2026-10-10/rerun.md), [question-level data](docs/benchmarks/2026-10-10/rerun-results.json) and [local feature checks](docs/benchmarks/2026-10-10/current-version.md).
+
+[Get started](USER_QUICKSTART.md) · [Eight tested benefits](docs/benchmarks/2026-10-10/highlights.md)
+
+Media and developer contact: [wendelxia@gmail.com](mailto:wendelxia@gmail.com)
+
+---
+
+[October 5 launch announcement](docs/news/2026-10-05-launch.md) · [Repository home](README.md)
