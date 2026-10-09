@@ -1,8 +1,8 @@
 # Marvnor Truth-Preserving Decision Gateway
 
-When an LLM faces long documents, complex conditions, or contradictory records, a fluent answer is not necessarily a reliable judgment. Marvnor is a gateway alongside an existing LLM: the application sends the question and relevant evidence through it, and receives judgment results that help distinguish supported conclusions, refuted conclusions, insufficient evidence, and conflicting sources.
+Marvnor gives LLM applications fact verification, conflict management and reusable project memory. It checks the evidence behind a question, identifies missing or conflicting support, and returns results the model can use to write its answer.
 
-It is intended for evidence-based use cases such as enterprise RAG, intelligent customer service, compliance review, and data analysis. The application does not need to replace its main model or build a knowledge graph covering the entire business in advance.
+Use it for project dependencies, business-state checks, customer support and evidence-based analysis. Keep your existing model and send it the current question with the relevant Marvnor results.
 
 ## Six results
 
@@ -17,14 +17,20 @@ It is intended for evidence-based use cases such as enterprise RAG, intelligent 
 
 For example, if two sources provide opposite evidence for the same question, Marvnor returns `UNKNOWN` and marks the conflict. The application can ask the model to explain the conflict, ask for more information, or route the case to a human reviewer. Marvnor does not invent material that was not supplied to it.
 
-Ordinary custom attributes are single-valued by default: incompatible values in compatible contexts and overlapping validity periods are a conflict. Defined multi-valued types, such as `supports`, can have multiple objects. [See the API contract](PUBLIC_EVALUATION_API.md) for structured input, candidate queries, and the exact six-field response. A supported claim is not an independent guarantee about the real world.
+Ordinary custom attributes are single-valued by default: incompatible values in compatible contexts and overlapping validity periods are a conflict. Defined multi-valued types, such as `supports`, can have multiple objects. [See the API contract](PUBLIC_EVALUATION_API.md) for structured input, candidate queries and the six-field response.
 
-## Observed results
+## What the tests demonstrate
 
-On October 10, 2026, a fresh live rerun matched 1,227/1,227 expected verdicts across 62 scored public requests. Counts include variants and repeated question templates, not 1,227 independent tasks. In two 20-question groups, live Marvnor scored 20/20 each; three fresh DeepSeek runs scored 16/20 each in A and 14/20, 15/20 and 15/20 in B.
+The October 10, 2026 rerun produced clear results:
 
-The live checks covered long chains, scoped logic, input variants and short concurrent workloads. Separate local checks covered saved-record conflicts, candidate queries, correction and targeted deletion. See the [fresh report](docs/benchmarks/2026-10-10/rerun.md), [local feature review](docs/benchmarks/2026-10-10/current-version.md) and [eight test-backed benefits](docs/benchmarks/2026-10-10/highlights.md).
+| Test result | Conclusion |
+| --- | --- |
+| Two fact-verification sets: Marvnor 20/20 each; DeepSeek text answers over three runs scored A 16/20 each and B 14/20, 15/20, 15/20 | Marvnor made more accurate judgments on these facts |
+| Final query after 160 turns of synthetic history: 5,328 input tokens reduced to 95, with both answers correct | Reusing relevant facts cut repeated model input by 98.2% in this example |
+| Original, shuffled and duplicated inputs: 420/420 expected verdicts | Conclusions stayed stable across reordered and repeated evidence |
+| Local saved-memory checks flagged incompatible values, returned both candidates and verified the corrected record | Conflicts can be found and resolved across stored records |
+| 99-hop chain, scoped temporal logic and nested compound conditions passed | Applications can verify connected requirements across multiple steps and contexts |
 
-The comparison is structured verification versus model text answers, not the same LLM with and without Marvnor. It does not establish broad writing, translation, mathematics or coding improvement. Fresh latency and token measurements retain their workload limits; the 98.2% input reduction in one final-query example is not a total-cost reduction. Older aggregate benchmarks remain [historical evidence](TESTS.md).
+The public suite matched 1,227/1,227 expected verdicts across 62 requests, including input variants and concurrent repetitions. Read the [eight tested benefits](docs/benchmarks/2026-10-10/highlights.md), [full report and methods](docs/benchmarks/2026-10-10/rerun.md), or [local feature checks](docs/benchmarks/2026-10-10/current-version.md).
 
 [Open the user portal](https://api.marvnor.com/) · [Run the quickstart](USER_QUICKSTART.md) · [Read the usage guide](USAGE.md) · [Contact us about testing](mailto:wendelxia@gmail.com)

@@ -2,30 +2,36 @@
 
 ## Truth-Preserving Decision Gateway for LLM Applications
 
-Large language models can read material and write answers. For critical judgments, however, an application still needs to distinguish supported claims, insufficient evidence, and conflicting sources. Marvnor is a gateway used alongside an existing LLM: your application sends a question and relevant evidence through the gateway, then receives machine-readable judgment results that software can use. The model handles wording; the application decides what happens next.
+Marvnor verifies facts, detects conflicting records and gives LLM applications reusable project memory. Put it in front of your model: send the current question and relevant verification results to the LLM, which then writes the answer.
 
-It is designed for enterprise RAG, intelligent customer service, compliance review, and data analysis. When sources contradict one another, Marvnor marks the conflict instead of forcing the model to choose a side and answer anyway.
+Use it to check project dependencies, business states, time-sensitive evidence and conflicting information. Keep confirmed facts between questions, correct them when they change, and pass only the results needed for the next answer.
 
-The inference endpoint, `POST /v1/evaluate`, returns exactly six fields per answer: conclusion, evidence type, conflict, reason, decision signal, and evidence path. Your application supplies structured facts and questions; Marvnor does not automatically extract a full chat or call your LLM. [See the API reference](PUBLIC_EVALUATION_API.md).
+[Open the user portal](https://api.marvnor.com/) · [Quickstart](USER_QUICKSTART.md) · [Eight tested benefits](docs/benchmarks/2026-10-10/highlights.md)
 
-[Open the user portal](https://api.marvnor.com/) · [Run the quickstart](USER_QUICKSTART.md) · [Read the usage guide](USAGE.md) · [View public tests](TESTS.md) · [Read the news release](NEWS.md)
+## Results that show the difference
 
-English customer documentation, synchronized with the October 10, 2026 service documentation:
+October 10, 2026 rerun:
 
-- [Quickstart](USER_QUICKSTART.md): write, verify, and safely delete one demonstration record.
-- [API reference](PUBLIC_EVALUATION_API.md): six-field answers, candidate values, context, time, and request limits.
-- [Record management](docs/customer/record-management.md): in-place correction, targeted deletion, and chunked imports.
-- [LLM integration](docs/customer/llm-integration.md): forward only the current question and relevant results; account for quality and total cost.
+| Test | Result | What it demonstrates |
+| --- | --- | --- |
+| Two structured fact-verification sets | Marvnor: 20/20 in each. DeepSeek text answers across three runs: A 16/20 each; B 14/20, 15/20, 15/20 | More accurate judgments on the tested facts, including unknown and conflicting evidence |
+| Final question after 160 turns of synthetic history | Model input: 5,328 to 95 tokens, a 98.2% reduction; both answers correct | Reusable relevant facts sharply reduce repeated model input |
+| Original, shuffled and duplicated facts | 420/420 expected verdicts across seven datasets | Stable conclusions despite changes in input order and duplicate evidence |
+| Saved single-value conflicts, tested locally | Both incompatible values flagged; removing one restored support for the other | Conflict management across saved records |
+| Complex logic under 20 concurrent requests | Every request returned 20/20 expected verdicts; median request time 603 ms | Correct batch judgments during the measured concurrent workload |
 
-Test evidence [rerun on October 10, 2026](docs/benchmarks/2026-10-10/README.md):
+The public suite returned **1,227/1,227 expected verdicts across 62 requests**, covering input variants and repeated workloads. [Read the report and every comparison question](docs/benchmarks/2026-10-10/rerun.md) or [inspect the data](docs/benchmarks/2026-10-10/rerun-results.json).
 
-- [Eight benefits with supporting tests](docs/benchmarks/2026-10-10/highlights.md): structured verification, long chains, scoped logic, saved-record conflicts, stable conclusions, reusable facts, and maintainable memory.
-- [Fresh live rerun and all 40 model-comparison questions](docs/benchmarks/2026-10-10/rerun.md): 62 scored public requests and 1,227/1,227 expected verdicts, including repeated templates and variants. DeepSeek scored 16/20 in all three A runs and 14/20, 15/20 and 15/20 in B; live Marvnor scored 20/20 in each group.
-- [Fresh per-question data](docs/benchmarks/2026-10-10/rerun-results.json): public request timings, three model repetitions per group, token and cache counts, workflow results, and maintenance checks. The 98.2% input reduction in one final-query example is not a total-cost saving.
-- [Earlier same-day local review](docs/benchmarks/2026-10-10/current-version.md): 500/500 replay verdicts and 14/14 feature checks. [Historical methods](docs/benchmarks/2026-10-10/methods.md) and [historical data](docs/benchmarks/2026-10-10/data.json) remain available. Older ProofWriter, NLGraph and general-capability summaries were not rerun.
+## Connect it to your application
 
-[Chinese web documentation](https://api.marvnor.com/docs) · [Product introduction](INTRODUCTION.md) · [Public materials license](LICENSE)
+Call `POST /v1/evaluate` with structured facts and questions. Each answer contains six fields: conclusion, evidence type, conflict, reason, decision signal and evidence path. Use them to answer, request clarification or gather more evidence.
 
-## Try it
+- [Quickstart](USER_QUICKSTART.md): save, verify and delete a demonstration record.
+- [API reference](PUBLIC_EVALUATION_API.md): requests and six-field answers.
+- [Record management](docs/customer/record-management.md): correct records, delete selected data and import in chunks.
+- [LLM integration](docs/customer/llm-integration.md): forward the current question and relevant results to your model.
+- [Usage guide](USAGE.md): account setup and everyday operation.
 
-Use Marvnor as a gateway. Choose a question whose answer you can verify, send the question and relevant evidence through Marvnor, and compare the model’s answer before and after the check. Whether it works well or exposes a problem, you are welcome to send the source, method, and result to [wendelxia@gmail.com](mailto:wendelxia@gmail.com). Please do not send account keys or sensitive material you are not authorized to share.
+[Chinese web documentation](https://api.marvnor.com/docs) · [Product introduction](INTRODUCTION.md) · [Test index and archives](TESTS.md) · [News](NEWS.md) · [Public materials license](LICENSE)
+
+Send feedback and test results to [wendelxia@gmail.com](mailto:wendelxia@gmail.com). Keep account keys and private customer material out of feedback.

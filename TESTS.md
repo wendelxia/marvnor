@@ -4,9 +4,18 @@
 
 [Eight benefits and their evidence](docs/benchmarks/2026-10-10/highlights.md) · [Fresh report and full comparisons](docs/benchmarks/2026-10-10/rerun.md) · [Fresh sanitized data](docs/benchmarks/2026-10-10/rerun-results.json)
 
-The fresh rerun completed 62 scored public requests with HTTP 200 and 1,227/1,227 expected verdicts, including variants and concurrent repetitions, not 1,227 independent questions. In A and B, live Marvnor scored 20/20 each. Three fresh DeepSeek runs scored 16/20 each in A and 14/20, 15/20 and 15/20 in B. The [report](docs/benchmarks/2026-10-10/rerun.md) includes every comparison question and the observed errors. These are structured verification versus model text answers, not an end-to-end LLM capability uplift score.
+The fresh public rerun returned HTTP 200 for all 62 scored requests and matched 1,227/1,227 expected verdicts across input variants and concurrent repetitions.
 
-All eight groups were rerun: model comparisons, input variants, short public concurrency runs, final-query token usage, local Qwen confirmation workflows and local memory maintenance. The earlier temporal and five-hop `supports` failures also passed their reruns. Total cost and sustained production capacity were not measured. A 98.2% final-query input reduction was repeated, but the 160-turn full-history cache hits rose to 5,120 tokens, so equal fee savings cannot be inferred.
+| Test | Fresh result | Conclusion |
+| --- | --- | --- |
+| Structured verification versus DeepSeek text answers | Marvnor 20/20 in both sets; three DeepSeek runs: A 16/20 each, B 14/20, 15/20, 15/20 | More accurate fact judgments in both sets |
+| Input order and duplication | 420/420 expected verdicts | Conclusions remained stable |
+| Final query after 160 synthetic history turns | 5,328 to 95 input tokens; both answers correct | 98.2% less model input for the same answer |
+| Complex logic, 20 concurrent requests | Every request 20/20; median 603 ms | Correct judgments across the concurrent batches |
+| Earlier temporal and supports cases | Temporal 20/20 plus seven edge cases; supports set 100/100 across five variants | Both earlier failure sets now pass |
+| Local workflow and maintenance | Eight workflow checks and 23 + 4 maintenance/example checks passed | Confirmation, answer handling and memory operations followed the expected flow |
+
+All eight evidence groups were rerun. The [full report](docs/benchmarks/2026-10-10/rerun.md) contains each model-comparison question, observed errors, token/cache accounting and test methods.
 
 The [earlier same-day local review](docs/benchmarks/2026-10-10/current-version.md) remains separately documented: 500/500 replay verdicts and 14/14 feature checks, including saved-record conflicts, candidate queries and editing. [Local data](docs/benchmarks/2026-10-10/current-version.json) · [Historical methods](docs/benchmarks/2026-10-10/methods.md).
 
