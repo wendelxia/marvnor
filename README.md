@@ -17,12 +17,12 @@ English customer documentation, synchronized with the October 10, 2026 service d
 - [Record management](docs/customer/record-management.md): in-place correction, targeted deletion, and chunked imports.
 - [LLM integration](docs/customer/llm-integration.md): forward only the current question and relevant results; account for quality and total cost.
 
-Test evidence [reviewed against current source on October 10, 2026](docs/benchmarks/2026-10-10/README.md):
+Test evidence [rerun on October 10, 2026](docs/benchmarks/2026-10-10/README.md):
 
 - [Eight benefits with supporting tests](docs/benchmarks/2026-10-10/highlights.md): structured verification, long chains, scoped logic, saved-record conflicts, stable conclusions, reusable facts, and maintainable memory.
-- [Current-version review](docs/benchmarks/2026-10-10/current-version.md): 500/500 local replay verdicts and 14/14 feature checks; source identity checked against the live release. Repeated templates and variants are included, and historical model, latency, and token figures were not rerun.
-- [Methods and complete comparisons](docs/benchmarks/2026-10-10/methods.md): eight test groups, all 40 questions from two model comparisons, and the conditions behind each result.
-- [Current replay data](docs/benchmarks/2026-10-10/current-version.json) and [historical question-level data](docs/benchmarks/2026-10-10/data.json): sanitized results with clear dates and counting rules.
+- [Fresh live rerun and all 40 model-comparison questions](docs/benchmarks/2026-10-10/rerun.md): 62 scored public requests and 1,227/1,227 expected verdicts, including repeated templates and variants. DeepSeek scored 16/20 in all three A runs and 14/20, 15/20 and 15/20 in B; live Marvnor scored 20/20 in each group.
+- [Fresh per-question data](docs/benchmarks/2026-10-10/rerun-results.json): public request timings, three model repetitions per group, token and cache counts, workflow results, and maintenance checks. The 98.2% input reduction in one final-query example is not a total-cost saving.
+- [Earlier same-day local review](docs/benchmarks/2026-10-10/current-version.md): 500/500 replay verdicts and 14/14 feature checks. [Historical methods](docs/benchmarks/2026-10-10/methods.md) and [historical data](docs/benchmarks/2026-10-10/data.json) remain available. Older ProofWriter, NLGraph and general-capability summaries were not rerun.
 
 [Chinese web documentation](https://api.marvnor.com/docs) · [Product introduction](INTRODUCTION.md) · [Public materials license](LICENSE)
 

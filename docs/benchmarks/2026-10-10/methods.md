@@ -2,6 +2,8 @@
 
 This report supports the [eight test-backed benefits](highlights.md). Prepared on October 10, 2026. The team retains the original records locally; this public package provides sanitized results and source-file fingerprints. It does not include source code, keys, customer data, or the complete test inputs.
 
+Archive note: a later [fresh rerun](rerun.md) repeated these eight groups and earlier temporal/supports failures. Use its [new data](rerun-results.json) for current measurements. The dated figures and descriptions of work performed below remain the historical record of this earlier collection.
+
 Version review: the [current-source replay](current-version.md) passed 500/500 verdicts and 14/14 targeted checks on October 10. It supersedes older limitations concerning scoped compound queries, five-hop `supports`, persisted single-value conflicts, candidate queries, and custom-attribute editing. The dated results below remain historical; DeepSeek answers, concurrency, token usage, and the Qwen workflow were not rerun.
 
 ## 1. Eight evidence groups
