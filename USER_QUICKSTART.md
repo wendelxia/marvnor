@@ -6,6 +6,14 @@ Call Marvnor directly from your own application: save a fact, verify it, then de
 
 [API reference](PUBLIC_EVALUATION_API.md) · [Edit and delete records](docs/customer/record-management.md) · [LLM integration](docs/customer/llm-integration.md)
 
+## Connect your AI tool
+
+Prefer not to write integration code? Sign in and open [Connect AI tools](https://api.marvnor.com/connect). Check your API key, select VS Code or Codex, and follow the setup steps. No Marvnor client installation is needed.
+
+Your AI can save confirmed facts, verify claims, correct records and delete selected data. Verification still returns the same six fields. The connection check is free; saves and verification follow the existing API usage rules. Enter the key in your tool configuration, not in a chat message.
+
+For direct API calls, follow the steps below.
+
 ## 1. Prepare your API key
 
 Sign in to the [customer portal](https://api.marvnor.com/), create an API key, and check that your account has available quota. Set `MARVNOR_API_KEY` in your application's runtime environment. Do not send the key to an LLM or put it in browser-side code.

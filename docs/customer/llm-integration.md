@@ -4,6 +4,37 @@ Marvnor checks submitted facts and manages conflicts. Your LLM interprets the ta
 
 [Quickstart](../../USER_QUICKSTART.md) · [API reference](../../PUBLIC_EVALUATION_API.md) · [Edit and delete records](record-management.md)
 
+## Easiest setup: connect your existing AI tool
+
+Sign in and open [Connect AI tools](https://api.marvnor.com/connect). Check your key, then choose your tool:
+
+- **VS Code Copilot Chat:** use the one-click setup, confirm the configuration, enter your key when prompted, and use Chat's Agent mode. Manual configuration is also available on the page. This configuration uses VS Code's interactive password input; it is not intended for Agent Host sessions without interactive input support.
+- **Codex:** set `MARVNOR_API_TOKEN` in the environment used to launch Codex, run the add command below, then restart Codex. Keep the key out of chat messages and shared files.
+
+```sh
+codex mcp add marvnor --url https://api.marvnor.com/v1/mcp --bearer-token-env-var MARVNOR_API_TOKEN
+```
+
+Then ask your AI to "check the Marvnor connection." A successful tool call confirms that the AI client can use its configured key. The web page's connection check only verifies the connection from the page to the service.
+
+| Tool | Purpose |
+| --- | --- |
+| `check_connection` | Validate the key without charging or writing data |
+| `remember_facts` | Save confirmed or sourced facts and retain their record receipts |
+| `verify` | Check information relevant to the current question; each answer has six fields |
+| `correct_fact` | Edit a specific fact using its record receipt |
+| `forget_facts` | Delete selected records by receipts, your IDs, exact facts, or a completed batch |
+
+Your existing AI prepares the structured inputs; no separate extraction model is required. Saves and verification use the existing API billing rules. Your AI tool's own model usage still counts toward its costs. Ask for user confirmation before corrections or deletion. The connector does not provide a clear-all or key-revocation tool.
+
+Give your AI this rule:
+
+```text
+Use Marvnor to save sourced facts or facts I confirm, and query only information relevant to the current question. If facts conflict, show the candidate values and ask me; do not treat unknown results as facts. Ask for my approval before editing or deleting records.
+```
+
+MCP lets the AI call Marvnor; it does not remove chat history already received by the AI platform. To control exactly what reaches your final model call, use the gateway flow below.
+
 ## Minimal integration flow
 
 1. Extract facts from user-confirmed information, project files, or other checkable sources, and save them incrementally through `/v1/relations`. Keep source locations and record receipts. Do not save model guesses as facts.

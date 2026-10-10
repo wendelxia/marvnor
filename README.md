@@ -8,6 +8,10 @@ Use it to check project dependencies, business states, time-sensitive evidence a
 
 [See the demo](https://wendelxia.github.io/marvnor/) · [Run the example](examples/README.md) · [API docs](PUBLIC_EVALUATION_API.md) · [Customer portal](https://api.marvnor.com/)
 
+## Connect your AI tool
+
+Open [Connect AI tools](https://api.marvnor.com/connect) in the customer portal. Check your key, then add Marvnor to VS Code Copilot Chat or Codex. Your AI can prepare the facts and queries, verify evidence, and correct or delete selected records with your approval. No Marvnor SDK required. [Setup and usage](docs/customer/llm-integration.md).
+
 ## Try it in one command
 
 Download [quickstart.py](https://raw.githubusercontent.com/wendelxia/marvnor/main/examples/quickstart.py), then run:

@@ -32,6 +32,8 @@ After 30 days of inactivity, memory data and its key are destroyed together.
 | Delete selected records in bulk | `POST /v1/relations/delete` |
 | Clear all memory for the current key and revoke it | `POST /v1/relations/clear` |
 
+AI tools can use these capabilities through `https://api.marvnor.com/v1/mcp`. This MCP connection layer uses the existing API: verification still calls `/v1/evaluate` and adds no inference fields. Configure it from [Connect AI tools](https://api.marvnor.com/connect) in the customer portal. See the [LLM integration guide](docs/customer/llm-integration.md) for supported tools.
+
 `/v1/evaluate` is the only inference endpoint. Each answer has exactly six fields. Data-management endpoints return operation status, counts, or record receipts, not the original saved records.
 
 ## 3. Save facts
