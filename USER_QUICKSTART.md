@@ -2,6 +2,8 @@
 
 Call Marvnor directly from your own application: save a fact, verify it, then delete the test record. No Marvnor client download or SDK is required.
 
+**Want a ready-to-run file?** [Run the five-stage demo](examples/README.md) to verify, detect conflicts, correct and delete synthetic records. The shorter example below shows the basic request pattern.
+
 [API reference](PUBLIC_EVALUATION_API.md) · [Edit and delete records](docs/customer/record-management.md) · [LLM integration](docs/customer/llm-integration.md)
 
 ## 1. Prepare your API key

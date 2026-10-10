@@ -1,0 +1,177 @@
+{
+  "captured_at": "2026-10-10T12:09:46.516163+00:00",
+  "endpoint": "https://api.marvnor.com",
+  "mode": "live",
+  "source": "demo-10ffc232250c4bdc932a2d8946265d27",
+  "stages": [
+    {
+      "label": "1. Saved fact",
+      "answers": {
+        "pending": {
+          "conclusion": "TRUE",
+          "conflict": false,
+          "reason": "supported_evidence",
+          "path": [
+            "demo-10ffc232250c4bdc932a2d8946265d27",
+            "pending"
+          ],
+          "decision": "answer",
+          "evidence_kind": "direct"
+        },
+        "paid": {
+          "conclusion": "UNKNOWN",
+          "conflict": false,
+          "reason": "insufficient_evidence",
+          "path": [],
+          "decision": "unknown",
+          "evidence_kind": "unknown"
+        },
+        "values": {
+          "conclusion": "TRUE",
+          "conflict": false,
+          "reason": "known_values",
+          "path": [
+            "pending"
+          ],
+          "decision": "answer",
+          "evidence_kind": "direct"
+        }
+      }
+    },
+    {
+      "label": "2. Conflicting records",
+      "answers": {
+        "pending": {
+          "conclusion": "UNKNOWN",
+          "conflict": true,
+          "reason": "conflicting_evidence",
+          "path": [
+            "demo-10ffc232250c4bdc932a2d8946265d27",
+            "pending"
+          ],
+          "decision": "clarify",
+          "evidence_kind": "conflict"
+        },
+        "paid": {
+          "conclusion": "UNKNOWN",
+          "conflict": true,
+          "reason": "conflicting_evidence",
+          "path": [
+            "demo-10ffc232250c4bdc932a2d8946265d27",
+            "paid"
+          ],
+          "decision": "clarify",
+          "evidence_kind": "conflict"
+        },
+        "values": {
+          "conclusion": "UNKNOWN",
+          "conflict": true,
+          "reason": "conflicting_values",
+          "path": [
+            "paid",
+            "pending"
+          ],
+          "decision": "needs_review",
+          "evidence_kind": "conflict"
+        }
+      }
+    },
+    {
+      "label": "3. Conflict resolved",
+      "answers": {
+        "pending": {
+          "conclusion": "TRUE",
+          "conflict": false,
+          "reason": "supported_evidence",
+          "path": [
+            "demo-10ffc232250c4bdc932a2d8946265d27",
+            "pending"
+          ],
+          "decision": "answer",
+          "evidence_kind": "direct"
+        },
+        "paid": {
+          "conclusion": "UNKNOWN",
+          "conflict": false,
+          "reason": "insufficient_evidence",
+          "path": [],
+          "decision": "unknown",
+          "evidence_kind": "unknown"
+        },
+        "values": {
+          "conclusion": "TRUE",
+          "conflict": false,
+          "reason": "known_values",
+          "path": [
+            "pending"
+          ],
+          "decision": "answer",
+          "evidence_kind": "direct"
+        }
+      }
+    },
+    {
+      "label": "4. Corrected fact",
+      "answers": {
+        "pending": {
+          "conclusion": "UNKNOWN",
+          "conflict": false,
+          "reason": "insufficient_evidence",
+          "path": [],
+          "decision": "unknown",
+          "evidence_kind": "unknown"
+        },
+        "paid": {
+          "conclusion": "TRUE",
+          "conflict": false,
+          "reason": "supported_evidence",
+          "path": [
+            "demo-10ffc232250c4bdc932a2d8946265d27",
+            "paid"
+          ],
+          "decision": "answer",
+          "evidence_kind": "direct"
+        },
+        "values": {
+          "conclusion": "TRUE",
+          "conflict": false,
+          "reason": "known_values",
+          "path": [
+            "paid"
+          ],
+          "decision": "answer",
+          "evidence_kind": "direct"
+        }
+      }
+    },
+    {
+      "label": "5. Demo data deleted",
+      "answers": {
+        "pending": {
+          "conclusion": "UNKNOWN",
+          "conflict": false,
+          "reason": "insufficient_evidence",
+          "path": [],
+          "decision": "unknown",
+          "evidence_kind": "unknown"
+        },
+        "paid": {
+          "conclusion": "UNKNOWN",
+          "conflict": false,
+          "reason": "insufficient_evidence",
+          "path": [],
+          "decision": "unknown",
+          "evidence_kind": "unknown"
+        },
+        "values": {
+          "conclusion": "UNKNOWN",
+          "conflict": false,
+          "reason": "no_known_values",
+          "path": [],
+          "decision": "unknown",
+          "evidence_kind": "unknown"
+        }
+      }
+    }
+  ]
+}
