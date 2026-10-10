@@ -6,7 +6,17 @@ Marvnor verifies facts, detects conflicting records and gives LLM applications r
 
 Use it to check project dependencies, business states, time-sensitive evidence and conflicting information. Keep confirmed facts between questions, correct them when they change, and pass only the results needed for the next answer.
 
-[Open the user portal](https://api.marvnor.com/) · [Quickstart](USER_QUICKSTART.md) · [Eight tested benefits](docs/benchmarks/2026-10-10/highlights.md)
+[See the demo](https://wendelxia.github.io/marvnor/) · [Run the example](examples/README.md) · [API docs](PUBLIC_EVALUATION_API.md) · [Customer portal](https://api.marvnor.com/)
+
+## Try it in one command
+
+Download [quickstart.py](https://raw.githubusercontent.com/wendelxia/marvnor/main/examples/quickstart.py), then run:
+
+```sh
+python quickstart.py
+```
+
+Paste your API key at the hidden prompt. The example verifies a saved fact, detects conflicting values, resolves the conflict, corrects the fact, then deletes only its own demo data. Python 3.9+, no dependencies. Uses your account quota. [Setup and recorded results](examples/README.md).
 
 Latest news, October 10: [Marvnor reports stronger fact verification and a 98.2% input reduction in a long-history test](NEWS.md) · [中文新闻稿](docs/news/2026-10-10-benchmark-results.zh-CN.md)
 
@@ -37,3 +47,5 @@ Call `POST /v1/evaluate` with structured facts and questions. Each answer contai
 [Chinese web documentation](https://api.marvnor.com/docs) · [Product introduction](INTRODUCTION.md) · [Test index and archives](TESTS.md) · [News](NEWS.md) · [Public materials license](LICENSE)
 
 Send feedback and test results to [wendelxia@gmail.com](mailto:wendelxia@gmail.com). Keep account keys and private customer material out of feedback.
+
+Building an agent or project-memory tool? [Bring one concrete use case](mailto:wendelxia@gmail.com?subject=Marvnor%20developer%20trial) and try the API with your own non-sensitive sample data.

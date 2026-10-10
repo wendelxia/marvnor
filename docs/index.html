@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Marvnor | Fact verification and conflict management for AI agents</title>
+  <meta name="description" content="Verify facts, detect conflicting records and reuse project memory before your LLM answers. Explore real API results and run the Python demo. No SDK required.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Marvnor: give your AI facts it can check">
+  <meta property="og:description" content="Fact verification, conflict management and reusable project memory. Real API results. Runnable example.">
+  <meta property="og:url" content="https://wendelxia.github.io/marvnor/">
+  <meta name="twitter:card" content="summary">
+  <meta name="theme-color" content="#075fbd">
+  <link rel="canonical" href="https://wendelxia.github.io/marvnor/">
+  <link rel="stylesheet" href="site.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="wrap header">
+    <a class="brand" href="./" aria-label="Marvnor home"><span aria-hidden="true">M</span> Marvnor</a>
+    <nav aria-label="Main navigation">
+      <a href="https://github.com/wendelxia/marvnor/blob/main/PUBLIC_EVALUATION_API.md">API docs</a>
+      <a href="https://github.com/wendelxia/marvnor">GitHub</a>
+      <a href="https://api.marvnor.com/login">Sign in</a>
+    </nav>
+  </header>
+  <main id="main" class="wrap">
+    <section class="intro" aria-labelledby="headline">
+      <p class="eyebrow">FACT VERIFICATION FOR AI APPLICATIONS</p>
+      <h1 id="headline">Give your AI<br>facts it can check.</h1>
+      <p class="lead">Verify facts. Catch conflicting records. Reuse project memory.<br class="wide"> Marvnor checks the evidence; your model writes the answer.</p>
+      <div class="actions">
+        <a class="button primary" href="https://github.com/wendelxia/marvnor/tree/main/examples">Run the live demo <span aria-hidden="true">↗</span></a>
+        <a class="button secondary" href="#demo">See actual API results <span aria-hidden="true">↓</span></a>
+      </div>
+      <p class="quiet">Python · No SDK · No dependencies</p>
+    </section>
+
+    <section id="demo" class="section" aria-labelledby="demo-title">
+      <div class="section-head"><div><p class="eyebrow">ONE ORDER. FIVE STEPS.</p><h2 id="demo-title">From conflicting records<br>to a clear answer.</h2></div><p class="recording">Recorded public API run<br><time datetime="2026-10-10T12:09:46Z">10 October 2026, 12:09 UTC</time></p></div>
+      <p class="section-copy">An order has one payment status. What happens when saved records say both “pending” and “paid”?</p>
+      <ol class="steps">
+        <li><span class="number">01</span><div><h3>Save a fact</h3><p>Store <code>status = pending</code>.</p></div><div class="result"><strong>TRUE</strong><span>Pending is supported.</span></div></li>
+        <li class="conflict"><span class="number">02</span><div><h3>Add a conflicting record</h3><p>Also store <code>status = paid</code>.</p></div><div class="result"><strong>CONFLICT</strong><span>Both return UNKNOWN. Ask for clarification.</span><details><summary>See the actual response</summary><pre><code>{
+  "conclusion": "UNKNOWN",
+  "conflict": true,
+  "reason": "conflicting_values",
+  "path": ["paid", "pending"],
+  "decision": "needs_review",
+  "evidence_kind": "conflict"
+}</code></pre></details></div></li>
+        <li><span class="number">03</span><div><h3>Resolve the conflict</h3><p>Remove the incorrect “paid” record.</p></div><div class="result"><strong>TRUE</strong><span>Pending is supported again. No conflict.</span></div></li>
+        <li><span class="number">04</span><div><h3>Correct the remaining fact</h3><p>Edit the saved value to <code>paid</code>.</p></div><div class="result"><strong>TRUE</strong><span>Paid is supported. Pending becomes UNKNOWN.</span></div></li>
+        <li><span class="number">05</span><div><h3>Delete the demo data</h3><p>Remove only this example’s records.</p></div><div class="result"><strong>UNKNOWN</strong><span>No remaining support for either value.</span></div></li>
+      </ol>
+      <div class="evidence-links"><a href="https://github.com/wendelxia/marvnor/blob/main/examples/recorded-run.json">Inspect every recorded response ↗</a><a href="https://github.com/wendelxia/marvnor/blob/main/examples/quickstart.py">Run this against the API ↗</a></div>
+      <p class="quiet">This page displays saved results, not a live API call. The runnable example uses your API key and account quota.</p>
+    </section>
+
+    <section class="section savings" aria-labelledby="savings-title">
+      <div><p class="eyebrow">LESS HISTORY. RELEVANT EVIDENCE.</p><h2 id="savings-title">Send the facts needed<br>for this question.</h2><p>In the final question of our 160-turn synthetic-history test, relevant verified results replaced the full history. Both answers were correct.</p><a href="https://github.com/wendelxia/marvnor/blob/main/docs/benchmarks/2026-10-10/rerun.md#model-input-and-cache-usage">Read the test and token accounting ↗</a></div>
+      <div class="chart" role="img" aria-label="Final-question model input: full history 5,328 tokens; relevant results 95 tokens, a 98.2 percent reduction.">
+        <p class="chart-label">FINAL-QUESTION MODEL INPUT</p>
+        <div class="bar-label"><span>Full history</span><strong>5,328 tokens</strong></div><div class="bar-track"><div class="bar full"></div></div>
+        <div class="bar-label"><span>Relevant results</span><strong>95 tokens</strong></div><div class="bar-track"><div class="bar compact"></div></div>
+        <p class="metric">98.2% <span>less input</span></p><p class="quiet">Final-request input reduction, not total-bill savings.</p>
+      </div>
+    </section>
+
+    <section id="start" class="section start" aria-labelledby="start-title">
+      <div><p class="eyebrow">TRY YOUR OWN USE CASE</p><h2 id="start-title">One file. Your API key.<br>A result you can inspect.</h2><p>Download the example, run it and paste your key at the hidden prompt. It checks every step and removes only its synthetic data.</p><a class="button primary" href="https://github.com/wendelxia/marvnor/tree/main/examples">Get the example ↗</a></div>
+      <div class="terminal"><p>Python 3.9+ · standard library only</p><pre><code>python quickstart.py
+
+Marvnor API key (hidden):
+
+1. Saved fact
+2. Conflicting records
+3. Conflict resolved
+4. Corrected fact
+5. Demo data deleted</code></pre><a href="https://api.marvnor.com/register?utm_source=github_pages&amp;utm_medium=demo&amp;utm_campaign=developer_launch_20261010">Create an account ↗</a></div>
+    </section>
+    <section class="contact"><h2>Building an agent or project-memory tool?</h2><p>Bring one concrete use case. Let’s test it with non-sensitive sample data.</p><a href="mailto:wendelxia@gmail.com?subject=Marvnor%20developer%20trial">wendelxia@gmail.com ↗</a></section>
+  </main>
+  <footer class="wrap footer"><span>Marvnor · Truth-preserving decision gateway</span><a href="https://github.com/wendelxia/marvnor/blob/main/docs/customer/llm-integration.md">How it fits your LLM</a><a href="https://github.com/wendelxia/marvnor/blob/main/TESTS.md">Tests &amp; methods</a></footer>
+</body>
+</html>
