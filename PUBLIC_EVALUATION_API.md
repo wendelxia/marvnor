@@ -1,6 +1,6 @@
 # Marvnor API Reference
 
-Marvnor's truth-preserving specialized model system checks submitted facts, detects conflicts, and returns results for applications and LLMs. No client download or SDK installation is required.
+Marvnor stores the records you provide and answers structured questions against them: TRUE when the evidence supports a claim, FALSE when it refutes it, and UNKNOWN when it does not settle the question. It flags conflicts and supports in-place correction and targeted deletion. No client download or SDK installation is required.
 
 [Quickstart](USER_QUICKSTART.md) · [Edit and delete records](docs/customer/record-management.md) · [LLM integration](docs/customer/llm-integration.md)
 

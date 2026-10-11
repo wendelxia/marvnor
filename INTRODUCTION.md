@@ -1,8 +1,8 @@
 # Marvnor Truth-Preserving Decision Gateway
 
-Marvnor gives LLM applications fact verification, conflict management and reusable project memory. It checks the evidence behind a question, identifies missing or conflicting support, and returns results the model can use to write its answer.
+Marvnor is a proprietary hosted API for structured project memory. Applications supply source, relation and target records; Marvnor judges structured questions against those records as `TRUE`, `FALSE` or `UNKNOWN` and flags conflicting values. Records can be corrected in place or deleted individually.
 
-Use it for project dependencies, business-state checks, customer support and evidence-based analysis. Keep your existing model and send it the current question with the relevant Marvnor results.
+Use it for project dependencies, business-state checks, customer support and record-based analysis. Keep your existing model and send it the current question with the relevant Marvnor results to organize the answer.
 
 ## Six results
 
@@ -25,7 +25,7 @@ The October 10, 2026 rerun produced clear results:
 
 | Test result | Conclusion |
 | --- | --- |
-| Two fact-verification sets: Marvnor 20/20 each; DeepSeek text answers over three runs scored A 16/20 each and B 14/20, 15/20, 15/20 | Marvnor made more accurate judgments on these facts |
+| Two structured record-verification sets: Marvnor 20/20 each; DeepSeek text answers over three runs scored A 16/20 each and B 14/20, 15/20, 15/20 | Marvnor made more accurate judgments on these supplied records |
 | Final query after 160 turns of synthetic history: 5,328 input tokens reduced to 95, with both answers correct | Reusing relevant facts cut repeated model input by 98.2% in this example |
 | Original, shuffled and duplicated inputs: 420/420 expected verdicts | Conclusions stayed stable across reordered and repeated evidence |
 | Local saved-memory checks flagged incompatible values, returned both candidates and verified the corrected record | Conflicts can be found and resolved across stored records |

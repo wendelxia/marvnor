@@ -1,14 +1,14 @@
-# Marvnor reports stronger fact verification and a 98.2% input reduction in a long-history test
+# Marvnor reports stronger record-based judgments and a 98.2% input reduction in a long-history test
 
 October 10, 2026
 
 [中文版](docs/news/2026-10-10-benchmark-results.zh-CN.md)
 
-Marvnor today published new test results for its truth-preserving specialized model system. Its structured verification answered all 40 questions correctly across two fact-checking sets, outperforming DeepSeek's direct text answers in each set. In a separate 160-turn synthetic-history example, using prepared relevant facts reduced the model's final-query input from 5,328 to 95 tokens while preserving the correct answer.
+Marvnor today published new test results for its record-based decision gateway. Its structured verification answered all 40 questions correctly across two sets of questions about supplied records, outperforming DeepSeek's direct text answers in each set. In a separate 160-turn synthetic-history example, using prepared relevant results reduced the model's final-query input from 5,328 to 95 tokens while preserving the correct answer.
 
-Marvnor works in front of an existing large language model. It verifies facts, detects conflicting records and maintains reusable project memory. The application sends the current question and relevant Marvnor results to the LLM, which writes the answer.
+Marvnor is a proprietary hosted API used in front of an existing large language model. Applications store supplied facts as source, relation and target records. Marvnor answers structured questions against those records as `TRUE`, `FALSE` or `UNKNOWN`, flags conflicting values, and supports in-place correction and targeted deletion. The application sends the current question and relevant Marvnor results to the LLM, which writes the answer.
 
-## More accurate judgments on complex facts
+## More accurate judgments against supplied records
 
 The comparison covered long dependency chains, time constraints, environments, explicit negatives and conflicting evidence. Both systems received the same facts and questions: Marvnor as structured input, DeepSeek as text.
 
@@ -17,7 +17,7 @@ The comparison covered long dependency chains, time constraints, environments, e
 | Long chains, conflicts and compound logic | 20/20 | 16/20, 16/20, 16/20 |
 | Time, environments and compound logic | 20/20 | 14/20, 15/20, 15/20 |
 
-Marvnor correctly separated supported claims, explicit negatives and insufficient evidence. It also preserved conflict signals inside compound judgments. The results show more accurate fact verification on these tasks, giving applications a clear basis for answering or requesting clarification.
+Marvnor correctly separated supported claims, explicit negatives and insufficient evidence. It also preserved conflict signals inside compound judgments. The results show more accurate judgments on these supplied records, giving applications a clear basis for answering or requesting clarification.
 
 ## Less repeated reading in long conversations
 

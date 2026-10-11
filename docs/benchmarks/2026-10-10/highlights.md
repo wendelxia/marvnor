@@ -1,14 +1,14 @@
 # Marvnor: eight benefits demonstrated by tests
 
-Verify facts before generating an answer. Detect conflicting records, reuse confirmed memory and send the LLM only what the current question needs.
+Judge structured questions against supplied source, relation and target records before generating an answer. Flag conflicting values, reuse confirmed records and send the LLM only the results needed for the current question.
 
 The October 10, 2026 public rerun returned **1,227/1,227 expected verdicts across 62 requests**, including input variants and concurrent repetitions. Local feature and maintenance tests checked saved-memory operations. Each result below links to its evidence.
 
-## 1. More accurate fact verification
+## 1. More accurate judgments against supplied records
 
 In two 20-question sets, Marvnor's structured verification scored 20/20 each. DeepSeek's text answers were rerun three times: A scored 16/20 each time; B scored 14/20, 15/20 and 15/20. The questions covered long chains, explicit negatives, missing evidence and conflicts.
 
-Marvnor made more accurate judgments on these fact-verification tasks. It preserved the distinction between a false claim, an unsupported claim and conflicting evidence, so the application could act on the right result.
+Marvnor made more accurate judgments on these supplied records. It preserved the distinction between a refuted claim, an unsupported claim and conflicting evidence, so the application could act on the right result.
 
 [All 40 questions and model answers](rerun.md#model-comparison-and-observed-errors)
 
@@ -24,7 +24,7 @@ This lets an application check distant dependencies and prerequisites from the s
 
 The temporal/context set passed 20/20 questions, plus seven temporal edge cases. Scoped compound checks used evidence valid in the selected period and environment. Supplied facts without time restrictions remained usable in timed queries.
 
-Marvnor can distinguish what applies now, what applied earlier and what belongs to a different environment. Applications can combine time and context with compound conditions in one verification request.
+Marvnor can distinguish which supplied records apply at a queried time and in a selected environment. Applications can combine time and context with compound conditions in one verification request.
 
 [Temporal results](rerun.md#stability-complex-logic-and-earlier-failures) · [Scoped-query feature checks](current-version.md#fourteen-targeted-checks)
 

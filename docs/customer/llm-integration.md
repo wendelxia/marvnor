@@ -1,6 +1,6 @@
 # Put Marvnor in Front of Your LLM
 
-Marvnor checks submitted facts and manages conflicts. Your LLM interprets the task and writes the answer. Your application connects the two; no Marvnor client download is required.
+Marvnor answers structured questions against the records you provide and store, flags conflicts, and supports in-place correction and targeted deletion. Your LLM interprets the task and writes the answer. Your application connects the two; no Marvnor client download is required.
 
 [Quickstart](../../USER_QUICKSTART.md) · [API reference](../../PUBLIC_EVALUATION_API.md) · [Edit and delete records](record-management.md)
 
