@@ -1,0 +1,29 @@
+WEBVTT
+
+00:00.000 --> 00:05.000
+One order, two conflicting records.
+Replay of a real API run from 10 October 2026.
+
+00:05.000 --> 00:11.000
+Save status = pending.
+The supplied record supports pending.
+
+00:11.000 --> 00:21.000
+Add status = paid. Both values conflict.
+The API returns UNKNOWN and asks for review.
+
+00:21.000 --> 00:28.000
+Remove the incorrect paid record.
+Pending is supported again.
+
+00:28.000 --> 00:35.000
+Correct the remaining record from pending to paid.
+The corrected value is now supported.
+
+00:35.000 --> 00:40.000
+Delete only the demonstration records.
+No remaining evidence: UNKNOWN.
+
+00:40.000 --> 00:45.000
+Replay with python quickstart.py --replay,
+or run against the API with your own key.

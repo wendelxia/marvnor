@@ -36,7 +36,7 @@
       <p class="lead"><span data-i18n="hero.lead">Store your records. Get TRUE, FALSE or UNKNOWN from the evidence they contain. Flag conflicts, correct records in place and delete only what you choose.</span><br class="wide"> <span data-i18n="hero.lead2">Marvnor is a proprietary hosted API; your model writes the answer.</span></p>
       <div class="actions">
         <a class="button primary" href="https://github.com/wendelxia/marvnor/tree/main/examples"><span data-i18n="hero.demo">Run the live demo</span> <span aria-hidden="true">↗</span></a>
-        <a class="button secondary" href="#demo"><span data-i18n="hero.results">See actual API results</span> <span aria-hidden="true">↓</span></a>
+        <a class="button secondary" href="#walkthrough"><span data-i18n="hero.results">Watch the 45-second walkthrough</span> <span aria-hidden="true">↓</span></a>
       </div>
       <p class="quiet" data-i18n="hero.note">Python · No SDK · No dependencies</p>
     </section>
@@ -44,6 +44,15 @@
     <section id="demo" class="section" aria-labelledby="demo-title">
       <div class="section-head"><div><p class="eyebrow" data-i18n="demo.eyebrow">ONE ORDER. FIVE STEPS.</p><h2 id="demo-title"><span data-i18n="demo.title1">From conflicting records</span><br><span data-i18n="demo.title2">to a clear answer.</span></h2></div><p class="recording"><span data-i18n="demo.recording">Recorded public API run</span><br><time datetime="2026-10-10T12:09:46Z" data-i18n="demo.date">10 October 2026, 12:09 UTC</time></p></div>
       <p class="section-copy" data-i18n="demo.description">An order has one payment status. What happens when saved records say both “pending” and “paid”?</p>
+      <figure id="walkthrough" class="walkthrough">
+        <video controls playsinline preload="metadata" width="1280" height="720" poster="assets/marvnor-conflict-poster.png" aria-label="45-second recorded API walkthrough" data-i18n-attr="video.label" data-i18n-attribute="aria-label">
+          <source src="assets/marvnor-conflict-walkthrough.mp4" type="video/mp4">
+          <track kind="captions" src="assets/walkthrough.en.vtt" srclang="en" label="English">
+          <track kind="captions" src="assets/walkthrough.zh-CN.vtt" srclang="zh-CN" label="中文">
+          <a href="assets/marvnor-conflict-walkthrough.mp4" data-i18n="video.download">Download the walkthrough</a>
+        </video>
+        <figcaption><span data-i18n="video.caption">45 seconds · A visual replay of the recorded API results below.</span> <a href="https://github.com/wendelxia/marvnor/blob/main/docs/cases/order-status-conflict.md" data-i18n="video.case">Read the case and reproduce it ↗</a></figcaption>
+      </figure>
       <ol class="steps">
         <li><span class="number">01</span><div><h3 data-i18n="step1.title">Save a fact</h3><p><span data-i18n="step1.action">Store</span> <code>status = pending</code>.</p></div><div class="result"><strong>TRUE</strong><span data-i18n="step1.result">Pending is supported.</span></div></li>
         <li class="conflict"><span class="number">02</span><div><h3 data-i18n="step2.title">Add a conflicting record</h3><p><span data-i18n="step2.action">Also store</span> <code>status = paid</code>.</p></div><div class="result"><strong>CONFLICT</strong><span data-i18n="step2.result">Both return UNKNOWN. Ask for clarification.</span><details><summary data-i18n="step2.response">See the actual response</summary><pre><code>{
