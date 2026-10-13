@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Marvnor | Try a live record check</title>
+  <meta name="description" content="Edit temporary sample records and ask Marvnor a structured question. Inspect a real API response: TRUE, FALSE, UNKNOWN and conflicts.">
+  <meta name="theme-color" content="#075fbd">
+  <link rel="canonical" href="https://wendelxia.github.io/marvnor/try.html">
+  <link rel="stylesheet" href="site.css">
+  <link rel="stylesheet" href="trial.css">
+  <script src="trial.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main" data-t="skip">Skip to content</a>
+  <header class="wrap header">
+    <a class="brand" href="./?lang=en" data-home-link aria-label="Marvnor home"><span aria-hidden="true">M</span> Marvnor</a>
+    <nav aria-label="Main navigation" id="main-nav">
+      <a href="./?lang=en" data-home-link data-t="home">Home</a>
+      <a href="https://github.com/wendelxia/marvnor/blob/main/PUBLIC_EVALUATION_API.md" data-t="apiDocs">API docs</a>
+      <a href="https://github.com/wendelxia/marvnor">GitHub</a>
+    </nav>
+    <div class="locale-switch" role="group" aria-label="Language" id="language-switch" hidden>
+      <button type="button" data-lang="en" lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-lang="zh-CN" lang="zh-CN" aria-pressed="false">中文</button>
+    </div>
+  </header>
+  <main id="main" class="wrap trial-main">
+    <section class="trial-intro" aria-labelledby="headline">
+      <p class="eyebrow" data-t="eyebrow">LIVE API TRIAL</p>
+      <h1 id="headline" data-t="headline">Change the records. Check the answer.</h1>
+      <p class="lead" data-t="lead">An order says both “pending” and “paid”. Ask Marvnor to check it, then edit a record and try again.</p>
+      <p class="trial-note" data-t="privacy">No sign-in or API key. Temporary records are not saved. Use non-sensitive sample data only.</p>
+    </section>
+
+    <noscript><p class="trial-notice">JavaScript is needed to call the live API. / 实时试用需要启用 JavaScript。</p></noscript>
+    <form id="trial-form" novalidate>
+      <div class="preset-bar" aria-label="Sample scenarios" id="presets">
+        <span class="preset-label" data-t="examples">Try an example</span>
+        <div class="preset-buttons">
+          <button type="button" class="preset" data-preset="conflict" aria-pressed="true" data-t="presetConflict">Conflicting records</button>
+          <button type="button" class="preset" data-preset="supported" aria-pressed="false" data-t="presetSupported">Supported</button>
+          <button type="button" class="preset" data-preset="unknown" aria-pressed="false" data-t="presetUnknown">Missing evidence</button>
+          <button type="button" class="preset" data-preset="negative" aria-pressed="false" data-t="presetNegative">Explicit negative</button>
+        </div>
+      </div>
+      <section class="editor-section" aria-labelledby="records-title">
+        <div class="trial-section-head">
+          <div><p class="step-label" data-t="step1">01 / RECORDS</p><h2 id="records-title" data-t="recordsTitle">Your temporary records</h2></div>
+          <span id="record-count" class="record-count">2 / 8</span>
+        </div>
+        <p class="field-help" data-t="recordsHelp">Each row makes one claim. “Negative” explicitly denies that claim.</p>
+        <table class="facts-table">
+          <caption class="sr-only" data-t="recordsCaption">Editable temporary records, up to eight</caption>
+          <thead><tr><th scope="col" data-t="source">Source</th><th scope="col" data-t="relation">Relation</th><th scope="col" data-t="target">Target</th><th scope="col" data-t="polarity">Polarity</th><th scope="col"><span class="sr-only" data-t="remove">Remove</span></th></tr></thead>
+          <tbody id="fact-rows"></tbody>
+        </table>
+        <p id="empty-records" class="empty-records" data-t="emptyRecords" hidden>No records supplied. Add a record, or see what the API returns without evidence.</p>
+        <div class="record-actions"><button type="button" class="text-button" id="add-record" data-t="addRecord">+ Add record</button><span class="field-help" data-t="temporary">Edits apply to this request only.</span></div>
+      </section>
+
+      <section class="question-section" aria-labelledby="question-title">
+        <div class="trial-section-head"><div><p class="step-label" data-t="step2">02 / QUESTION</p><h2 id="question-title" data-t="questionTitle">What should Marvnor check?</h2></div></div>
+        <div class="question-fields">
+          <label for="question-source"><span data-t="source">Source</span><input id="question-source" name="question-source" autocomplete="off" spellcheck="false" required></label>
+          <label for="question-relation"><span data-t="relation">Relation</span><input id="question-relation" name="question-relation" autocomplete="off" spellcheck="false" required></label>
+          <label for="question-target"><span><span data-t="target">Target</span> <span class="optional" data-t="optional">(optional)</span></span><input id="question-target" name="question-target" autocomplete="off" spellcheck="false" aria-describedby="target-help"></label>
+        </div>
+        <p class="field-help" id="target-help" data-t="targetHelp">Leave target empty to list known values. Fill it in to check one claim.</p>
+        <div class="run-actions"><button type="submit" class="button primary" id="run-trial" data-t="run">Check with Marvnor <span aria-hidden="true">→</span></button><button type="button" class="text-button" id="reset-trial" data-t="reset">Reset example</button><span class="live-label" data-t="liveLabel">Real API · no stored answers</span></div>
+      </section>
+    </form>
+
+    <section class="answer-section" aria-labelledby="answer-title" aria-busy="false" id="answer-section">
+      <div class="trial-section-head"><div><p class="step-label" data-t="step3">03 / RESULT</p><h2 id="answer-title" data-t="answerTitle">The evidence, made explicit.</h2></div><span class="request-status" id="request-status" role="status" aria-live="polite">Ready to check</span></div>
+      <div class="answer-empty" id="answer-empty"><span class="empty-mark" aria-hidden="true">—</span><p id="empty-message" data-t="emptyAnswer">Run a check to see the API’s answer here.</p></div>
+      <div class="trial-error" id="trial-error" role="alert" hidden></div>
+      <div id="answer-content" hidden>
+        <div class="answer-summary" id="answer-summary"><strong id="answer-badge"></strong><p id="answer-explanation"></p></div>
+        <div class="candidate-section" id="candidate-section" hidden><h3 id="candidate-heading" data-t="candidates">Values returned by the API</h3><ul class="candidate-list" id="candidate-list"></ul><p class="field-help" id="candidate-help"></p></div>
+        <dl class="answer-fields" id="answer-fields">
+          <div><dt>conclusion</dt><dd id="output-conclusion"></dd></div>
+          <div><dt>conflict</dt><dd id="output-conflict"></dd></div>
+          <div><dt>reason</dt><dd id="output-reason"></dd></div>
+          <div><dt>path</dt><dd><pre id="output-path"></pre></dd></div>
+          <div><dt>decision</dt><dd id="output-decision"></dd></div>
+          <div><dt>evidence_kind</dt><dd id="output-evidence_kind"></dd></div>
+        </dl>
+      </div>
+      <p class="result-note" data-t="resultNote">TRUE means these records support the claim. It does not verify the outside world. UNKNOWN is not FALSE.</p>
+    </section>
+
+    <details class="request-details"><summary data-t="requestPreview">Inspect the request</summary><div class="request-meta"><code>POST https://api.marvnor.com/v1/trial/evaluate</code><button type="button" id="copy-request" class="text-button" data-t="copyRequest">Copy JSON</button></div><pre id="request-preview"></pre><p class="field-help" id="copy-status" role="status" aria-live="polite"></p></details>
+    <p class="trial-limit" data-t="limits">Anonymous trial limits apply. For larger datasets and saved records, use the account API.</p>
+  </main>
+  <footer class="wrap footer"><span data-t="footer">Marvnor · Record-based memory and conflict management</span><a href="https://github.com/wendelxia/marvnor/blob/main/docs/customer/llm-integration.md" data-t="llm">How it fits your LLM</a><a href="https://github.com/wendelxia/marvnor/blob/main/PUBLIC_EVALUATION_API.md" data-t="apiDocs">API docs</a></footer>
+  <template id="fact-row-template"><tr>
+    <td><span class="mobile-label" data-field-label="source"></span><input data-field="source" autocomplete="off" spellcheck="false" required></td>
+    <td><span class="mobile-label" data-field-label="relation"></span><input data-field="relation" autocomplete="off" spellcheck="false" required></td>
+    <td><span class="mobile-label" data-field-label="target"></span><input data-field="target" autocomplete="off" spellcheck="false" required></td>
+    <td><span class="mobile-label" data-field-label="polarity"></span><select data-field="polarity"><option value="1">Positive</option><option value="-1">Negative</option></select></td>
+    <td class="remove-cell"><button type="button" class="remove-record" data-remove>×</button></td>
+  </tr></template>
+</body>
+</html>
