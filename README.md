@@ -8,12 +8,6 @@ Use it to check project dependencies, business states, time-sensitive records an
 
 [See the demo](https://wendelxia.github.io/marvnor/) · [Run the example](examples/README.md) · [API docs](PUBLIC_EVALUATION_API.md) · [Customer portal](https://api.marvnor.com/)
 
-### Watch one conflict get resolved in 45 seconds
-
-[![Marvnor reports both pending and paid as conflicting order statuses](docs/assets/marvnor-conflict-poster.png)](https://wendelxia.github.io/marvnor/#walkthrough)
-
-The video replays a real five-step API run: save a fact, detect a conflict, remove the incorrect record, correct the remaining fact, and delete the demo data. [Watch the video](https://wendelxia.github.io/marvnor/#walkthrough) · [Read and reproduce the case](docs/cases/order-status-conflict.md) · [中文案例](docs/cases/order-status-conflict.zh-CN.md).
-
 ## Try it in one command
 
 Download [quickstart.py](https://raw.githubusercontent.com/wendelxia/marvnor/main/examples/quickstart.py), then run:
