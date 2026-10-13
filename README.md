@@ -10,13 +10,15 @@ Use it to check project dependencies, business states, time-sensitive records an
 
 ## Try it in one command
 
+Need a key? [Request a 7-day developer trial](docs/customer/developer-trial.md): 1,000 separate points, 30 requests/minute, manually issued once per account. The clock starts with your first successful business API request. No automatic paid upgrade.
+
 Download [quickstart.py](https://raw.githubusercontent.com/wendelxia/marvnor/main/examples/quickstart.py), then run:
 
 ```sh
 python quickstart.py
 ```
 
-Paste your API key at the hidden prompt. The example verifies a saved fact, detects conflicting values, resolves the conflict, corrects the fact, then deletes only its own demo data. Python 3.9+, no dependencies. Uses your account quota. [Setup and recorded results](examples/README.md).
+Paste your API key at the hidden prompt. The example verifies a saved fact, detects conflicting values, resolves the conflict, corrects the fact, then deletes only its own demo data. Python 3.9+, no dependencies. Uses the supplied key's quota; a trial key uses only its separate trial points. [Setup and recorded results](examples/README.md).
 
 Latest news, October 10: [Marvnor reports stronger record-based judgments and a 98.2% input reduction in a long-history test](NEWS.md) · [中文新闻稿](docs/news/2026-10-10-benchmark-results.zh-CN.md)
 
