@@ -6,11 +6,13 @@ Marvnor is a proprietary hosted API for LLM applications. Store supplied facts a
 
 Use it to check project dependencies, business states, time-sensitive records and conflicting information. Keep confirmed records between questions and pass only the results needed for the next answer.
 
-[See the demo](https://wendelxia.github.io/marvnor/) · [Run the example](examples/README.md) · [API docs](PUBLIC_EVALUATION_API.md) · [Customer portal](https://api.marvnor.com/)
+[Sign up for 1,000 free points](https://api.marvnor.com/register?lang=en) · [See the demo](https://wendelxia.github.io/marvnor/) · [Run the example](examples/README.md) · [API docs](PUBLIC_EVALUATION_API.md) · [Customer portal](https://api.marvnor.com/?lang=en)
 
 ## Try it in one command
 
-Need a key? [Request a 7-day developer trial](docs/customer/developer-trial.md): 1,000 separate points, 30 requests/minute, manually issued once per account. The clock starts with your first successful business API request. No automatic paid upgrade.
+[Register](https://api.marvnor.com/register?lang=en) to receive **1,000 free points that never expire**, create an API Key in the [console](https://api.marvnor.com/?lang=en), then connect your application or run the example below. [Getting started](docs/customer/developer-trial.md).
+
+Usage draws from gift points, then subscription allowance, then your topped-up balance; Marvnor does not automatically charge external payment methods.
 
 Download [quickstart.py](https://raw.githubusercontent.com/wendelxia/marvnor/main/examples/quickstart.py), then run:
 
@@ -18,7 +20,7 @@ Download [quickstart.py](https://raw.githubusercontent.com/wendelxia/marvnor/mai
 python quickstart.py
 ```
 
-Paste your API key at the hidden prompt. The example verifies a saved fact, detects conflicting values, resolves the conflict, corrects the fact, then deletes only its own demo data. Python 3.9+, no dependencies. Uses the supplied key's quota; a trial key uses only its separate trial points. [Setup and recorded results](examples/README.md).
+Paste your API key at the hidden prompt. The example verifies a saved fact, detects conflicting values, resolves the conflict, corrects the fact, then deletes only its own demo data. Python 3.9+, no dependencies. API calls consume points according to the current pricing. [Setup and recorded results](examples/README.md).
 
 Latest news, October 10: [Marvnor reports stronger record-based judgments and a 98.2% input reduction in a long-history test](NEWS.md) · [中文新闻稿](docs/news/2026-10-10-benchmark-results.zh-CN.md)
 
@@ -50,4 +52,4 @@ Call `POST /v1/evaluate` with structured facts and questions. Each answer contai
 
 Send feedback and test results to [wendelxia@gmail.com](mailto:wendelxia@gmail.com). Keep account keys and private customer material out of feedback.
 
-Building an agent or project-memory tool? [Bring one concrete use case](mailto:wendelxia@gmail.com?subject=Marvnor%20developer%20trial) and try the API with your own non-sensitive sample data.
+Building an agent or project-memory tool? [Bring one concrete use case](mailto:wendelxia@gmail.com?subject=Marvnor%20integration) and try the API with your own non-sensitive sample data.
