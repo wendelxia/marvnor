@@ -2,7 +2,7 @@
 
 Marvnor saves evidence-backed or user-confirmed facts under one key, finds and verifies records relevant to the current question, and flags conflicts. Your existing AI writes the answer. No Marvnor client download or extra model setup is required.
 
-Open the [product home](https://api.marvnor.com/home) and select “Create a test API Key” to try it without signing up: the guest key has 500 points and lasts 30 days. The key is shown only once. If you later sign up or sign in in the same browser and confirm the transfer, the same key, saved facts, and unexpired document drafts remain available. Unused guest points do not add to your account; the registration page shows the separate sign-up offer.
+Open the [product home](https://api.marvnor.com/home) and select “Create a test API Key” to try it without signing up: the guest key has 500 points and lasts 30 days. The key is shown only once. Before the trial expires, sign up or sign in in that same browser and confirm the transfer to keep the same key, saved facts, and unexpired document drafts. Unused guest points do not add to your account; the registration page shows the separate sign-up offer.
 
 During the trial, open [Connect an AI tool](https://api.marvnor.com/connect) in the same browser where you created the key. Add that key to the AI you already use. Give it a file or ask it to read a local file, then ask it to save evidence-backed facts in chunks and ask you about conflicts. The [LLM integration guide](docs/customer/llm-integration.md) explains the tool setup and working rule.
 

@@ -23,7 +23,7 @@
     'hero.trialNote': '500 积分 · 30 天试用',
     'hero.signupNote': '之后注册，另领 1,000 积分 ↗',
     'signup.link': '开始接入 ↗',
-    'signup.summary': '测试 Key → 使用自己的资料 → 在同一浏览器注册并确认接续。',
+    'signup.summary': '测试 Key → 使用自己的资料 → 到期前在同一浏览器注册并确认接续。',
     'demo.eyebrow': '一个订单，五个步骤',
     'demo.title1': '从记录冲突',
     'demo.title2': '到可核查的结果。',

@@ -10,7 +10,7 @@ Use it to check project dependencies, business states, time-sensitive records an
 
 ## Try it before signing up
 
-On the [product home](https://api.marvnor.com/home?lang=en), select **Create a test API Key**. You get 500 points for 30 days to try your own material; save the Key when it is shown. Later, [register](https://api.marvnor.com/register?lang=en) in the same browser and confirm the transfer to keep the same Key and saved facts. Registration separately grants 1,000 points; unused guest points do not transfer. [Getting started](docs/customer/developer-trial.md).
+On the [product home](https://api.marvnor.com/home?lang=en), select **Create a test API Key**. You get 500 points for 30 days to try your own material; save the Key when it is shown. Before the trial expires, [register](https://api.marvnor.com/register?lang=en) in the same browser and confirm the transfer to keep the same Key and saved facts. Registration separately grants 1,000 points; unused guest points do not transfer. [Getting started](docs/customer/developer-trial.md).
 
 Trial calls use the trial allowance. After registration, usage follows the current plan; Marvnor does not automatically charge external payment methods.
 
