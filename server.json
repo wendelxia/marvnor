@@ -1,0 +1,30 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.wendelxia/marvnor",
+  "title": "Marvnor",
+  "description": "Hosted agent memory with record-based verification, conflict detection, correction and deletion.",
+  "version": "1.0.0",
+  "websiteUrl": "https://github.com/wendelxia/marvnor#connect-codex-or-vs-code-via-mcp",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://api.marvnor.com/v1/mcp",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "Use your Marvnor API key. Get a key and connection instructions at https://api.marvnor.com/connect?lang=en",
+          "value": "Bearer {api_key}",
+          "isRequired": true,
+          "isSecret": true,
+          "variables": {
+            "api_key": {
+              "description": "Your Marvnor API key, without the Bearer prefix.",
+              "isRequired": true,
+              "isSecret": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

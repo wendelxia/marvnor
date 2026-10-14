@@ -1,0 +1,64 @@
+name: Publish MCP Registry
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: mcp-registry-publication
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: github.repository == 'wendelxia/marvnor' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Check out the reviewed metadata
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+
+      - name: Download and verify the official publisher
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --silent --show-error --location --retry 2 \
+            https://github.com/modelcontextprotocol/registry/releases/download/v1.8.1/mcp-publisher_linux_amd64.tar.gz \
+            --output "$RUNNER_TEMP/mcp-publisher.tar.gz"
+          printf '%s  %s\n' \
+            a06c9096dcb9727c13555b6be26c7effa707b01f06a4c561ba7a3635443cf2cc \
+            "$RUNNER_TEMP/mcp-publisher.tar.gz" | sha256sum --check --strict
+          tar -xzf "$RUNNER_TEMP/mcp-publisher.tar.gz" -C "$RUNNER_TEMP" mcp-publisher
+          chmod +x "$RUNNER_TEMP/mcp-publisher"
+
+      - name: Validate the server metadata
+        run: '"$RUNNER_TEMP/mcp-publisher" validate server.json'
+
+      - name: Authenticate using the repository identity
+        run: '"$RUNNER_TEMP/mcp-publisher" login github-oidc --registry https://registry.modelcontextprotocol.io'
+
+      - name: Publish the server metadata
+        run: '"$RUNNER_TEMP/mcp-publisher" publish server.json'
+
+      - name: Verify the published record
+        shell: bash
+        run: |
+          set -euo pipefail
+          name=$(jq -r '.name | @uri' server.json)
+          version=$(jq -r '.version | @uri' server.json)
+          url="https://registry.modelcontextprotocol.io/v0.1/servers/$name/versions/$version"
+          curl --fail --silent --show-error --retry 3 "$url" --output "$RUNNER_TEMP/registry-record.json"
+          jq --exit-status --slurpfile expected server.json \
+            '.server.name == $expected[0].name and
+             .server.version == $expected[0].version and
+             .server.description == $expected[0].description and
+             .server.websiteUrl == $expected[0].websiteUrl and
+             .server.remotes == $expected[0].remotes' \
+            "$RUNNER_TEMP/registry-record.json"
+          printf 'Published and verified: %s\n' "$url" >> "$GITHUB_STEP_SUMMARY"

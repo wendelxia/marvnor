@@ -1,12 +1,21 @@
 # Marvnor
 
-## Truth-Preserving Decision Gateway for LLM Applications
+## Hosted MCP Server for Agent Memory + HTTP API
 
-Marvnor is a proprietary hosted API for LLM applications. Store supplied facts as source, relation and target records; ask structured questions against those records and receive `TRUE`, `FALSE` or `UNKNOWN`, with conflicting values flagged. Correct records in place or delete selected records. Send the current question and relevant Marvnor results to your model to write the answer.
+Marvnor is a proprietary hosted MCP server and HTTP API for agent memory and record-based verification. Store supplied facts as source, relation and target records; ask structured questions against those records and receive `TRUE`, `FALSE` or `UNKNOWN`, with conflicting values flagged. Correct records in place or delete selected records. Send the current question and relevant Marvnor results to your model to write the answer.
 
 Use it to check project dependencies, business states, time-sensitive records and conflicting information. Keep confirmed records between questions and pass only the results needed for the next answer.
 
-[Create a test Key](https://api.marvnor.com/home?lang=en) · [See the demo](https://wendelxia.github.io/marvnor/) · [Run the example](examples/README.md) · [API docs](PUBLIC_EVALUATION_API.md) · [Customer portal](https://api.marvnor.com/?lang=en)
+[Connect your AI via MCP](https://api.marvnor.com/connect?lang=en) · [Create a test Key](https://api.marvnor.com/home?lang=en) · [See the demo](https://wendelxia.github.io/marvnor/) · [Run the example](examples/README.md) · [API docs](PUBLIC_EVALUATION_API.md) · [Customer portal](https://api.marvnor.com/?lang=en)
+
+## Connect Codex or VS Code via MCP
+
+Open the [guided connection setup](https://api.marvnor.com/connect?lang=en) to connect Codex or VS Code. The hosted MCP server exposes 12 tools for saving, recalling, verifying, correcting and deleting facts, checking the connection, and importing documents in chunks.
+
+- **MCP endpoint:** `https://api.marvnor.com/v1/mcp`
+- **Authentication:** `Authorization: Bearer <MARVNOR_API_KEY>`
+
+Records are isolated by API key. Use the same key for saving and querying, including across clients that should share those records. Keep the key in your client configuration or runtime environment. Follow the [LLM integration guide](docs/customer/llm-integration.md) to pass only the current question and relevant Marvnor results to your model.
 
 ## Try it before signing up
 
