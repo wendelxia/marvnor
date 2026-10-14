@@ -5,16 +5,16 @@ See a saved fact become a conflict, resolve it, correct the remaining record, th
 ## Start in three steps
 
 1. Install Python 3.9 or later and [download quickstart.py](https://raw.githubusercontent.com/wendelxia/marvnor/main/examples/quickstart.py).
-2. Create a key in the [customer portal](https://api.marvnor.com/) and check your available quota.
+2. Create a test Key from the [product home](https://api.marvnor.com/home?lang=en) without signing up (500 points for 30 days), and save it when shown.
 3. Run the file, then paste your key at the hidden prompt:
 
    ```sh
    python quickstart.py
    ```
 
-On macOS/Linux, use `python3` if that is your Python command. For automation, set `MARVNOR_API_KEY` in your server-side environment instead of using the prompt.
+On macOS/Linux, use `python3` if that is your Python command. For automation, set `MARVNOR_API_TOKEN` in your server-side environment instead of using the prompt. The older `MARVNOR_API_KEY` name still works.
 
-This is a **live API call using your account quota**. It creates two synthetic facts under a new random subject, then deletes only those facts. It never clears your memory or revokes your key. The key is not printed, saved, or sent to a language model.
+This is a **live API call using your trial or account allowance**. It creates two synthetic facts under a new random subject, then deletes only those facts. It never clears your memory or revokes your key. The key is not printed, saved, or sent to a language model.
 
 ## What you will see
 

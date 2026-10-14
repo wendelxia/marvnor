@@ -18,7 +18,7 @@ function page(url, stored = null, storageFails = false) {
     attrs.set(key, { dataset: { i18nAttr: key, i18nAttribute: attr }, getAttribute(name) { return this[name] || ''; }, setAttribute(name, value) { this[name] = value; } });
   }
   const buttons = ['en', 'zh-CN'].map(lang => ({ dataset: { lang }, listeners: {}, setAttribute(name, value) { this[name] = value; }, addEventListener(name, fn) { this.listeners[name] = fn; } }));
-  const portalLinks = [...html.matchAll(/<a href="([^"]+)"[^>]*data-portal-link/g)].map(match => ({ href: match[1].replaceAll('&amp;', '&') }));
+  const portalLinks = [...html.matchAll(/<a\b[^>]*\bhref="([^"]+)"[^>]*\bdata-portal-link\b/g)].map(match => ({ href: match[1].replaceAll('&amp;', '&') }));
   const homeLink = { href: new URL('./?lang=en', url).href };
   const switcher = { hidden: true };
   let current = new URL(url);
@@ -77,7 +77,7 @@ test('Chinese URL selects translated page, metadata, accessible labels and butto
   assert.equal(app.buttons[1]['aria-pressed'], 'true');
   assert.equal(app.stored, 'zh-CN');
   assert.equal(app.switcher.hidden, false);
-  assert.equal(app.portalLinks.length, 2);
+  assert.equal(app.portalLinks.length, 4);
   assert(app.portalLinks.every(link => new URL(link.href).searchParams.get('lang') === 'zh-CN'));
   assert.equal(new URL(app.homeLink.href).searchParams.get('lang'), 'zh-CN');
 });
@@ -141,4 +141,13 @@ test('raw API response and command output remain unmodified in HTML', () => {
   assert.match(html, /<script src="locale\.js" defer><\/script>/);
   assert.match(html, /data-lang="en"/);
   assert.match(html, /data-lang="zh-CN"/);
+});
+
+test('landing page starts with the guest test key and keeps signup distinct', () => {
+  assert.match(html, /href="https:\/\/api\.marvnor\.com\/home\?lang=en[^\"]*"[^>]*data-portal-link>\s*<span data-i18n="hero\.try"/);
+  assert.match(html, /data-i18n="hero\.trialNote"/);
+  assert.match(html, /data-i18n="hero\.signupNote"/);
+  const source = fs.readFileSync(script, 'utf8');
+  assert.match(source, /'hero\.try': '免注册创建测试 Key'/);
+  assert.match(source, /'hero\.trialNote': '500 积分 · 30 天试用'/);
 });

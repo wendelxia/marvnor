@@ -109,7 +109,7 @@ After saving the fact above, with no conflict:
 | --- | --- |
 | `conclusion` | `TRUE`: current evidence supports the claim; `FALSE`: current evidence refutes it; `UNKNOWN`: currently undetermined |
 | `conflict` | Whether a conflict was detected; if `true`, do not arbitrarily choose one value as fact |
-| `reason` | A short reason code; common values are listed below |
+| `reason` | The basis for this answer. Explicit-claim verification commonly uses the codes below; recall can include the selected stored claim and query scope as text |
 | `path` | Relevant evidence path for normal verification; known candidate values when `target` is omitted |
 | `decision` | Suggested handling, not an instruction to execute automatically or a free-text answer |
 | `evidence_kind` | Evidence category, such as direct, indirect, negative, or conflicting |
@@ -159,6 +159,28 @@ The result still has six fields. `path` contains deduplicated, sorted, directly 
 Ordinary custom attributes are single-valued by default. Different values for the same subject and single-valued attribute, in compatible contexts and overlapping validity periods, produce `UNKNOWN` with `conflict: true`. For example, an order cannot simultaneously have both `paid` and `unpaid` as its status. Types defined as multi-valued, such as `supports`, allow multiple objects and do not conflict merely because there is more than one value. You cannot change these rules by submitting an extra `multiple: true` field.
 
 When a conflict occurs, omit `target` to query the candidate values, then check your original evidence. Positive and explicitly negative statements about a multi-valued attribute may also conflict; do not ignore `conflict`.
+
+### Find records for the current question
+
+`POST /v1/recall` accepts natural-language question text, then selects and verifies relevant saved records:
+
+```json
+{"text": "What is the status of demo-order-001?", "limit": 12}
+```
+
+`text` is required (1–2,000 characters). Optional `context` selects the business scope; `as_of` specifies an explicit query time. `facets` can split a compound question into 1–8 parts, each with its own required `text` and optional `context` / `as_of`. `limit` bounds the total selected records (1–20, default 12). For example:
+
+```json
+{
+  "text": "Was order-101 paid and shipped at 2026-10-10T12:00:00Z?",
+  "context": {"scope": "order-101"},
+  "as_of": "2026-10-10T12:00:00Z",
+  "facets": [{"text": "Was order-101 paid?"}, {"text": "Was order-101 shipped?"}],
+  "limit": 12
+}
+```
+
+Use a scope only when the records were saved with that scope. The response is an `answers` object; **each answer** has the same six fields as evaluation. A `TRUE` or `FALSE` on a selected stored claim is not an automatic verdict on the entire natural-language question. Missing evidence stays `UNKNOWN`; a partial retrieval is not proof that omitted records do not exist. `reason` identifies the selected `stored_claim`, and may include query scope and source-record polarity, context, or validity. Raw document excerpts are not returned in public recall answers.
 
 ## 5. Context, time, and compound claims
 
