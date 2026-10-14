@@ -1,6 +1,16 @@
 # Marvnor Quickstart
 
-Call Marvnor directly from your own application: save a fact, verify it, then delete the test record. No Marvnor client download or SDK is required.
+Marvnor saves evidence-backed or user-confirmed facts under one key, finds and verifies records relevant to the current question, and flags conflicts. Your existing AI writes the answer. No Marvnor client download or extra model setup is required.
+
+Open the [product home](https://api.marvnor.com/home) and select “Create a test API Key” to try it without signing up: the guest key has 500 points and lasts 30 days. The key is shown only once. If you later sign up or sign in and confirm the transfer, the same key, saved facts, and unexpired document drafts remain available. Unused guest points do not add to your account; the registration page shows the separate sign-up offer.
+
+Use [Connect an AI tool](https://api.marvnor.com/connect) to add that key to the AI you already use. Give it a file or ask it to read a local file, then ask it to save evidence-backed facts in chunks and ask you about conflicts. The [LLM integration guide](docs/customer/llm-integration.md) explains the tool setup and working rule.
+
+You can also paste text or upload UTF-8 TXT / Markdown (up to 1 MiB) in the signed-in [console's material section](https://api.marvnor.com/#memory), or use the [guest import page](https://api.marvnor.com/imports). Signed-in users choose which key to use; the guest page uses the trial key without asking for it again. Send the displayed message to your connected AI. The page stages the source text; it does not call another model. Staged text remains for up to 24 hours. Only successfully saved facts enter memory, so check the save receipts and progress, and resume after an interruption. Revising a document does not automatically replace old facts.
+
+`verify` and `recall` return six-field answers. Document tools return your own source chunks, progress, or save receipts under the same key; these are not verification answers.
+
+The developer example below calls Marvnor directly from your own application: save a fact, verify it, then delete the test record.
 
 **Want a ready-to-run file?** [Run the five-stage demo](examples/README.md) to verify, detect conflicts, correct and delete synthetic records. The shorter example below shows the basic request pattern.
 
@@ -8,7 +18,7 @@ Call Marvnor directly from your own application: save a fact, verify it, then de
 
 ## 1. Prepare your API key
 
-Sign in to the [customer portal](https://api.marvnor.com/), create an API key, and check that your account has available quota. Set `MARVNOR_API_KEY` in your application's runtime environment. Do not send the key to an LLM or put it in browser-side code.
+Create a guest key on the [product home](https://api.marvnor.com/home), or sign in to the [customer portal](https://api.marvnor.com/) to create one. Check your available points. Set `MARVNOR_API_KEY` in your application's runtime environment. Do not send the key to an LLM or put it in browser-side code.
 
 The example requires Python 3 and no third-party packages. If the environment variable is not set, the script asks for the key using hidden input.
 
