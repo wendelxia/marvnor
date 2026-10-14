@@ -2,13 +2,11 @@
 
 Marvnor saves evidence-backed or user-confirmed facts under one key, finds and verifies records relevant to the current question, and flags conflicts. Your existing AI writes the answer. No Marvnor client download or extra model setup is required.
 
-Open the [product home](https://api.marvnor.com/home) and select “Create a test API Key” to try it without signing up: the guest key has 500 points and lasts 30 days. The key is shown only once. Before the trial expires, sign up or sign in in that same browser and confirm the transfer to keep the same key, saved facts, and unexpired document drafts. Unused guest points do not add to your account; the registration page shows the separate sign-up offer.
+Open the [product home](https://api.marvnor.com/home) and select “Create a test API Key” to try it without signing up: the guest key has 500 points and lasts 30 days. The key is shown only once. Before the trial expires, sign up or sign in in that same browser and confirm the transfer to keep the same key and saved facts. Unused guest points do not add to your account; the registration page shows the separate sign-up offer.
 
-During the trial, open [Connect an AI tool](https://api.marvnor.com/connect) in the same browser where you created the key. Add that key to the AI you already use. Give it a file or ask it to read a local file, then ask it to save evidence-backed facts in chunks and ask you about conflicts. The [LLM integration guide](docs/customer/llm-integration.md) explains the tool setup and working rule.
+During the trial, open [Connect an AI tool](https://api.marvnor.com/connect) in the same browser where you created the key. Add that key to the AI you already use. Tell it a specific fact and its evidence, such as “Order 101 is paid, supported by receipt 123,” then ask it to save the fact and check the receipt. The [LLM integration guide](docs/customer/llm-integration.md) explains the tool setup and working rule.
 
-You can also paste text or upload UTF-8 TXT / Markdown (up to 1 MiB) in the signed-in [console's material section](https://api.marvnor.com/#memory), or open the [guest import page](https://api.marvnor.com/imports) in that same browser. Signed-in users choose which key to use; the guest page uses the trial key without asking for it again. Send the displayed message to your connected AI. The page stages the source text; it does not call another model. Staged text remains for up to 24 hours. Only successfully saved facts enter memory, so check the save receipts and progress, and resume after an interruption. Revising a document does not automatically replace old facts.
-
-`verify` and `recall` return six-field answers. Document tools return your own source chunks, progress, or save receipts under the same key; these are not verification answers.
+`verify` and `recall` return six-field answers. Save receipts are not verification answers. The former long-text import page and document tools are closed; facts saved before their retirement remain available under the same key.
 
 The developer example below calls Marvnor directly from your own application: save a fact, verify it, then delete the test record.
 

@@ -10,7 +10,7 @@ Use it to check project dependencies, business states, time-sensitive records an
 
 ## Connect Codex or VS Code via MCP
 
-Open the [guided connection setup](https://api.marvnor.com/connect?lang=en) to connect Codex or VS Code. The hosted MCP server exposes 12 tools for saving, recalling, verifying, correcting and deleting facts, checking the connection, and importing documents in chunks.
+Open the [guided connection setup](https://api.marvnor.com/connect?lang=en) to connect Codex or VS Code. The hosted MCP server exposes six tools for checking the connection and saving, recalling, verifying, correcting, or deleting facts.
 
 - **MCP endpoint:** `https://api.marvnor.com/v1/mcp`
 - **Authentication:** `Authorization: Bearer <MARVNOR_API_KEY>`

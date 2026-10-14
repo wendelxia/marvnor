@@ -7,7 +7,7 @@ Marvnor works as a gateway alongside an existing LLM application. Keep your curr
 3. Before the trial expires, register or sign in in that same browser and confirm the transfer to keep the same Key and saved facts. Registration grants a separate 1,000 points; unused guest points do not transfer.
 4. Keep all [six fields of each relevant answer](PUBLIC_EVALUATION_API.md) when sending results and the current question to your LLM. Ask for confirmation when facts conflict; do not turn `UNKNOWN` into a fact. See [LLM integration](docs/customer/llm-integration.md) for wiring, quality, and cost considerations.
 
-Use the same key for the same memory; no `project` or `environment` is needed. After 30 days of inactivity, the key and its memory are destroyed together.
+Use the same key for the same memory; no `project` or `environment` is needed. After 30 days of inactivity, the key becomes invalid and its memory enters cleanup.
 
 For corrections, edit the record in place and retain its receipt. [Targeted deletion](docs/customer/record-management.md) preserves the key and unrelated records; clear-all destroys all of that key's memory and revokes the key. Save your own fact-to-receipt mapping.
 

@@ -17,7 +17,7 @@ Content-Type: application/json
 
 Use the same key to write, query, and delete the same memory. Different keys do not share memory. You do not need to supply `project` or `environment`. Keep the key in your server-side environment variables, not in browser-side code, public repositories, or LLM prompts.
 
-After 30 days of inactivity, memory data and its key are destroyed together.
+After 30 days of inactivity, the key becomes invalid and its memory enters cleanup.
 
 ## 2. Endpoints
 
@@ -25,20 +25,17 @@ After 30 days of inactivity, memory data and its key are destroyed together.
 | --- | --- |
 | Verify facts, check conflicts, and query known values | `POST /v1/evaluate` |
 | Find and verify records relevant to the current question | `POST /v1/recall` |
-| Save facts and import in chunks | `POST /v1/relations` |
-| Check import progress | `GET /v1/relations/batches/{batch_id}` |
+| Save structured facts, including batches | `POST /v1/relations` |
+| Check structured-fact batch progress | `GET /v1/relations/batches/{batch_id}` |
 | List record receipts in pages | `GET /v1/relations` |
 | Edit a specific record | `PATCH /v1/relations/{record_id}` |
 | Delete a specific record | `DELETE /v1/relations/{record_id}` |
 | Delete selected records in bulk | `POST /v1/relations/delete` |
 | Clear all memory for the current key and revoke it | `POST /v1/relations/clear` |
-| Stage long text or list staged documents | `POST /v1/documents`, `GET /v1/documents` |
-| Read a chunk from your own staged document | `GET /v1/documents/{document_id}` |
-| Save chunk facts, split an unsaved chunk, or discard staged text | `POST /v1/documents/{document_id}/save`, `POST /v1/documents/{document_id}/split`, `POST /v1/documents/{document_id}/discard` |
 
-AI tools can use the same key through the MCP connector at `https://api.marvnor.com/v1/mcp`; follow [Connect an AI tool](https://api.marvnor.com/connect) for setup. `/v1/evaluate` checks explicit claims; `/v1/recall` finds and verifies records relevant to the current question. Answers from both endpoints have exactly six fields. Record-management endpoints return operation status, counts, or receipts. Document tools return your own source chunks and progress under the current key; these are not six-field verification answers.
+AI tools can use the same key through the MCP connector at `https://api.marvnor.com/v1/mcp`; follow [Connect an AI tool](https://api.marvnor.com/connect) for setup. `/v1/evaluate` checks explicit claims; `/v1/recall` finds and verifies records relevant to the current question. Answers from both endpoints have exactly six fields. Record-management endpoints return operation status, counts, or receipts.
 
-Give long documents to your connected AI, or sign in and use the [console's material section](https://api.marvnor.com/#memory). Guests can use the [trial import page](https://api.marvnor.com/imports). These use the same key without a separate extraction model. Source text is staged for up to 24 hours; only successfully saved facts enter memory. See [LLM integration](docs/customer/llm-integration.md).
+The former `/v1/documents` endpoints are closed and return `410 long_text_retired`; MCP no longer lists document tools. Previously saved facts remain available for retrieval, correction, and targeted deletion under the same key. See [LLM integration](docs/customer/llm-integration.md).
 
 ## 3. Save facts
 
