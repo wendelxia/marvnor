@@ -1,5 +1,6 @@
 import io
 import json
+import os
 import unittest
 import urllib.error
 from unittest.mock import patch
@@ -62,6 +63,22 @@ class MemoryAPI:
 
 
 class DemoTests(unittest.TestCase):
+    def test_cli_prefers_documented_api_token_environment_variable(self):
+        with patch.dict(os.environ, {"MARVNOR_API_TOKEN": "new-token", "MARVNOR_API_KEY": "old-key"}, clear=True):
+            with patch.object(demo, "make_request") as make_request, patch.object(
+                demo, "run_demo", return_value={"stages": []}
+            ), patch.object(demo.getpass, "getpass", side_effect=AssertionError("unexpected prompt")):
+                self.assertEqual(demo.main([]), 0)
+        make_request.assert_called_once_with("new-token")
+
+    def test_cli_accepts_legacy_api_key_environment_variable(self):
+        with patch.dict(os.environ, {"MARVNOR_API_KEY": "legacy-key"}, clear=True):
+            with patch.object(demo, "make_request") as make_request, patch.object(
+                demo, "run_demo", return_value={"stages": []}
+            ), patch.object(demo.getpass, "getpass", side_effect=AssertionError("unexpected prompt")):
+                self.assertEqual(demo.main([]), 0)
+        make_request.assert_called_once_with("legacy-key")
+
     def test_full_flow_verifies_conflicts_correction_and_deletion(self):
         api = MemoryAPI()
         events = []

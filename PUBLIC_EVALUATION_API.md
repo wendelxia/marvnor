@@ -8,7 +8,7 @@ Marvnor stores the records you provide and answers structured questions against 
 
 Base URL: `https://api.marvnor.com`
 
-Send UTF-8 JSON. Except for the public plan catalog, the endpoints in this document require an API key created in the customer portal:
+Send UTF-8 JSON. Except for the public plan catalog, the endpoints in this document require an API key. Create a guest key from the [product home](https://api.marvnor.com/home), or create one after signing in to the [customer portal](https://api.marvnor.com/):
 
 ```http
 Authorization: Bearer <YOUR_API_KEY>
@@ -24,6 +24,7 @@ After 30 days of inactivity, memory data and its key are destroyed together.
 | Purpose | Method and path |
 | --- | --- |
 | Verify facts, check conflicts, and query known values | `POST /v1/evaluate` |
+| Find and verify records relevant to the current question | `POST /v1/recall` |
 | Save facts and import in chunks | `POST /v1/relations` |
 | Check import progress | `GET /v1/relations/batches/{batch_id}` |
 | List record receipts in pages | `GET /v1/relations` |
@@ -31,8 +32,13 @@ After 30 days of inactivity, memory data and its key are destroyed together.
 | Delete a specific record | `DELETE /v1/relations/{record_id}` |
 | Delete selected records in bulk | `POST /v1/relations/delete` |
 | Clear all memory for the current key and revoke it | `POST /v1/relations/clear` |
+| Stage long text or list staged documents | `POST /v1/documents`, `GET /v1/documents` |
+| Read a chunk from your own staged document | `GET /v1/documents/{document_id}` |
+| Save chunk facts, split an unsaved chunk, or discard staged text | `POST /v1/documents/{document_id}/save`, `POST /v1/documents/{document_id}/split`, `POST /v1/documents/{document_id}/discard` |
 
-`/v1/evaluate` is the only inference endpoint. Each answer has exactly six fields. Data-management endpoints return operation status, counts, or record receipts, not the original saved records.
+AI tools can use the same key through the MCP connector at `https://api.marvnor.com/v1/mcp`; follow [Connect an AI tool](https://api.marvnor.com/connect) for setup. `/v1/evaluate` checks explicit claims; `/v1/recall` finds and verifies records relevant to the current question. Answers from both endpoints have exactly six fields. Record-management endpoints return operation status, counts, or receipts. Document tools return your own source chunks and progress under the current key; these are not six-field verification answers.
+
+Give long documents to your connected AI, or sign in and use the [console's material section](https://api.marvnor.com/#memory). Guests can use the [trial import page](https://api.marvnor.com/imports). These use the same key without a separate extraction model. Source text is staged for up to 24 hours; only successfully saved facts enter memory. See [LLM integration](docs/customer/llm-integration.md).
 
 ## 3. Save facts
 
@@ -103,7 +109,7 @@ After saving the fact above, with no conflict:
 | --- | --- |
 | `conclusion` | `TRUE`: current evidence supports the claim; `FALSE`: current evidence refutes it; `UNKNOWN`: currently undetermined |
 | `conflict` | Whether a conflict was detected; if `true`, do not arbitrarily choose one value as fact |
-| `reason` | A short reason code; common values are listed below |
+| `reason` | The basis for this answer. Explicit-claim verification commonly uses the codes below; recall can include the selected stored claim and query scope as text |
 | `path` | Relevant evidence path for normal verification; known candidate values when `target` is omitted |
 | `decision` | Suggested handling, not an instruction to execute automatically or a free-text answer |
 | `evidence_kind` | Evidence category, such as direct, indirect, negative, or conflicting |
@@ -134,7 +140,7 @@ Public `evidence_kind` values include `direct`, `indirect`, `explicit_negative`,
 - A compound question uses `id` and `claim`; do not also include normal-question fields.
 - The legacy Boolean `include_advice` parameter may be omitted. It does not add response fields.
 
-The inference response contains only `answers` at the top level, with no extra usage or diagnostic fields. A path may contain up to 2,048 items and 131,072 characters in total. Beyond either limit, the entire `path` is an empty array and the reason is `path_omitted_limit`. Compound questions also return an empty `path`, so an empty array does not itself indicate query failure.
+The `/v1/evaluate` response contains only `answers` at the top level, with no extra usage or diagnostic fields. A path may contain up to 2,048 items and 131,072 characters in total. Beyond either limit, the entire `path` is an empty array and the reason is `path_omitted_limit`. Compound questions also return an empty `path`, so an empty array does not itself indicate query failure.
 
 ### Query known values for an attribute
 
@@ -153,6 +159,28 @@ The result still has six fields. `path` contains deduplicated, sorted, directly 
 Ordinary custom attributes are single-valued by default. Different values for the same subject and single-valued attribute, in compatible contexts and overlapping validity periods, produce `UNKNOWN` with `conflict: true`. For example, an order cannot simultaneously have both `paid` and `unpaid` as its status. Types defined as multi-valued, such as `supports`, allow multiple objects and do not conflict merely because there is more than one value. You cannot change these rules by submitting an extra `multiple: true` field.
 
 When a conflict occurs, omit `target` to query the candidate values, then check your original evidence. Positive and explicitly negative statements about a multi-valued attribute may also conflict; do not ignore `conflict`.
+
+### Find records for the current question
+
+`POST /v1/recall` accepts natural-language question text, then selects and verifies relevant saved records:
+
+```json
+{"text": "What is the status of demo-order-001?", "limit": 12}
+```
+
+`text` is required (1–2,000 characters). Optional `context` selects the business scope; `as_of` specifies an explicit query time. `facets` can split a compound question into 1–8 parts, each with its own required `text` and optional `context` / `as_of`. `limit` bounds the total selected records (1–20, default 12). For example:
+
+```json
+{
+  "text": "Was order-101 paid and shipped at 2026-10-10T12:00:00Z?",
+  "context": {"scope": "order-101"},
+  "as_of": "2026-10-10T12:00:00Z",
+  "facets": [{"text": "Was order-101 paid?"}, {"text": "Was order-101 shipped?"}],
+  "limit": 12
+}
+```
+
+Use a scope only when the records were saved with that scope. The response is an `answers` object; **each answer** has the same six fields as evaluation. A `TRUE` or `FALSE` on a selected stored claim is not an automatic verdict on the entire natural-language question. Missing evidence stays `UNKNOWN`; a partial retrieval is not proof that omitted records do not exist. `reason` identifies the selected `stored_claim`, and may include query scope and source-record polarity, context, or validity. Raw document excerpts are not returned in public recall answers.
 
 ## 5. Context, time, and compound claims
 
@@ -232,6 +260,8 @@ Edited records retain their original receipt and `client_record_id`. To delete b
 ## 7. Usage and troubleshooting
 
 See the [customer portal](https://api.marvnor.com/) for current plans and usage rules. Applications can read the public [`GET /v1/plans`](https://api.marvnor.com/v1/plans). Use an authenticated `GET /v1/quota` to check account usage. Whether a call counts toward usage follows the current rules, not whether the conclusion is `TRUE`, `FALSE`, or `UNKNOWN`.
+
+`/v1/recall` charges for submitted facets with candidate records, not separately for each internally verified candidate. Input follows the published 4KB tiers. At most one automatically added untimed document background and its internal verification use `limit` slots but have no extra point charge. The background does not establish status at a requested instant. See `pricing.recall_billing` and `pricing.recall_untimed_background` in `GET /v1/plans`.
 
 | HTTP status | Suggested action |
 | --- | --- |

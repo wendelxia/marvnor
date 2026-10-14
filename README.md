@@ -6,13 +6,13 @@ Marvnor is a proprietary hosted API for LLM applications. Store supplied facts a
 
 Use it to check project dependencies, business states, time-sensitive records and conflicting information. Keep confirmed records between questions and pass only the results needed for the next answer.
 
-[Sign up for 1,000 free points](https://api.marvnor.com/register?lang=en) · [See the demo](https://wendelxia.github.io/marvnor/) · [Run the example](examples/README.md) · [API docs](PUBLIC_EVALUATION_API.md) · [Customer portal](https://api.marvnor.com/?lang=en)
+[Create a test Key](https://api.marvnor.com/home?lang=en) · [See the demo](https://wendelxia.github.io/marvnor/) · [Run the example](examples/README.md) · [API docs](PUBLIC_EVALUATION_API.md) · [Customer portal](https://api.marvnor.com/?lang=en)
 
-## Try it in one command
+## Try it before signing up
 
-[Register](https://api.marvnor.com/register?lang=en) to receive **1,000 free points that never expire**, create an API Key in the [console](https://api.marvnor.com/?lang=en), then connect your application or run the example below. [Getting started](docs/customer/developer-trial.md).
+On the [product home](https://api.marvnor.com/home?lang=en), select **Create a test API Key**. You get 500 points for 30 days to try your own material; save the Key when it is shown. Before the trial expires, [register](https://api.marvnor.com/register?lang=en) in the same browser and confirm the transfer to keep the same Key and saved facts. Registration separately grants 1,000 points; unused guest points do not transfer. [Getting started](docs/customer/developer-trial.md).
 
-Usage draws from gift points, then subscription allowance, then your topped-up balance; Marvnor does not automatically charge external payment methods.
+Trial calls use the trial allowance. After registration, usage follows the current plan; Marvnor does not automatically charge external payment methods.
 
 Download [quickstart.py](https://raw.githubusercontent.com/wendelxia/marvnor/main/examples/quickstart.py), then run:
 
@@ -20,7 +20,7 @@ Download [quickstart.py](https://raw.githubusercontent.com/wendelxia/marvnor/mai
 python quickstart.py
 ```
 
-Paste your API key at the hidden prompt. The example verifies a saved fact, detects conflicting values, resolves the conflict, corrects the fact, then deletes only its own demo data. Python 3.9+, no dependencies. API calls consume points according to the current pricing. [Setup and recorded results](examples/README.md).
+Paste your API Key at the hidden prompt. The example verifies a saved fact, detects conflicting values, resolves the conflict, corrects the fact, then deletes only its own demo data. Python 3.9+, no dependencies. API calls consume points according to the current pricing. [Setup and recorded results](examples/README.md).
 
 Latest news, October 10: [Marvnor reports stronger record-based judgments and a 98.2% input reduction in a long-history test](NEWS.md) · [中文新闻稿](docs/news/2026-10-10-benchmark-results.zh-CN.md)
 
@@ -40,7 +40,7 @@ The public suite returned **1,227/1,227 expected verdicts across 62 requests**, 
 
 ## Connect it to your application
 
-Call `POST /v1/evaluate` with structured facts and questions. Each answer contains six fields: conclusion, evidence type, conflict, reason, decision signal and evidence path. Use them to answer, request clarification or gather more evidence.
+Call `POST /v1/evaluate` for explicit claims, or `POST /v1/recall` with the current question to find relevant saved records. Each answer contains six fields: conclusion, evidence type, conflict, reason, decision signal and evidence path. A multi-part question may return several answers, not one overall verdict.
 
 - [Quickstart](USER_QUICKSTART.md): save, verify and delete a demonstration record.
 - [API reference](PUBLIC_EVALUATION_API.md): requests and six-field answers.
