@@ -3,9 +3,9 @@
 
   const storageKey = 'marvnor.site.language';
   const translated = {
-    'meta.description': '保存自己的记录，依据其中的证据回答结构化问题，并标出冲突值。Marvnor 是托管 API，支持原位更正和定向删除。',
-    'meta.ogTitle': 'Marvnor：让 AI 使用可核查的记录',
-    'meta.ogDescription': '依据你保存的记录返回 TRUE、FALSE 或 UNKNOWN，标出冲突，并支持原位更正与定向删除。查看真实 API 结果。',
+    'meta.description': '为 AI Agent 提供项目记忆：保存已确认的信息，按当前问题找回并核验记录，指出冲突，支持纠错与删除。',
+    'meta.ogTitle': 'Marvnor：告别多窗口拼凑，一个对话无缝做完整个项目。',
+    'meta.ogDescription': '为 AI Agent 提供项目记忆：保存已确认的信息，按当前问题找回并核验记录，指出冲突，支持纠错与删除。',
     'brand.label': 'Marvnor 首页',
     'nav.label': '主导航',
     'locale.label': '语言',
@@ -13,11 +13,11 @@
     'skip': '跳转到正文',
     'nav.api': 'API 文档',
     'nav.signIn': '登录',
-    'hero.eyebrow': '面向 AI 应用的记录型记忆',
-    'hero.title1': '让 AI 使用',
-    'hero.title2': '可核查的记录。',
-    'hero.lead': '保存你的记录。Marvnor 根据记录中的证据，对结构化问题返回 TRUE、FALSE 或 UNKNOWN，并标出冲突；你可以原位更正或定向删除记录。',
-    'hero.lead2': 'Marvnor 是专有的托管 API；大模型负责组织回答。',
+    'hero.eyebrow': 'AI AGENT 的项目记忆',
+    'hero.title1': '告别多窗口拼凑，',
+    'hero.title2': '一个对话无缝做完整个项目。',
+    'hero.lead': 'Marvnor 为你的 AI 提供可持续使用的项目记忆。通过 MCP 或 API，让 Agent 保存已确认的需求、决定和变更，用时找回与当前问题相关的记录，并核对依据、指出冲突。信息变了可以更新，记错了可以纠正或删除。',
+    'hero.lead2': '你少重复交代，AI 少混淆新旧信息。按需取回记录，减少长历史的重复输入，让项目接着往下做。',
     'hero.try': '免注册创建测试 Key',
     'hero.results': '查看实际 API 结果',
     'hero.trialNote': '500 积分 · 30 天试用',
@@ -103,7 +103,7 @@
   function applyLanguage(language) {
     const chinese = language === 'zh-CN';
     document.documentElement.lang = chinese ? 'zh-CN' : 'en';
-    document.title = chinese ? 'Marvnor | 面向 AI 的记录型记忆与冲突管理' : originalTitle;
+    document.title = chinese ? 'Marvnor | AI Agent 的项目记忆' : originalTitle;
     for (const node of textNodes) {
       node.textContent = chinese ? translated[node.dataset.i18n] : originalText.get(node);
     }

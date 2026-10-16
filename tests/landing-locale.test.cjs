@@ -70,7 +70,7 @@ function page(url, stored = null, storageFails = false) {
 test('Chinese URL selects translated page, metadata, accessible labels and buttons', () => {
   const app = page('https://example.test/marvnor/?lang=zh-CN&ref=demo', 'en');
   assert.equal(app.document.documentElement.lang, 'zh-CN');
-  assert.match(app.document.title, /记录/);
+  assert.match(app.document.title, /项目记忆/);
   assert.match(app.elements.get('hero.lead').textContent, /记录/);
   assert.match(app.attrs.get('chart.label')['aria-label'], /5,328/);
   assert.match(app.attrs.get('meta.description').content, /记录/);
@@ -88,7 +88,7 @@ test('switching to English updates URL and preserves unrelated query parameters'
   assert.equal(app.url.searchParams.get('lang'), 'en');
   assert.equal(app.url.searchParams.get('ref'), 'demo');
   assert.equal(app.document.documentElement.lang, 'en');
-  assert.match(app.document.title, /Record-based answers/);
+  assert.match(app.document.title, /Project memory/);
   assert.equal(app.buttons[0]['aria-pressed'], 'true');
   assert.equal(app.stored, 'en');
   assert(app.portalLinks.every(link => new URL(link.href).searchParams.get('lang') === 'en'));
