@@ -25,15 +25,19 @@ After 30 days of inactivity, the key becomes invalid and its memory enters clean
 | --- | --- |
 | Verify facts, check conflicts, and query known values | `POST /v1/evaluate` |
 | Find and verify records relevant to the current question | `POST /v1/recall` |
+| Browse records for a known subject, page by page | `GET /v1/candidates` |
 | Save structured facts, including batches | `POST /v1/relations` |
 | Check structured-fact batch progress | `GET /v1/relations/batches/{batch_id}` |
 | List record receipts in pages | `GET /v1/relations` |
+| Correct by old fact, client ID, or receipt | `POST /v1/relations/correct` |
 | Edit a specific record | `PATCH /v1/relations/{record_id}` |
 | Delete a specific record | `DELETE /v1/relations/{record_id}` |
 | Delete selected records in bulk | `POST /v1/relations/delete` |
 | Clear all memory for the current key and revoke it | `POST /v1/relations/clear` |
 
 AI tools can use the same key through the MCP connector at `https://api.marvnor.com/v1/mcp`; follow [Connect an AI tool](https://api.marvnor.com/connect) for setup. `/v1/evaluate` checks explicit claims; `/v1/recall` finds and verifies records relevant to the current question. Answers from both endpoints have exactly six fields. Record-management endpoints return operation status, counts, or receipts.
+
+Recommended integration: use one key per independent project, save important user-confirmed or sourced facts incrementally, call `/v1/recall` when a question needs project memory, and use `/v1/evaluate` for a precise claim. Send the model only the current question and all six fields of relevant answers. Ask the user to resolve conflicts and treat `UNKNOWN` as insufficient evidence. Tasks that do not depend on saved project facts can go directly to the model.
 
 The former `/v1/documents` endpoints are closed and return `410 long_text_retired`; MCP no longer lists document tools. Previously saved facts remain available for retrieval, correction, and targeted deletion under the same key. See [LLM integration](docs/customer/llm-integration.md).
 
@@ -112,6 +116,21 @@ After saving the fact above, with no conflict:
 | `evidence_kind` | Evidence category, such as direct, indirect, negative, or conflicting |
 
 `TRUE` means submitted evidence supports the claim, not an absolute guarantee about the real world. `UNKNOWN` is not `FALSE`. HTTP 200 means the request succeeded, not that the business claim is true.
+
+### Read the six fields together
+
+These are the most common combinations for ordinary fact verification. The exact `path` depends on whether the answer uses a direct fact, a multi-hop path, or a candidate-value query. Do not interpret one field in isolation.
+
+| Situation | `conclusion` | `conflict` | `reason` | `path` | `decision` | `evidence_kind` |
+| --- | --- | --- | --- | --- | --- | --- |
+| Direct supporting evidence | `TRUE` | `false` | `supported_evidence` | `[subject, value]` | `answer` | `direct` |
+| Explicit negative evidence | `FALSE` | `false` | `contradicting_evidence` | `[]` | `answer` | `explicit_negative` |
+| Insufficient evidence | `UNKNOWN` | `false` | `insufficient_evidence` | `[]` | `unknown` | `unknown` |
+| Conflict on an explicit claim | `UNKNOWN` | `true` | `conflicting_evidence` | relevant path | `clarify` | `conflict` |
+| One known candidate value | `TRUE` | `false` | `known_values` | `[value]` | `answer` | `direct` |
+| Mutually exclusive candidate values | `UNKNOWN` | `true` | `conflicting_values` | `[value A, value B]` | `needs_review` | `conflict` |
+
+Marvnor does not treat missing evidence as negation. If the only saved record is `status=paid`, asking whether `status=unpaid` normally returns `UNKNOWN`, not `FALSE`. `FALSE` requires explicit evidence against that same claim, such as a saved record with `polarity: -1`. Applications should preserve all six fields: inspect candidate values when there is a conflict, and obtain more evidence when the result is unknown instead of acting on `conclusion` alone.
 
 | Common `reason` | Meaning |
 | --- | --- |
