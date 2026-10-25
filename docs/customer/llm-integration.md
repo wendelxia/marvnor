@@ -17,6 +17,7 @@ In a host integration that controls model input, use Marvnor as a gateway when a
 ```
 
 Use one key for one independent project. Agents that should share project memory use the same key; unrelated projects use different keys. Do not force creative writing, translation, ordinary code generation, or self-contained mathematics through Marvnor unless the task depends on saved project facts.
+This boundary comes from paired tests. Across 59 third-party general questions with no usable project memory, quality was tied while the Marvnor arm used 6.8% more model tokens. On six real repository questions, direct pinned source scored 6/6 while replacing source with extracted facts scored 0/6. Deterministic high-hop paths did benefit from the relevant path. Marvnor therefore supplements project memory; it does not replace source files, original material, or normal reasoning for unrelated tasks. [Read the recommended-use study](../benchmarks/2026-10-25/recommended-usage.md).
 
 ## Save and verify facts
 
