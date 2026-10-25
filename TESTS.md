@@ -1,5 +1,11 @@
 # Marvnor Truth-Preserving Model System Public Tests
 
+## Recommended-use study: October 25, 2026
+
+The latest cross-test review found that Marvnor should be called when a task needs saved project memory, not forced in front of every question. It also found that a host must preserve all six fields of relevant results: in a new unseen 359-hop LongProc item, a 4B model given only `TRUE` invented the route and failed from the first hop. General questions without usable memory showed no quality gain, and extracted records did not replace source code on real repository questions.
+
+[Read the test-backed recommended usage and method](docs/benchmarks/2026-10-25/recommended-usage.md).
+
 ## Latest live rerun: October 10, 2026
 
 [Eight benefits and their evidence](docs/benchmarks/2026-10-10/highlights.md) · [Fresh report and full comparisons](docs/benchmarks/2026-10-10/rerun.md) · [Fresh sanitized data](docs/benchmarks/2026-10-10/rerun-results.json)
