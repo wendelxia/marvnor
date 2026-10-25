@@ -12,12 +12,14 @@ Use it to check project dependencies, business states, time-sensitive records an
 
 ## Connect Codex or VS Code via MCP
 
-Open the [guided connection setup](https://api.marvnor.com/connect?lang=en) to connect Codex or VS Code. The hosted MCP server exposes six tools for checking the connection and saving, recalling, verifying, correcting, or deleting facts.
+Open the [guided connection setup](https://api.marvnor.com/connect?lang=en) to connect Codex or VS Code. The hosted MCP server exposes seven tools for checking the connection, saving, recalling, verifying, browsing candidates, correcting, or deleting facts.
 
 - **MCP endpoint:** `https://api.marvnor.com/v1/mcp`
 - **Authentication:** `Authorization: Bearer <MARVNOR_API_KEY>`
 
 Records are isolated by API key. Use the same key for saving and querying, including across clients that should share those records. Keep the key in your client configuration or runtime environment. Follow the [LLM integration guide](docs/customer/llm-integration.md) to pass only the current question and relevant Marvnor results to your model.
+
+**Recommended pattern:** use one key for one independent project. Save only important user-confirmed or sourced facts. Call Marvnor when a question needs project memory; send the model the current question plus all six fields of relevant results. Ask the user to resolve conflicts, treat `UNKNOWN` as insufficient evidence, and correct changed facts in place. Tasks that do not depend on saved project facts can go directly to the model.
 
 ## Try it before signing up
 
@@ -51,7 +53,7 @@ The public suite returned **1,227/1,227 expected verdicts across 62 requests**, 
 
 ## Connect it to your application
 
-Call `POST /v1/evaluate` for explicit claims, or `POST /v1/recall` with the current question to find relevant saved records. Each answer contains six fields: conclusion, evidence type, conflict, reason, decision signal and evidence path. A multi-part question may return several answers, not one overall verdict.
+Call `POST /v1/evaluate` for explicit claims, or `POST /v1/recall` with the current question to find relevant saved records. Each answer contains six fields in the public response: `conclusion`, `conflict`, `reason`, `path`, `decision`, and `evidence_kind`. A multi-part question may return several answers, not one overall verdict.
 
 - [Quickstart](USER_QUICKSTART.md): save, verify and delete a demonstration record.
 - [API reference](PUBLIC_EVALUATION_API.md): requests and six-field answers.

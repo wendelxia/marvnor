@@ -4,16 +4,16 @@ Marvnor is a proprietary hosted API for structured project memory. Applications 
 
 Use it for project dependencies, business-state checks, customer support and record-based analysis. Keep your existing model and send it the current question with the relevant Marvnor results to organize the answer.
 
-## Six results
+## Six answer fields
 
 | Result | What it tells the application |
 |---|---|
 | `conclusion` | Whether the conclusion is `TRUE`, `FALSE`, or temporarily undetermined as `UNKNOWN`. |
-| `evidence_kind` | Whether the evidence is direct, indirect, composite, conflicting, or unknown. |
 | `conflict` | Whether applicable submitted facts conflict, including facts already saved under the same key. |
 | `reason` | A short code explaining the current judgment. |
-| `decision` | A signal for the next handling step; the application decides the final action. |
 | `path` | A relevant evidence path, or known candidate values when `target` is omitted; compound queries and output limits may also leave it empty. |
+| `decision` | A signal for the next handling step; the application decides the final action. |
+| `evidence_kind` | Whether the evidence is direct, indirect, composite, conflicting, or unknown. |
 
 For example, if two sources provide opposite evidence for the same question, Marvnor returns `UNKNOWN` and marks the conflict. The application can ask the model to explain the conflict, ask for more information, or route the case to a human reviewer. Marvnor does not invent material that was not supplied to it.
 

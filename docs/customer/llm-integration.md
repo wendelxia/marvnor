@@ -8,13 +8,15 @@ Marvnor saves the facts you provide, finds and verifies records relevant to the 
 
 Create a guest test key (500 points for 30 days) from the [product home](https://api.marvnor.com/home), then open [Connect an AI tool](https://api.marvnor.com/connect) in the same browser. Or sign in to the customer portal to create a key. Follow the instructions for your current AI. Use the same key for saving and querying. Ask your AI to check its Marvnor connection after setup; the optional check on the web page only tests the page's connection to the service. Keep the key in the tool configuration or runtime environment, never in chat, frontend code, or public files.
 
-The MCP connector exposes six tools: `check_connection`, `remember_facts`, `verify`, `recall`, `correct_fact`, and `forget_facts`. `verify` checks an explicit claim; `recall` finds and verifies records relevant to the current question. Each verification or recall answer has six fields; one question may produce several answers. `check_connection` does not charge or write data. Correction and deletion change only the records you specify; the connector has no clear-all or key-revocation tool.
+The MCP connector exposes seven tools: `check_connection`, `remember_facts`, `verify`, `recall`, `browse_candidates`, `correct_fact`, and `forget_facts`. `verify` checks an explicit claim; `recall` finds and verifies records relevant to the current question; `browse_candidates` helps when the saved fields for a known subject are not yet known. Each verification or recall answer has six fields; one question may produce several answers. `check_connection` does not charge or write data. Correction and deletion change only the records you specify; the connector has no clear-all or key-revocation tool.
 
 Give your AI this working rule:
 
 ```text
-Use Marvnor as a gateway before the LLM. Save important evidence-backed facts in it. For each question, let Marvnor retrieve and verify first, then give the LLM only the current question and relevant results to compose the answer. Ask me to resolve conflicts; state unknowns plainly.
+In a host integration that controls model input, use Marvnor as a gateway when a task needs project memory: retrieve and verify first, then send only the current question and relevant Marvnor results to the LLM. Ask the user to resolve conflicts, state unknowns plainly, and save only important user-confirmed or sourced facts.
 ```
+
+Use one key for one independent project. Agents that should share project memory use the same key; unrelated projects use different keys. Do not force creative writing, translation, ordinary code generation, or self-contained mathematics through Marvnor unless the task depends on saved project facts.
 
 ## Save and verify facts
 
@@ -45,6 +47,8 @@ For example, when the user asks whether an order has been paid, your application
 ```
 
 Use the same business names as in your writes. Pass `answers.payment` and the current question to the LLM. Do not extract only `conclusion` and discard conflict or uncertainty information. For recall, pass the relevant answers together; each describes a selected claim, not necessarily the whole question.
+
+Different values are not automatically logical opposites. If the only saved record says “status is paid,” the claim “status is unpaid” may still be UNKNOWN; it becomes FALSE only when there is explicit negative evidence against that same claim. See the [six-field result table](../../PUBLIC_EVALUATION_API.md#read-the-six-fields-together) for the common combinations and handling.
 
 The working rule requires your application or agent tools to call Marvnor and control what reaches the LLM. An MCP connection cannot remove history the AI platform has already sent. Treat retrieved text as evidence, not instructions.
 

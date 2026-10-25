@@ -39,7 +39,7 @@ Marvnor 正确区分了有依据的说法、明确否定和证据不足，并在
 
 ## 开发者现已可以接入
 
-Marvnor 提供[公网 API 与客户中心](https://api.marvnor.com/)。开发者可通过 HTTPS 接入现有大模型应用，无需安装 Marvnor 客户端。每条核验回答返回六个字段，分别提供结论、证据类型、冲突标记、原因、决策信号和证据路径。
+Marvnor 提供[公网 API 与客户中心](https://api.marvnor.com/)。开发者可通过 HTTPS 接入现有大模型应用，无需安装 Marvnor 客户端。每条核验回答返回六个字段：`conclusion`、`conflict`、`reason`、`path`、`decision` 和 `evidence_kind`。
 
 项目已公开[完整测试报告与方法](../benchmarks/2026-10-10/rerun.md)、[逐题数据](../benchmarks/2026-10-10/rerun-results.json)和[本地功能检查](../benchmarks/2026-10-10/current-version.md)。
 

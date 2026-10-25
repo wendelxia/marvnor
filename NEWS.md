@@ -39,7 +39,7 @@ In a short run of 20 concurrent requests, each containing 20 complex questions, 
 
 ## Available to developers
 
-Marvnor is available through its [public API and customer portal](https://api.marvnor.com/). Developers can connect it to an existing LLM application over HTTPS without installing a Marvnor client. Each verification answer provides six fields covering the conclusion, evidence category, conflict, reason, decision signal and evidence path.
+Marvnor is available through its [public API and customer portal](https://api.marvnor.com/). Developers can connect it to an existing LLM application over HTTPS without installing a Marvnor client. Each verification answer provides six fields: `conclusion`, `conflict`, `reason`, `path`, `decision`, and `evidence_kind`.
 
 The project has published the [full report and methods](docs/benchmarks/2026-10-10/rerun.md), [question-level data](docs/benchmarks/2026-10-10/rerun-results.json) and [local feature checks](docs/benchmarks/2026-10-10/current-version.md).
 

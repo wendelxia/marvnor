@@ -6,6 +6,14 @@ Open the [product home](https://api.marvnor.com/home) and select “Create a tes
 
 During the trial, open [Connect an AI tool](https://api.marvnor.com/connect) in the same browser where you created the key. Add that key to the AI you already use. Tell it a specific fact and its evidence, such as “Order 101 is paid, supported by receipt 123,” then ask it to save the fact and check the receipt. The [LLM integration guide](docs/customer/llm-integration.md) explains the tool setup and working rule.
 
+## Recommended usage
+
+Use one key for one independent project. Save only important user-confirmed or sourced facts, constraints, decisions, and states. When a question depends on project memory, call `recall` first; use `verify` for a precise claim. Send the model only the current question and all six fields of relevant results. Show conflicts for user confirmation, treat `UNKNOWN` as insufficient evidence, and correct changed facts in place. Creative writing, translation, ordinary code generation, and self-contained mathematics can go directly to the model unless they depend on saved project facts.
+
+```text
+In a host integration that controls model input, use Marvnor as a gateway when a task needs project memory: retrieve and verify first, then send only the current question and relevant Marvnor results to the LLM. Ask the user to resolve conflicts, state unknowns plainly, and save only important user-confirmed or sourced facts.
+```
+
 `verify` and `recall` return six-field answers. Save receipts are not verification answers. The former long-text import page and document tools are closed; facts saved before their retirement remain available under the same key.
 
 The developer example below calls Marvnor directly from your own application: save a fact, verify it, then delete the test record.
@@ -87,6 +95,8 @@ print("After deletion:", after["conclusion"])
 ## 3. Check the result
 
 Normally, verification after the write returns `TRUE` with `conflict: false`; deletion removes `1` record; verification after deletion returns `UNKNOWN`. Each answer has exactly six fields: `conclusion`, `conflict`, `reason`, `path`, `decision`, and `evidence_kind`.
+
+Read the six fields together. If the only saved record is `status=paid`, asking whether `status=unpaid` normally remains `UNKNOWN`; it does not become `FALSE` without explicit negative evidence for that claim. Inspect candidate values for conflicts and obtain more evidence for unknowns. See the [six-field result table](PUBLIC_EVALUATION_API.md#read-the-six-fields-together).
 
 If the write times out, the record may already have been saved. Use the printed test ID to [delete by your own record ID](docs/customer/record-management.md). Do not clear the entire key's memory.
 
