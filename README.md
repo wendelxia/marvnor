@@ -2,6 +2,8 @@
 
 ## Hosted MCP Server for Agent Memory + HTTP API
 
+[![M8ven Score](https://m8ven.ai/badge/mcp/wendelxia-marvnor-0jrgh6?v=1caeae5a89756c2dad15a4bd720eaa27)](https://m8ven.ai/mcp/wendelxia-marvnor-0jrgh6?s=readme)
+
 Marvnor is a proprietary hosted MCP server and HTTP API for agent memory and record-based verification. Store supplied facts as source, relation and target records; ask structured questions against those records and receive `TRUE`, `FALSE` or `UNKNOWN`, with conflicting values flagged. Correct records in place or delete selected records. Send the current question and relevant Marvnor results to your model to write the answer.
 
 Use it to check project dependencies, business states, time-sensitive records and conflicting information. Keep confirmed records between questions and pass only the results needed for the next answer.
