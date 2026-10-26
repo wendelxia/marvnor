@@ -31,7 +31,7 @@ The older aggregate reports below are retained as historical reports. They were 
 
 Marvnor works beside an LLM to check critical judgments: it confirms supported claims, avoids jumping to a conclusion when sources conflict, and does not force an answer when the evidence is insufficient. The project team ran the tests below on October 4–5, 2026, using public datasets and the live service. This is not an independent third-party audit.
 
-The October 10, 2026 [customer documentation update](USAGE.md) does not rerun these benchmarks. Results below describe the historical test workflows, not validation of every behavior in the current [API contract](PUBLIC_EVALUATION_API.md).
+The October 10, 2026 [customer documentation update](USER_QUICKSTART.md) does not rerun these benchmarks. Results below describe the historical test workflows, not validation of every behavior in the current [API contract](PUBLIC_EVALUATION_API.md).
 
 ## What changed after connecting the model
 
@@ -49,4 +49,4 @@ The project team also ran a separate 10-question comparison. The average score o
 
 These tests show that Marvnor can check material supplied to it and, with an appropriate integration workflow, help a model correct its answers. The scores do not mean that Marvnor independently understood the original question, and they are not a performance guarantee for every scenario. You are welcome to repeat the tests with your own questions and send results or counterexamples to [wendelxia@gmail.com](mailto:wendelxia@gmail.com). Please do not send account keys or sensitive material you are not authorized to share.
 
-[Back to the home page](README.md) · [Read the usage guide](USAGE.md)
+[Back to the home page](README.md) · [Read the usage guide](USER_QUICKSTART.md)

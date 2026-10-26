@@ -2,7 +2,7 @@
 
 Marvnor stores the records you provide and answers structured questions against them: TRUE when the evidence supports a claim, FALSE when it refutes it, and UNKNOWN when it does not settle the question. It flags conflicts and supports in-place correction and targeted deletion. No client download or SDK installation is required.
 
-[Quickstart](USER_QUICKSTART.md) · [Edit and delete records](docs/customer/record-management.md) · [LLM integration](docs/customer/llm-integration.md)
+[Quickstart](USER_QUICKSTART.md) · [Edit and delete records](#6-edit-delete-and-import) · [Full reference, including calculations and proofs](https://api.marvnor.com/docs/api?lang=en)
 
 ## 1. Base URL and authentication
 
@@ -37,9 +37,9 @@ After 30 days of inactivity, the key becomes invalid and its memory enters clean
 
 AI tools can use the same key through the MCP connector at `https://api.marvnor.com/v1/mcp`; follow [Connect an AI tool](https://api.marvnor.com/connect) for setup. `/v1/evaluate` checks explicit claims; `/v1/recall` finds and verifies records relevant to the current question. Answers from both endpoints have exactly six fields. Record-management endpoints return operation status, counts, or receipts.
 
-Recommended integration: use one key per independent project, save important user-confirmed or sourced facts incrementally, call `/v1/recall` when a question needs project memory, and use `/v1/evaluate` for a precise claim. Send the model only the current question and all six fields of relevant answers. Ask the user to resolve conflicts and treat `UNKNOWN` as insufficient evidence. Tasks that do not depend on saved project facts can go directly to the model.
+The five MCP tools are `remember_facts`, `recall`, `verify`, `correct_fact`, and `forget_facts`. Ordinary calls need no prior schema lookup. `recall({})` checks connectivity; `recall({"schema":"compute"})` returns advanced parameters. The [quickstart](USER_QUICKSTART.md) gives the working rule.
 
-The former `/v1/documents` endpoints are closed and return `410 long_text_retired`; MCP no longer lists document tools. Previously saved facts remain available for retrieval, correction, and targeted deletion under the same key. See [LLM integration](docs/customer/llm-integration.md).
+The former `/v1/documents` endpoints are closed and return `410 long_text_retired`; MCP no longer lists document tools. Previously saved facts remain available for retrieval, correction, and targeted deletion under the same key.
 
 ## 3. Save facts
 
@@ -75,7 +75,7 @@ Within one key, a `client_record_id` cannot be assigned to another fact. You may
 
 Query subjects and values have a maximum length of 2,000 characters. Use short, stable business names or IDs rather than entire articles. Use identical naming for writes and queries; do not depend on automatic synonym matching.
 
-In a successful response, `ok` confirms the operation succeeded, `accepted` is the number accepted in this request, and `record_ids` contains record receipts in input order. A `request_id` is also returned; depending on the call, the response may contain a `billing` usage receipt. Keep a mapping from receipts to original facts. Do not parse receipts or interpret successful acceptance as independent verification of a fact.
+In a successful response, `ok` confirms the operation succeeded, `accepted` is the number accepted in this request, and `record_ids` contains record receipts in input order. A `request_id` is also returned; depending on the call, the response may contain a `billing` usage receipt. Receipts and client IDs are useful for automation; a unique old fact can also identify a record for correction or deletion. Do not interpret acceptance as independent verification of a fact.
 
 ## 4. Queries and six-field answers
 
@@ -196,7 +196,9 @@ When a conflict occurs, omit `target` to query the candidate values, then check 
 }
 ```
 
-Use a scope only when the records were saved with that scope. The response is an `answers` object; **each answer** has the same six fields as evaluation. A `TRUE` or `FALSE` on a selected stored claim is not an automatic verdict on the entire natural-language question. Missing evidence stays `UNKNOWN`; a partial retrieval is not proof that omitted records do not exist. `reason` identifies the selected `stored_claim`, and may include query scope and source-record polarity, context, or validity. Raw document excerpts are not returned in public recall answers.
+Use a scope only when the records were saved with that scope. The response is an `answers` object; **each answer** has the same six fields as evaluation. A `TRUE` or `FALSE` on a selected stored claim is not an automatic verdict on the entire natural-language question. Missing evidence stays `UNKNOWN`; a partial retrieval is not proof that omitted records do not exist. `reason` identifies the selected `stored_claim`, and may include query scope and source-record polarity, context, or validity. Excerpts are omitted by default; optional `include_source_context: true` adds selected records and bound short citations inside the `reason` string, without adding answer fields.
+
+For an exact subject, MCP `recall({"source":"demo-order-001"})` browses its records. Each `answers` key is a usable `mr_...` receipt; use it with `correct_fact` or `forget_facts`. Follow `next_cursor` until `complete: true` before batch deletion. Here `project` matches saved `context.scope`; omitting it selects unscoped records. Answer keys from text search and HTTP browsing are not record receipts.
 
 ## 5. Context, time, and compound claims
 
@@ -260,18 +262,63 @@ Nested contexts must not contradict each other. An inner query time overrides on
 
 ## 6. Edit, delete, and import
 
-See the [record-management guide](docs/customer/record-management.md) for examples.
+Use the original write Key. Targeted correction or deletion preserves the Key and unrelated records; conclusions depending on changed records are affected.
+
+### Correct a fact
+
+`POST /v1/relations/correct` (MCP: `correct_fact`): send `changes` and exactly one selector, `fact`, `client_record_id`, or `record_id`:
+
+```json
+{"fact":{"source":"demo-order-001","relation":"status","target":"pending"},"changes":{"target":"paid"}}
+```
+
+A unique old fact needs no saved receipt. Omitted scope, validity and polarity do not filter this selector. Multiple matches return `409 ambiguous_record`; specify the missing scope or use a receipt. No match returns `404`; concurrent changes return `409 record_changed`. Success returns `ok` and the unchanged `record_id`. Recheck the new and old claims afterward; loss of support usually makes the old claim `UNKNOWN`, not `FALSE`.
+
+For a change over time rather than an incorrect old record, retain earlier and later facts with their respective validity periods.
+
+### Delete selected records
+
+`POST /v1/relations/delete` (MCP: `forget_facts`): choose exactly one selector per request.
+
+| Selector | Example | Matching |
+| --- | --- | --- |
+| `fact` | `{"fact":{"source":"demo-order-001","relation":"status","target":"paid"}}` | One unique old fact, with the same ambiguity handling as correction |
+| `client_record_ids` | `{"client_record_ids":["demo-status-001"]}` | Your IDs |
+| `record_ids` | `{"record_ids":["mr_FULL_RECEIPT"]}` | Receipts |
+| `relations` | See below | Complete facts including their scope and polarity |
+| `batch_id` | `{"batch_id":"demo-import-001"}` | A completed import batch |
+
+Success returns `{"ok":true,"deleted_count":1}` for one deleted record. ID lists accept 1–10,000 unique entries; a missing ID returns `404` with no partial deletion. A natural-language `query` alone cannot select records for deletion. If MCP reports `incomplete_record_selector`, use its suggested `recall` arguments to find the old values and resubmit.
+
+### Delete by complete fact when you did not save an ID
+
+```json
+{"relations":[{"source":"demo-order-001","relation":"status","target":"paid"}]}
+```
+
+Unlike the singular `fact` selector, `relations` matches complete fact identity: include original `polarity`, `context` and `validity` when present. Omitting them selects only positive, unscoped, untimed facts. Use updated contents after correction. No match returns `deleted_count: 0`. Prefixes and wildcards such as `probe-*` are not supported.
+
+Batch cleanup removes only records created by that batch and not later edited or reused; pre-existing records remain. Incomplete or unsupported batches return `409`. Repeated cleanup of a deleted batch returns `0`; new imports need a new batch ID.
+
+### Receipts and batch imports
 
 - Edit: `PATCH /v1/relations/{record_id}`. Provide at least one field from the saved-fact table, except `client_record_id`, which cannot be changed. Both built-in types and custom attributes can be edited, preserving the receipt and client ID. Success returns only `{"ok":true}`.
 - Delete one record: `DELETE /v1/relations/{record_id}`. Success returns `{"ok":true,"deleted_count":1}`.
-- Bulk deletion: `POST /v1/relations/delete`. Choose exactly one of `record_ids`, `client_record_ids`, complete `relations`, or `batch_id`. Lists accept 1–10,000 entries; IDs must not repeat.
 - List receipts: `GET /v1/relations?limit=100&cursor=0`. `limit` is 1–500; `cursor` is a non-negative integer. Returns `ok`, `relations` containing only `record_id`, `next_cursor`, and `request_id`. `next_cursor: null` marks the end. Fact contents are not returned.
 - Chunked import: supply `batch_id` (1–200 characters), `total` (positive integer record count), and `offset` (non-negative integer, starting at 0) together on the write endpoint. Each chunk accepts up to 10,000 records; the total is subject to the service's accepted batch limit. A chunk limit is not an account capacity limit.
 - Import progress: `GET /v1/relations/batches/{batch_id}` returns `ok`, `batch_id`, `total`, `next_offset`, `status`, and `request_id`. Status is `partial`, `complete`, or `deleted`; an unknown batch returns 404.
 
-Targeted deletion preserves the key and other records. **Clearing all memory destroys all memory for the current key and revokes it. Do not use it for routine test-data cleanup.**
+For example, upload two one-record chunks using the same `batch_id` and `total: 2`, with `offset: 0` and then `offset: 1`. Continue at the returned `next_offset`. Newly imported records become queryable only when the batch is `complete`; the final `record_ids` covers the whole batch in input order.
 
-Edited records retain their original receipt and `client_record_id`. To delete by complete fact, supply the updated contents. Edit and delete responses do not return record details; obtain evaluation results from `/v1/evaluate`.
+After a timeout, check progress before retrying: continue a `partial` batch at `next_offset`; do not create another batch when it is `complete`. To recover receipts, replay an earlier chunk unchanged. A `deleted` batch cannot be reused. Check the Key and ID before restarting after `404`. Keep the original input; retries do not imply free usage.
+
+The receipt list does not reconstruct content. Finish pagination before deletion, without concurrent mutations, so shifting positions do not skip records. Prefer an exact subject lookup or your original facts for selective cleanup.
+
+### Clear all memory
+
+`POST /v1/relations/clear` requires `{"confirm":"clear_project"}`. It removes the Key's current verifiable memory and revokes the Key; operational history and backups may have separate retention. **This is not routine test-data cleanup and cannot be undone by this endpoint.**
+
+After deletion, a claim can remain `TRUE` if independent support remains. Use `/v1/evaluate` to check the result; management receipts do not return verification answers.
 
 ## 7. Usage and troubleshooting
 

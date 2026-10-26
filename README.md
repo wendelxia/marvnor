@@ -8,32 +8,18 @@ Marvnor is a proprietary hosted MCP server and HTTP API for agent memory and rec
 
 Use it to check project dependencies, business states, time-sensitive records and conflicting information. Keep confirmed records between questions and pass only the results needed for the next answer.
 
-[Connect your AI via MCP](https://api.marvnor.com/connect?lang=en) · [Create a test Key](https://api.marvnor.com/home?lang=en) · [See the demo](https://wendelxia.github.io/marvnor/) · [Run the example](examples/README.md) · [API docs](PUBLIC_EVALUATION_API.md) · [Customer portal](https://api.marvnor.com/?lang=en)
+[Create a test Key](https://api.marvnor.com/home?lang=en) · [Quickstart](USER_QUICKSTART.md) · [API reference](PUBLIC_EVALUATION_API.md) · [Recorded demo](https://wendelxia.github.io/marvnor/)
 
-## Connect Codex or VS Code via MCP
+## Get started
 
-Open the [guided connection setup](https://api.marvnor.com/connect?lang=en) to connect Codex or VS Code. The hosted MCP server exposes five tools: `remember_facts`, `recall`, `verify`, `correct_fact`, and `forget_facts`.
+Create a trial Key, then [connect your existing AI](https://api.marvnor.com/connect?lang=en). Follow the [quickstart](USER_QUICKSTART.md) for setup, the working rule and everyday examples. Five tools handle saving, retrieval, verification, correction and deletion.
 
 - **MCP endpoint:** `https://api.marvnor.com/v1/mcp`
 - **Authentication:** `Authorization: Bearer <MARVNOR_API_KEY>`
 
-Records are isolated by API key. Use the same key for saving and querying, including across clients that should share those records. Keep the key in your client configuration or runtime environment. Follow the [LLM integration guide](docs/customer/llm-integration.md) to pass only the current question and relevant Marvnor results to your model.
+Use one Key per independent project. Your AI saves confirmed or sourced facts and queries Marvnor when it needs project memory. Tasks that do not depend on saved facts stay with your existing AI and tools. [Usage test evidence](docs/benchmarks/2026-10-25/recommended-usage.md).
 
-**Recommended pattern:** use one key for one independent project. Save only important user-confirmed or sourced facts. Call Marvnor when a question needs project memory; send the model the current question plus all six fields of relevant results. Ask the user to resolve conflicts, treat `UNKNOWN` as insufficient evidence, and correct changed facts in place. Tasks that do not depend on saved project facts can go directly to the model.
-
-## Try it before signing up
-
-On the [product home](https://api.marvnor.com/home?lang=en), select **Create a test API Key**. You get 500 points for 30 days to try your own material; save the Key when it is shown. Before the trial expires, [register](https://api.marvnor.com/register?lang=en) in the same browser and confirm the transfer to keep the same Key and saved facts. Registration separately grants 1,000 points; unused guest points do not transfer. [Getting started](docs/customer/developer-trial.md).
-
-Trial calls use the trial allowance. After registration, usage follows the current plan; Marvnor does not automatically charge external payment methods.
-
-Download [quickstart.py](https://raw.githubusercontent.com/wendelxia/marvnor/main/examples/quickstart.py), then run:
-
-```sh
-python quickstart.py
-```
-
-Paste your API Key at the hidden prompt. The example verifies a saved fact, detects conflicting values, resolves the conflict, corrects the fact, then deletes only its own demo data. Python 3.9+, no dependencies. API calls consume points according to the current pricing. [Setup and recorded results](examples/README.md).
+Prefer direct HTTP? [Run the Python example](examples/README.md) to save, verify, resolve a conflict, correct and delete its own test data. No SDK or dependencies are required.
 
 Latest news, October 10: [Marvnor reports stronger record-based judgments and a 98.2% input reduction in a long-history test](NEWS.md) · [中文新闻稿](docs/news/2026-10-10-benchmark-results.zh-CN.md)
 
@@ -51,17 +37,12 @@ October 10, 2026 rerun:
 
 The public suite returned **1,227/1,227 expected verdicts across 62 requests**, covering input variants and repeated workloads. [Read the report and every comparison question](docs/benchmarks/2026-10-10/rerun.md) or [inspect the data](docs/benchmarks/2026-10-10/rerun-results.json).
 
-## Connect it to your application
+## Documentation
 
-Call `POST /v1/evaluate` for explicit claims, or `POST /v1/recall` with the current question to find relevant saved records. Each answer contains six fields in the public response: `conclusion`, `conflict`, `reason`, `path`, `decision`, and `evidence_kind`. A multi-part question may return several answers, not one overall verdict.
+- [Quickstart](USER_QUICKSTART.md): connect your AI, use project memory and continue after trial.
+- [API reference](PUBLIC_EVALUATION_API.md): requests, six-field answers, correction, deletion and batch imports.
 
-- [Quickstart](USER_QUICKSTART.md): save, verify and delete a demonstration record.
-- [API reference](PUBLIC_EVALUATION_API.md): requests and six-field answers.
-- [Record management](docs/customer/record-management.md): correct records, delete selected data and import in chunks.
-- [LLM integration](docs/customer/llm-integration.md): forward the current question and relevant results to your model.
-- [Usage guide](USAGE.md): account setup and everyday operation.
-
-[Chinese web documentation](https://api.marvnor.com/docs) · [Product introduction](INTRODUCTION.md) · [Test index and archives](TESTS.md) · [News](NEWS.md) · [Public materials license](LICENSE)
+[中文使用说明](https://api.marvnor.com/docs?lang=zh-CN) · [Test index and archives](TESTS.md) · [News](NEWS.md) · [Public materials license](LICENSE)
 
 Send feedback and test results to [wendelxia@gmail.com](mailto:wendelxia@gmail.com). Keep account keys and private customer material out of feedback.
 

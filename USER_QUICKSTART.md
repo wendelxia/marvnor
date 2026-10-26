@@ -1,108 +1,42 @@
 # Marvnor Quickstart
 
-Marvnor saves evidence-backed or user-confirmed facts under one key, finds and verifies records relevant to the current question, and flags conflicts. Your existing AI writes the answer. No Marvnor client download or extra model setup is required.
+Marvnor stores project facts, retrieves relevant records, verifies claims against them, and flags conflicts. Your existing AI handles the task and writes the answer. No client download or extra model is required.
 
-Open the [product home](https://api.marvnor.com/home) and select “Create a test API Key” to try it without signing up: the guest key has 500 points and lasts 30 days. The key is shown only once. Before the trial expires, sign up or sign in in that same browser and confirm the transfer to keep the same key and saved facts. Unused guest points do not add to your account; the registration page shows the separate sign-up offer.
+## Three steps
 
-During the trial, open [Connect an AI tool](https://api.marvnor.com/connect) in the same browser where you created the key. Add that key to the AI you already use. Tell it a specific fact and its evidence, such as “Order 101 is paid, supported by receipt 123,” then ask it to save the fact and check the receipt. The [LLM integration guide](docs/customer/llm-integration.md) explains the tool setup and working rule.
-
-## Recommended usage
-
-Use one key for one independent project. Save only important user-confirmed or sourced facts, constraints, decisions, and states. When a question depends on project memory, call `recall` first; use `verify` for a precise claim. Send the model only the current question and all six fields of relevant results. Show conflicts for user confirmation, treat `UNKNOWN` as insufficient evidence, and correct changed facts in place. Creative writing, translation, ordinary code generation, and self-contained mathematics can go directly to the model unless they depend on saved project facts.
+1. [Create a test Key](https://api.marvnor.com/home?lang=en): 500 points for 30 days, without signing up. Save the Key when shown. Use one Key per independent project; Agents sharing that project can share its Key.
+2. Open [Connect an AI tool](https://api.marvnor.com/connect?lang=en) in the same browser and follow the setup for your AI. Keep the Key in the connection settings, not in chat.
+3. Give your connected Agent this working rule, then talk normally:
 
 ```text
-In a host integration that controls model input, use Marvnor as a gateway when a task needs project memory: retrieve and verify first, then send only the current question and relevant Marvnor results to the LLM. Ask the user to resolve conflicts, state unknowns plainly, and save only important user-confirmed or sourced facts.
+Use Marvnor on demand for project memory; call immediately. Send only the current question and relevant results. Handle other tasks from source/files. Save confirmed or sourced facts. For correction/deletion, fetch missing old values, then complete the operation. Discuss proposals/guesses without saving. Never save secrets, personal data or full chats. Show conflicts and ask; clarify ambiguity. Non-conflict UNKNOWN means memory lacks evidence: check sources. Answer verified parts independently.
 ```
 
-`verify` and `recall` return six-field answers. Save receipts are not verification answers. The former long-text import page and document tools are closed; facts saved before their retirement remain available under the same key.
+## Everyday use
 
-The developer example below calls Marvnor directly from your own application: save a fact, verify it, then delete the test record.
+- **Save:** “Remember that this project must pass regression tests before release. This is a confirmed rule.”
+- **Recall:** In a new chat, ask “What must this project do before release? Check Marvnor.”
+- **Correct:** “Change the API timeout from 30 seconds to 60 seconds. This change is confirmed.”
+- **Delete:** “Delete the test fact we just added.”
 
-**Want a ready-to-run file?** [Run the five-stage demo](examples/README.md) to verify, detect conflicts, correct and delete synthetic records. The shorter example below shows the basic request pattern.
+Your AI calls the five tools for saving, retrieval, verification, correction and deletion. You do not need to write parameters or keep a receipt table. When old facts match more than one record, choose the correct candidate. Corrections and deletions affect conclusions that depend on those records; other records and the Key remain.
 
-[API reference](PUBLIC_EVALUATION_API.md) · [Edit and delete records](docs/customer/record-management.md) · [LLM integration](docs/customer/llm-integration.md)
+## Reading results
 
-## 1. Prepare your API key
+Verification and recall answers have six fields: `conclusion`, `conflict`, `reason`, `path`, `decision`, and `evidence_kind`. Keep all six fields of relevant answers. Save/edit/delete receipts are operation results, not verification answers.
 
-Create a guest Key on the [product home](https://api.marvnor.com/home), or sign in to the [customer portal](https://api.marvnor.com/) to create one. Check your available points. Set `MARVNOR_API_TOKEN` in your application's runtime environment. The older `MARVNOR_API_KEY` name also works in the downloadable example. Do not send the Key to an LLM or put it in browser-side code.
+A conflict needs confirmation of the competing values. `UNKNOWN` means memory lacks enough evidence, not that a claim is false; the AI can check current sources and answer verified parts. Marvnor supplements project memory, not current source code, original material, compilation or unrelated reasoning.
 
-The example requires Python 3 and no third-party packages. If the environment variable is not set, the script asks for the key using hidden input.
+Only an integration that controls model input can send just the current question and relevant results. An MCP connection cannot remove history the host has already sent. When comparing costs, include fact extraction, updates, Marvnor usage and model calls, including cache pricing.
 
-## 2. Run the example
+## Keep your memory
 
-Save this code as `marvnor_demo.py` and run `python marvnor_demo.py`. It generates a small amount of real API usage. It deletes only its newly created demonstration record, never all memory.
+Before a trial expires, sign up or sign in in the same browser and confirm the transfer to keep the Key and saved facts. Registration separately grants 1,000 points; unused guest points do not transfer.
 
-```python
-import getpass
-import json
-import os
-import urllib.error
-import urllib.request
-import uuid
+Saved facts are sent to Marvnor and may appear in results. After 30 days of inactivity, a Key becomes invalid and its memory enters cleanup. Current allowances and pricing are in the [plan catalog](https://api.marvnor.com/v1/plans).
 
-BASE_URL = "https://api.marvnor.com"
-API_KEY = (os.environ.get("MARVNOR_API_TOKEN") or os.environ.get("MARVNOR_API_KEY")
-           or getpass.getpass("Marvnor API Key: "))
+## Direct API
 
+The [API reference](PUBLIC_EVALUATION_API.md) covers authentication, requests, results, correction, deletion and batch imports. No SDK is required.
 
-def request(method, path, payload=None):
-    body = None if payload is None else json.dumps(payload, ensure_ascii=False).encode("utf-8")
-    req = urllib.request.Request(
-        BASE_URL + path,
-        data=body,
-        method=method,
-        headers={
-            "Authorization": "Bearer " + API_KEY,
-            "Content-Type": "application/json",
-        },
-    )
-    try:
-        with urllib.request.urlopen(req, timeout=60) as response:
-            return json.load(response)
-    except urllib.error.HTTPError as error:
-        raise RuntimeError(f"HTTP {error.code}: {error.read().decode('utf-8')}") from None
-
-
-demo_id = "demo-" + uuid.uuid4().hex
-fact = {
-    "source": demo_id,
-    "relation": "status",
-    "target": "paid",
-    "client_record_id": demo_id,
-}
-print("Test ID:", demo_id)
-written = request("POST", "/v1/relations", {"relations": [fact]})
-record_id = written["record_ids"][0]
-print("Write succeeded:", written["ok"])
-
-query = {"questions": [{
-    "id": "check",
-    "source": demo_id,
-    "relation": "status",
-    "target": "paid",
-}]}
-try:
-    answer = request("POST", "/v1/evaluate", query)["answers"]["check"]
-    print("Verification result:", json.dumps(answer, ensure_ascii=False))
-finally:
-    deleted = request("POST", "/v1/relations/delete", {"record_ids": [record_id]})
-    print("Test records deleted:", deleted["deleted_count"])
-
-after = request("POST", "/v1/evaluate", query)["answers"]["check"]
-print("After deletion:", after["conclusion"])
-```
-
-## 3. Check the result
-
-Normally, verification after the write returns `TRUE` with `conflict: false`; deletion removes `1` record; verification after deletion returns `UNKNOWN`. Each answer has exactly six fields: `conclusion`, `conflict`, `reason`, `path`, `decision`, and `evidence_kind`.
-
-Read the six fields together. If the only saved record is `status=paid`, asking whether `status=unpaid` normally remains `UNKNOWN`; it does not become `FALSE` without explicit negative evidence for that claim. Inspect candidate values for conflicts and obtain more evidence for unknowns. See the [six-field result table](PUBLIC_EVALUATION_API.md#read-the-six-fields-together).
-
-If the write times out, the record may already have been saved. Use the printed test ID to [delete by your own record ID](docs/customer/record-management.md). Do not clear the entire key's memory.
-
-- `401`: check that the key is valid.
-- `402`: check your available quota.
-- `UNKNOWN`: check naming, key, context, and time. Do not treat it as a negative conclusion.
-- `conflict: true`: check the conflicting values; do not let the LLM arbitrarily select one.
-
-This completes the smallest working flow. For a production integration, keep a mapping between original facts, record receipts, and sources in your own system. Follow the [LLM integration guide](docs/customer/llm-integration.md) to send only the current question and relevant results to your model.
+[Run the example](examples/README.md) · [Usage test evidence](docs/benchmarks/2026-10-25/recommended-usage.md) · [中文说明](https://api.marvnor.com/docs?lang=zh-CN)
