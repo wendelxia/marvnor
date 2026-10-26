@@ -76,7 +76,7 @@ Local feature tests confirmed that an in-place edit made the new value supported
 
 Applications can correct outdated facts, clean up test imports and retain the rest of their project memory. Record receipts remained usable after restart.
 
-[Memory tests](rerun.md#gateway-workflow-and-memory-maintenance) · [How to edit and delete records](../../../PUBLIC_EVALUATION_API.md#6-edit-delete-and-import)
+[Memory tests](rerun.md#gateway-workflow-and-memory-maintenance) · [How to edit and delete records](https://api.marvnor.com/docs/api?lang=en)
 
 ---
 
