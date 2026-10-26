@@ -41,12 +41,12 @@ Replay reads the saved JSON only; it is **not** a new API call. A new live run c
 - **401:** check that you used a valid customer API key.
 - **402:** check available quota in the portal.
 - **Network timeout:** a write may have committed. Do not blindly repeat the write. The script attempts targeted cleanup and prints its unique `demo-...` subject.
-- **Cleanup not confirmed:** use [targeted deletion by complete fact](../docs/customer/record-management.md#delete-by-complete-fact-when-you-did-not-save-an-id) for that exact subject, relation `status`, and the two targets `pending` / `paid`. Never clear the whole key to remove demo data.
+- **Cleanup not confirmed:** use [targeted deletion by complete fact](../PUBLIC_EVALUATION_API.md#delete-by-complete-fact-when-you-did-not-save-an-id) for that exact subject, relation `status`, and the two targets `pending` / `paid`. Never clear the whole key to remove demo data.
 - **Unexpected verdict:** keep the output and contact [support](mailto:wendelxia@gmail.com). Do not include your key.
 
 ## What you built
 
-A working record lifecycle for an AI application: verify, detect ambiguity, correct the source of truth and remove selected memory. Next, [send only the current question and relevant results to your LLM](../docs/customer/llm-integration.md).
+A working record lifecycle for an AI application: verify, detect ambiguity, correct the source of truth and remove selected memory. Next, [send only the current question and relevant results to your LLM](../USER_QUICKSTART.md).
 
 ## Test the example locally
 

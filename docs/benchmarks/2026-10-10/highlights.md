@@ -76,8 +76,8 @@ Local feature tests confirmed that an in-place edit made the new value supported
 
 Applications can correct outdated facts, clean up test imports and retain the rest of their project memory. Record receipts remained usable after restart.
 
-[Memory tests](rerun.md#gateway-workflow-and-memory-maintenance) · [How to edit and delete records](../../customer/record-management.md)
+[Memory tests](rerun.md#gateway-workflow-and-memory-maintenance) · [How to edit and delete records](../../../PUBLIC_EVALUATION_API.md#6-edit-delete-and-import)
 
 ---
 
-[Full test report and methods](rerun.md) · [Per-question data](rerun-results.json) · [Local feature review](current-version.md) · [Historical methods](methods.md) · [Historical data](data.json) · [Integration guide](../../customer/llm-integration.md)
+[Full test report and methods](rerun.md) · [Per-question data](rerun-results.json) · [Local feature review](current-version.md) · [Historical methods](methods.md) · [Historical data](data.json) · [Integration guide](../../../USER_QUICKSTART.md)

@@ -193,4 +193,4 @@ Keep the date, sample conditions, and environment with any figures. Do not count
 
 Earlier versions also had failing examples. This collection selects traceable tests that illustrate specific uses; it does not endorse every version or every scenario.
 
-[Results and source SHA-256 fingerprints](data.json) · [Benefits overview](highlights.md) · [Current customer documentation](../../../USAGE.md)
+[Results and source SHA-256 fingerprints](data.json) · [Benefits overview](highlights.md) · [Current customer documentation](../../../USER_QUICKSTART.md)
