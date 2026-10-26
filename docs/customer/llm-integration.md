@@ -6,9 +6,9 @@ Marvnor saves the facts you provide, finds and verifies records relevant to the 
 
 ## Connect an AI tool
 
-Create a guest test key (500 points for 30 days) from the [product home](https://api.marvnor.com/home), then open [Connect an AI tool](https://api.marvnor.com/connect) in the same browser. Or sign in to the customer portal to create a key. Follow the instructions for your current AI. Use the same key for saving and querying. Ask your AI to check its Marvnor connection after setup; the optional check on the web page only tests the page's connection to the service. Keep the key in the tool configuration or runtime environment, never in chat, frontend code, or public files.
+Create a guest test key (500 points for 30 days) from the [product home](https://api.marvnor.com/home), then open [Connect an AI tool](https://api.marvnor.com/connect) in the same browser. Or sign in to the customer portal to create a key. Follow the instructions for your current AI. Use the same key for saving and querying. Test the connection with a small, non-sensitive fact: save it, recall it, then delete it. Keep the key in the tool configuration or runtime environment, never in chat, frontend code, or public files.
 
-The MCP connector exposes seven tools: `check_connection`, `remember_facts`, `verify`, `recall`, `browse_candidates`, `correct_fact`, and `forget_facts`. `verify` checks an explicit claim; `recall` finds and verifies records relevant to the current question; `browse_candidates` helps when the saved fields for a known subject are not yet known. Each verification or recall answer has six fields; one question may produce several answers. `check_connection` does not charge or write data. Correction and deletion change only the records you specify; the connector has no clear-all or key-revocation tool.
+The MCP connector exposes five tools: `remember_facts`, `recall`, `verify`, `correct_fact`, and `forget_facts`. `verify` checks an explicit claim; `recall` finds and verifies records relevant to the current question. Each verification or recall answer has six fields; one question may produce several answers. Correction and deletion change only the records you specify; the connector has no clear-all or key-revocation tool.
 
 Give your AI this working rule:
 
