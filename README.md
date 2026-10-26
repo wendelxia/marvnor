@@ -8,11 +8,11 @@ Marvnor is a proprietary hosted MCP server and HTTP API for agent memory and rec
 
 Use it to check project dependencies, business states, time-sensitive records and conflicting information. Keep confirmed records between questions and pass only the results needed for the next answer.
 
-[Create a test Key](https://api.marvnor.com/home?lang=en) · [Quickstart](USER_QUICKSTART.md) · [API reference](PUBLIC_EVALUATION_API.md) · [Recorded demo](https://wendelxia.github.io/marvnor/)
+[Create a test Key](https://api.marvnor.com/home?lang=en) · [Quickstart](https://api.marvnor.com/docs?lang=en) · [API reference](https://api.marvnor.com/docs/api?lang=en) · [Recorded demo](https://wendelxia.github.io/marvnor/)
 
 ## Get started
 
-Create a trial Key, then [connect your existing AI](https://api.marvnor.com/connect?lang=en). Follow the [quickstart](USER_QUICKSTART.md) for setup, the working rule and everyday examples. Five tools handle saving, retrieval, verification, correction and deletion.
+Create a trial Key, then [connect your existing AI](https://api.marvnor.com/connect?lang=en). Follow the [quickstart](https://api.marvnor.com/docs?lang=en) for setup, the working rule and everyday examples. Five tools handle saving, retrieval, verification, correction and deletion.
 
 - **MCP endpoint:** `https://api.marvnor.com/v1/mcp`
 - **Authentication:** `Authorization: Bearer <MARVNOR_API_KEY>`
@@ -36,11 +36,6 @@ October 10, 2026 rerun:
 | Complex logic under 20 concurrent requests | Every request returned 20/20 expected verdicts; median request time 603 ms | Correct batch judgments during the measured concurrent workload |
 
 The public suite returned **1,227/1,227 expected verdicts across 62 requests**, covering input variants and repeated workloads. [Read the report and every comparison question](docs/benchmarks/2026-10-10/rerun.md) or [inspect the data](docs/benchmarks/2026-10-10/rerun-results.json).
-
-## Documentation
-
-- [Quickstart](USER_QUICKSTART.md): connect your AI, use project memory and continue after trial.
-- [API reference](PUBLIC_EVALUATION_API.md): requests, six-field answers, correction, deletion and batch imports.
 
 [中文使用说明](https://api.marvnor.com/docs?lang=zh-CN) · [Test index and archives](TESTS.md) · [News](NEWS.md) · [Public materials license](LICENSE)
 
