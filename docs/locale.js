@@ -85,6 +85,7 @@
   const attributeNodes = [...document.querySelectorAll('[data-i18n-attr]')];
   const buttons = [...document.querySelectorAll('[data-lang]')];
   const portalLinks = [...document.querySelectorAll('[data-portal-link]')];
+  const feedbackImages = [...document.querySelectorAll('[data-feedback-image]')];
   const homeLink = document.querySelectorAll('[data-home-link]')[0];
   const switcher = document.querySelectorAll('[data-locale-switch]')[0];
   const originalTitle = document.title;
@@ -116,6 +117,11 @@
       node.setAttribute(node.dataset.i18nAttribute, chinese ? translated[node.dataset.i18nAttr] : originalAttributes.get(node));
     }
     for (const button of buttons) button.setAttribute('aria-pressed', String(button.dataset.lang === language));
+    for (const image of feedbackImages) {
+      image.src = chinese ? image.dataset.zhSrc : image.dataset.enSrc;
+      image.height = Number(chinese ? image.dataset.zhHeight : image.dataset.enHeight);
+      image.closest('a').href = image.src;
+    }
     for (const link of portalLinks) {
       const destination = new URL(link.href);
       destination.searchParams.set('lang', language);

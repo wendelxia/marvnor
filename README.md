@@ -27,11 +27,13 @@ Latest news, October 10: [Marvnor reports stronger record-based judgments and a 
 
 **Before**
 
-<a href="docs/assets/feedback-before.png"><img src="docs/assets/feedback-before.png" width="560" alt="Original anonymous screenshot: before connecting"></a>
+<a href="docs/assets/feedback-before-en.png"><img src="docs/assets/feedback-before-en.png" width="560" alt="English translation of the anonymous before screenshot"></a>
 
 **After**
 
-<a href="docs/assets/feedback-after.png"><img src="docs/assets/feedback-after.png" width="560" alt="Original anonymous user feedback: after connecting"></a>
+<a href="docs/assets/feedback-after-en.png"><img src="docs/assets/feedback-after-en.png" width="560" alt="English translation of the anonymous after screenshot"></a>
+
+Chinese originals: [Before](docs/assets/feedback-before.png) · [After](docs/assets/feedback-after.png).
 
 ## Results that show the difference
 
