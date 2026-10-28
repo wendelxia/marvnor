@@ -145,16 +145,16 @@ test('raw API response and command output remain unmodified in HTML', () => {
   assert.match(html, /data-lang="zh-CN"/);
 });
 
-test('user story is translated, attributed and links to the anonymous case', () => {
+test('feedback uses original images instead of a written case', () => {
   const app = page('https://example.test/marvnor/?lang=zh-CN');
-  assert.equal(app.elements.get('story.title').textContent, '更少重复，更有条理');
-  assert.match(app.elements.get('story.summary').textContent, /这位用户反馈/);
-  assert.match(html, /one user reported/);
-  const story = fs.readFileSync(path.join(__dirname, '..', 'docs', 'cases', 'project-conversation.md'), 'utf8');
-  assert.match(html, /href="https:\/\/github.com\/wendelxia\/marvnor\/blob\/main\/docs\/cases\/project-conversation.md"/);
-  assert.match(story, /## 中文/);
-  assert.match(story, /Quotes are translated excerpts/);
-  assert.doesNotMatch(story, /djet_live_|xwechat_files|!\[|\b(?:\d{1,3}\.){3}\d{1,3}\b/);
+  assert.equal(app.elements.get('feedback.title').textContent, '用户反馈');
+  for (const name of ['feedback-before.png', 'feedback-after.png']) {
+    assert.ok(fs.existsSync(path.join(__dirname, '..', 'docs', 'assets', name)));
+    assert.ok(html.includes(`src="assets/${name}"`));
+    assert.ok(html.includes(`href="assets/${name}"`));
+  }
+  assert.doesNotMatch(html, /project-conversation\.md|story\.summary|one user reported/);
+  assert.equal(fs.existsSync(path.join(__dirname, '..', 'docs', 'cases', 'project-conversation.md')), false);
 });
 
 test('landing page starts with the guest test key and keeps signup distinct', () => {
