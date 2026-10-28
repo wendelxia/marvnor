@@ -23,11 +23,11 @@ Prefer direct HTTP? [Run the Python example](examples/README.md) to save, verify
 
 Latest news, October 10: [Marvnor reports stronger record-based judgments and a 98.2% input reduction in a long-history test](NEWS.md) · [中文新闻稿](docs/news/2026-10-10-benchmark-results.zh-CN.md)
 
-## A user's experience
+## User feedback
 
-**Less repetition. More clarity.** After connecting Marvnor in a project conversation, one user reported clearer AI replies, less repetition, and help addressing hidden issues in the project.
+<a href="docs/assets/feedback-before.png"><img src="docs/assets/feedback-before.png" width="560" alt="Original anonymous screenshot: before connecting"></a>
 
-[Read the anonymous story (English / 中文)](docs/cases/project-conversation.md).
+<a href="docs/assets/feedback-after.png"><img src="docs/assets/feedback-after.png" width="560" alt="Original anonymous user feedback: after connecting"></a>
 
 ## Results that show the difference
 
