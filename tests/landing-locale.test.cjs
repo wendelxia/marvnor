@@ -19,6 +19,11 @@ function page(url, stored = null, storageFails = false) {
   }
   const buttons = ['en', 'zh-CN'].map(lang => ({ dataset: { lang }, listeners: {}, setAttribute(name, value) { this[name] = value; }, addEventListener(name, fn) { this.listeners[name] = fn; } }));
   const portalLinks = [...html.matchAll(/<a\b[^>]*\bhref="([^"]+)"[^>]*\bdata-portal-link\b/g)].map(match => ({ href: match[1].replaceAll('&amp;', '&') }));
+  const feedbackImages = [...html.matchAll(/<img[^>]+data-feedback-image="([^"]+)"[^>]*>/g)].map(([tag, kind]) => {
+    const link = {};
+    const dataset = Object.fromEntries([...tag.matchAll(/data-([a-z-]+)="([^"]+)"/g)].map(([, key, value]) => [key.replace(/-([a-z])/g, (_, letter) => letter.toUpperCase()), value]));
+    return { kind, dataset, link, closest(selector) { assert.equal(selector, 'a'); return link; } };
+  });
   const homeLink = { href: new URL('./?lang=en', url).href };
   const switcher = { hidden: true };
   let current = new URL(url);
@@ -58,13 +63,14 @@ function page(url, stored = null, storageFails = false) {
       if (selector === '[data-i18n-attr]') return [...attrs.values()];
       if (selector === '[data-lang]') return buttons;
       if (selector === '[data-portal-link]') return portalLinks;
+      if (selector === '[data-feedback-image]') return feedbackImages;
       if (selector === '[data-home-link]') return [homeLink];
       if (selector === '[data-locale-switch]') return [switcher];
       throw Error(`unexpected selector: ${selector}`);
     },
   };
   vm.runInNewContext(fs.readFileSync(script, 'utf8'), { window, document, URL }, { filename: script });
-  return { elements, attrs, buttons, portalLinks, homeLink, switcher, window, document, get url() { return current; }, get stored() { return saved; } };
+  return { elements, attrs, buttons, portalLinks, feedbackImages, homeLink, switcher, window, document, get url() { return current; }, get stored() { return saved; } };
 }
 
 test('Chinese URL selects translated page, metadata, accessible labels and buttons', () => {
@@ -150,14 +156,33 @@ test('feedback uses original images instead of a written case', () => {
   assert.equal(app.elements.get('feedback.title').textContent, '用户反馈');
   assert.equal(app.elements.get('feedback.beforeLabel')?.textContent, '接入前');
   assert.equal(app.elements.get('feedback.afterLabel')?.textContent, '接入后');
-  assert.ok(html.includes('width="1110" height="887"'));
+  assert.ok(html.includes('width="1110" height="915"'));
   for (const name of ['feedback-before.png', 'feedback-after.png']) {
     assert.ok(fs.existsSync(path.join(__dirname, '..', 'docs', 'assets', name)));
-    assert.ok(html.includes(`src="assets/${name}"`));
-    assert.ok(html.includes(`href="assets/${name}"`));
+    assert.ok(html.includes(`data-zh-src="assets/${name}"`));
+    assert.ok(fs.existsSync(path.join(__dirname, '..', 'docs', 'assets', name.replace('.png', '-en.png'))));
   }
   assert.doesNotMatch(html, /project-conversation\.md|story\.summary|one user reported/);
   assert.equal(fs.existsSync(path.join(__dirname, '..', 'docs', 'cases', 'project-conversation.md')), false);
+});
+
+test('feedback image, full-size link and dimensions follow language in both directions', () => {
+  const app = page('https://example.test/marvnor/?lang=zh-CN');
+  assert.equal(app.feedbackImages.length, 2);
+  for (const image of app.feedbackImages) {
+    assert.equal(image.src, `assets/feedback-${image.kind}.png`);
+    assert.equal(image.link.href, image.src);
+    assert.equal(image.height, image.kind === 'before' ? 589 : 887);
+  }
+  app.buttons[0].listeners.click();
+  for (const image of app.feedbackImages) {
+    assert.equal(image.src, `assets/feedback-${image.kind}-en.png`);
+    assert.equal(image.link.href, image.src);
+    assert.equal(image.height, image.kind === 'before' ? 617 : 915);
+  }
+  app.window.history.back();
+  assert.equal(app.feedbackImages[0].src, 'assets/feedback-before.png');
+  assert.match(html, /Original Chinese screenshots/);
 });
 
 test('landing page starts with the guest test key and keeps signup distinct', () => {
