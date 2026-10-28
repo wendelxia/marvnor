@@ -25,6 +25,8 @@
     'signup.link': '开始接入 ↗',
     'signup.summary': '测试 Key → 使用自己的资料 → 到期前在同一浏览器注册并确认接续。',
     'feedback.title': '用户反馈',
+    'feedback.beforeLabel': '接入前',
+    'feedback.afterLabel': '接入后',
     'feedback.before': '匿名用户原始截图：接入之前。点击放大。',
     'feedback.after': '匿名用户原始反馈截图：接入之后。点击放大。',
     'demo.eyebrow': '一个订单，五个步骤',

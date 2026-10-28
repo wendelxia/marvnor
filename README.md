@@ -25,7 +25,11 @@ Latest news, October 10: [Marvnor reports stronger record-based judgments and a 
 
 ## User feedback
 
+**Before**
+
 <a href="docs/assets/feedback-before.png"><img src="docs/assets/feedback-before.png" width="560" alt="Original anonymous screenshot: before connecting"></a>
+
+**After**
 
 <a href="docs/assets/feedback-after.png"><img src="docs/assets/feedback-after.png" width="560" alt="Original anonymous user feedback: after connecting"></a>
 

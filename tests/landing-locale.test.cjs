@@ -148,6 +148,9 @@ test('raw API response and command output remain unmodified in HTML', () => {
 test('feedback uses original images instead of a written case', () => {
   const app = page('https://example.test/marvnor/?lang=zh-CN');
   assert.equal(app.elements.get('feedback.title').textContent, '用户反馈');
+  assert.equal(app.elements.get('feedback.beforeLabel')?.textContent, '接入前');
+  assert.equal(app.elements.get('feedback.afterLabel')?.textContent, '接入后');
+  assert.ok(html.includes('width="1110" height="887"'));
   for (const name of ['feedback-before.png', 'feedback-after.png']) {
     assert.ok(fs.existsSync(path.join(__dirname, '..', 'docs', 'assets', name)));
     assert.ok(html.includes(`src="assets/${name}"`));
