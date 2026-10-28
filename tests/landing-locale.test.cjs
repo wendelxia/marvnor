@@ -77,7 +77,8 @@ test('Chinese URL selects translated page, metadata, accessible labels and butto
   assert.equal(app.buttons[1]['aria-pressed'], 'true');
   assert.equal(app.stored, 'zh-CN');
   assert.equal(app.switcher.hidden, false);
-  assert.equal(app.portalLinks.length, 4);
+  assert.deepEqual(new Set(app.portalLinks.map(link => new URL(link.href).pathname)),
+    new Set(['/docs/api', '/login', '/home', '/register', '/docs']));
   assert(app.portalLinks.every(link => new URL(link.href).searchParams.get('lang') === 'zh-CN'));
   assert.equal(new URL(app.homeLink.href).searchParams.get('lang'), 'zh-CN');
 });
@@ -92,7 +93,8 @@ test('switching to English updates URL and preserves unrelated query parameters'
   assert.equal(app.buttons[0]['aria-pressed'], 'true');
   assert.equal(app.stored, 'en');
   assert(app.portalLinks.every(link => new URL(link.href).searchParams.get('lang') === 'en'));
-  assert.equal(new URL(app.portalLinks[1].href).searchParams.get('utm_source'), 'github_pages');
+  const trialLink = app.portalLinks.find(link => new URL(link.href).pathname === '/home');
+  assert.equal(new URL(trialLink.href).searchParams.get('utm_source'), 'github_pages');
 });
 
 test('saved language works without URL and blocked storage falls back safely', () => {
@@ -141,6 +143,18 @@ test('raw API response and command output remain unmodified in HTML', () => {
   assert.match(html, /<script src="locale\.js" defer><\/script>/);
   assert.match(html, /data-lang="en"/);
   assert.match(html, /data-lang="zh-CN"/);
+});
+
+test('user story is translated, attributed and links to the anonymous case', () => {
+  const app = page('https://example.test/marvnor/?lang=zh-CN');
+  assert.equal(app.elements.get('story.title').textContent, '更少重复，更有条理');
+  assert.match(app.elements.get('story.summary').textContent, /这位用户反馈/);
+  assert.match(html, /one user reported/);
+  const story = fs.readFileSync(path.join(__dirname, '..', 'docs', 'cases', 'project-conversation.md'), 'utf8');
+  assert.match(html, /href="https:\/\/github.com\/wendelxia\/marvnor\/blob\/main\/docs\/cases\/project-conversation.md"/);
+  assert.match(story, /## 中文/);
+  assert.match(story, /Quotes are translated excerpts/);
+  assert.doesNotMatch(story, /djet_live_|xwechat_files|!\[|\b(?:\d{1,3}\.){3}\d{1,3}\b/);
 });
 
 test('landing page starts with the guest test key and keeps signup distinct', () => {
