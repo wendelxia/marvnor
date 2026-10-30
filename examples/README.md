@@ -1,8 +1,10 @@
-# Run the Marvnor demo
+# Recorded demo and reproduction
+
+For everyday use, follow the [MCP quickstart](https://api.marvnor.com/docs?lang=en). The material below reproduces the recorded API demonstration; it is not another setup path.
 
 See a saved fact become a conflict, resolve it, correct the remaining record, then delete the demo data. The five-stage example calls the public API directly. No SDK or third-party Python packages.
 
-## Start in three steps
+## Reproduce the recorded test
 
 1. Install Python 3.9 or later and [download quickstart.py](https://raw.githubusercontent.com/wendelxia/marvnor/main/examples/quickstart.py).
 2. Create a test Key from the [product home](https://api.marvnor.com/home?lang=en) without signing up (500 points for 30 days), and save it when shown.

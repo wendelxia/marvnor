@@ -143,9 +143,12 @@ test('all marked text and accessibility attributes have a Chinese translation', 
   assert.equal(keys.length, new Set(keys).size);
 });
 
-test('raw API response and command output remain unmodified in HTML', () => {
+test('recorded response stays intact and onboarding uses only the MCP setup', () => {
   assert.match(html, /"reason": "conflicting_values"/);
-  assert.match(html, /python quickstart\.py/);
+  const start = html.split('<section id="start"')[1].split('</section>')[0];
+  assert.match(start, /https:\/\/api\.marvnor\.com\/v1\/mcp/);
+  assert.match(start, /Authorization: Bearer &lt;MARVNOR_API_KEY&gt;/);
+  assert.doesNotMatch(start, /Python|quickstart\.py|download|hidden prompt/);
   assert.match(html, /<script src="locale\.js" defer><\/script>/);
   assert.match(html, /data-lang="en"/);
   assert.match(html, /data-lang="zh-CN"/);

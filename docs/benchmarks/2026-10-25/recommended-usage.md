@@ -27,7 +27,7 @@ The planned DeepSeek transport ablation received HTTP 402 for every request and 
 
 1. Use one key for one independent project.
 2. Save only important user-confirmed or sourced facts and update changes in place.
-3. Use `recall` for a current natural-language memory question, `verify` for a precise claim, and `browse_candidates` when the subject is known but its saved fields are not.
+3. Use `recall` for a current memory question or to list saved fields for a known subject, and `verify` for a precise claim.
 4. Forward the current question and all six fields of relevant results. Request source excerpts only when citations are needed.
 5. Ask the user to resolve conflicts. Treat `UNKNOWN` as insufficient evidence for the named claim, not as false and not as a verdict on the whole task.
 6. Continue to use source, file, RAG, compiler, and other domain tools for the material they own.
