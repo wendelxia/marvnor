@@ -3,23 +3,25 @@
 
   const storageKey = 'marvnor.site.language';
   const translated = {
-    'meta.description': '为 AI Agent 提供项目记忆：保存已确认的信息，按当前问题找回并核验记录，指出冲突，支持纠错与删除。',
+    'meta.description': 'Marvnor 守真大模型系统：延续项目记忆，依据已提供的记录核验说法，提示冲突，支持纠错与删除。',
     'meta.ogTitle': 'Marvnor：告别多窗口拼凑，一个对话无缝做完整个项目。',
-    'meta.ogDescription': '为 AI Agent 提供项目记忆：保存已确认的信息，按当前问题找回并核验记录，指出冲突，支持纠错与删除。',
+    'meta.ogDescription': 'Marvnor 守真大模型系统：延续项目记忆，依据已提供的记录核验说法，提示冲突，支持纠错与删除。',
     'brand.label': 'Marvnor 首页',
     'nav.label': '主导航',
     'locale.label': '语言',
     'chart.label': '最后一个问题的模型输入：完整历史 5,328 个 token；相关结果 95 个 token，减少 98.2%。',
     'skip': '跳转到正文',
     'nav.api': 'API 文档',
+    'nav.news': '新闻稿',
+    'news.href': 'news.zh-CN.html',
     'nav.signIn': '登录',
-    'hero.eyebrow': 'AI AGENT 的项目记忆',
+    'hero.eyebrow': '守真大模型系统',
     'hero.title1': '告别多窗口拼凑，',
     'hero.title2': '一个对话无缝做完整个项目。',
-    'hero.lead': 'Marvnor 是 AI 的托管项目记忆：保存确认或有依据的需求、决定和变更，按问题找回记录、核验说法，冲突请你确认；支持纠错与定向删除。',
-    'hero.lead2': '当前问题加相关结果，交给原来的模型回答，减少重复历史和反复交代。',
+    'hero.lead': 'Marvnor 是守真大模型系统。延续项目记忆，依据已提供的记录核验说法，冲突请你确认，过时信息随时纠错或删除。',
+    'hero.lead2': '用相关结果代替反复交代项目背景，不需要把现有应用推倒重来。',
     'hero.try': '免注册创建测试 Key',
-    'hero.results': '查看实际 API 结果',
+    'hero.results': '查看实测演示',
     'hero.trialNote': '500 积分 · 30 天试用',
     'hero.signupNote': '之后注册，另领 1,000 积分 ↗',
     'signup.link': '开始接入 ↗',
@@ -41,7 +43,6 @@
     'step2.title': '加入冲突记录',
     'step2.action': '再保存',
     'step2.result': '两种状态均为 UNKNOWN，存在冲突。请核对原始依据。',
-    'step2.response': '查看实际响应',
     'step3.title': '处理冲突',
     'step3.action': '在这个示例中，删除错误的“paid”记录。',
     'step3.result': '记录再次支持 pending，冲突消失。',
@@ -76,7 +77,7 @@
     'start.try': '创建测试 Key ↗',
     'contact.title': '正在开发 AI 代理或项目记忆工具？',
     'contact.description': '带来一个具体场景，使用非敏感样本数据一起测试。',
-    'footer.tagline': 'Marvnor · 记录型记忆与冲突管理',
+    'footer.tagline': 'Marvnor · 守真大模型系统',
     'footer.llm': '如何配合大模型',
     'footer.tests': '测试与方法',
   };
@@ -109,7 +110,7 @@
   function applyLanguage(language) {
     const chinese = language === 'zh-CN';
     document.documentElement.lang = chinese ? 'zh-CN' : 'en';
-    document.title = chinese ? 'Marvnor | AI Agent 的项目记忆' : originalTitle;
+    document.title = chinese ? 'Marvnor | 守真大模型系统' : originalTitle;
     for (const node of textNodes) {
       node.textContent = chinese ? translated[node.dataset.i18n] : originalText.get(node);
     }

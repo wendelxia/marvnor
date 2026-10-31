@@ -1,0 +1,7 @@
+.press{width:min(760px,calc(100% - 3rem));margin:3.5rem auto 5rem;overflow-wrap:anywhere}
+.press-heading{margin-bottom:2.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--line)}
+.press h1{font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.25;letter-spacing:-.025em;text-wrap:balance}
+.press h2{font-size:clamp(1.35rem,2.4vw,1.7rem);line-height:1.4;margin:2.5rem 0 1rem;letter-spacing:-.02em}
+.press p,.press li{line-height:1.85}.press p{margin-bottom:1.2rem}.press li{margin:.5rem 0}
+.press-date{color:var(--muted);font-size:.9rem}.press strong{font-weight:650}
+@media(max-width:767px){.press{width:calc(100% - 2rem);margin:2rem auto 3rem}.press .eyebrow{letter-spacing:.06em}}

@@ -76,7 +76,7 @@ function page(url, stored = null, storageFails = false) {
 test('Chinese URL selects translated page, metadata, accessible labels and buttons', () => {
   const app = page('https://example.test/marvnor/?lang=zh-CN&ref=demo', 'en');
   assert.equal(app.document.documentElement.lang, 'zh-CN');
-  assert.match(app.document.title, /项目记忆/);
+  assert.match(app.document.title, /守真大模型系统/);
   assert.match(app.elements.get('hero.lead').textContent, /记录/);
   assert.match(app.attrs.get('chart.label')['aria-label'], /5,328/);
   assert.match(app.attrs.get('meta.description').content, /记录/);
@@ -95,7 +95,7 @@ test('switching to English updates URL and preserves unrelated query parameters'
   assert.equal(app.url.searchParams.get('lang'), 'en');
   assert.equal(app.url.searchParams.get('ref'), 'demo');
   assert.equal(app.document.documentElement.lang, 'en');
-  assert.match(app.document.title, /Project memory/);
+  assert.match(app.document.title, /Truth-Preserving Model System/);
   assert.equal(app.buttons[0]['aria-pressed'], 'true');
   assert.equal(app.stored, 'en');
   assert(app.portalLinks.every(link => new URL(link.href).searchParams.get('lang') === 'en'));
@@ -143,8 +143,9 @@ test('all marked text and accessibility attributes have a Chinese translation', 
   assert.equal(keys.length, new Set(keys).size);
 });
 
-test('recorded response stays intact and onboarding uses only the MCP setup', () => {
-  assert.match(html, /"reason": "conflicting_values"/);
+test('recorded evidence remains linked and onboarding uses only the MCP setup', () => {
+  assert.match(html, /examples\/recorded-run\.json/);
+  assert.doesNotMatch(html, /"reason": "conflicting_values"/);
   const start = html.split('<section id="start"')[1].split('</section>')[0];
   assert.match(start, /https:\/\/api\.marvnor\.com\/v1\/mcp/);
   assert.match(start, /Authorization: Bearer &lt;MARVNOR_API_KEY&gt;/);
@@ -152,6 +153,23 @@ test('recorded response stays intact and onboarding uses only the MCP setup', ()
   assert.match(html, /<script src="locale\.js" defer><\/script>/);
   assert.match(html, /data-lang="en"/);
   assert.match(html, /data-lang="zh-CN"/);
+});
+
+test('news follows the selected language and both published articles retain test scope', () => {
+  const app = page('https://example.test/marvnor/?lang=zh-CN');
+  assert.equal(app.attrs.get('news.href').href, 'news.zh-CN.html');
+  for (const [file, lang, brand, scope] of [
+    ['news.html', 'en', 'Truth-Preserving Model System', 'structured records'],
+    ['news.zh-CN.html', 'zh-CN', '守真大模型系统', '结构化记录'],
+  ]) {
+    const article = fs.readFileSync(path.join(__dirname, '..', 'docs', file), 'utf8');
+    assert.ok(article.includes('lang="' + lang + '"'));
+    assert.ok(article.includes(brand));
+    assert.ok(article.includes(scope));
+    assert.ok(article.includes('98.2%'));
+    assert.equal((article.match(/<h1>/g) || []).length, 1);
+    assert.doesNotMatch(article, /Bearer|source, relation|source.*target|djet_live_|PRIVATE KEY/);
+  }
 });
 
 test('feedback uses original images instead of a written case', () => {
