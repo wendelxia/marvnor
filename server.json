@@ -2,9 +2,9 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.wendelxia/marvnor",
   "title": "Marvnor",
-  "description": "Hosted agent memory with record-based verification, conflict detection, correction and deletion.",
+  "description": "Truth-Preserving Model System: project memory, record-based verification, conflict detection and correction.",
   "version": "1.0.0",
-  "websiteUrl": "https://github.com/wendelxia/marvnor#connect-codex-or-vs-code-via-mcp",
+  "websiteUrl": "https://wendelxia.github.io/marvnor/",
   "remotes": [
     {
       "type": "streamable-http",

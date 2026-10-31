@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Marvnor | Project memory for AI agents</title>
-  <meta name="description" content="Project memory for AI agents: save confirmed decisions, retrieve and verify relevant records, flag conflicts, and correct or delete information." data-i18n-attr="meta.description" data-i18n-attribute="content">
+  <title>Marvnor | Truth-Preserving Model System</title>
+  <meta name="description" content="Marvnor, a Truth-Preserving Model System: carry project memory forward, verify claims against supplied records, surface conflicts and keep facts current." data-i18n-attr="meta.description" data-i18n-attribute="content">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Marvnor: Stop juggling chat windows. Complete your project in one seamless conversation." data-i18n-attr="meta.ogTitle" data-i18n-attribute="content">
-  <meta property="og:description" content="Project memory for AI agents: save confirmed decisions, retrieve and verify relevant records, flag conflicts, and correct or delete information." data-i18n-attr="meta.ogDescription" data-i18n-attribute="content">
+  <meta property="og:description" content="Marvnor, a Truth-Preserving Model System: carry project memory forward, verify claims against supplied records, surface conflicts and keep facts current." data-i18n-attr="meta.ogDescription" data-i18n-attribute="content">
   <meta property="og:url" content="https://wendelxia.github.io/marvnor/">
   <meta name="twitter:card" content="summary">
   <meta name="theme-color" content="#075fbd">
@@ -20,6 +20,7 @@
   <header class="wrap header">
     <a class="brand" href="./?lang=en" aria-label="Marvnor home" data-i18n-attr="brand.label" data-i18n-attribute="aria-label" data-home-link><span aria-hidden="true">M</span> Marvnor</a>
     <nav aria-label="Main navigation" data-i18n-attr="nav.label" data-i18n-attribute="aria-label">
+      <a href="news.html" data-i18n="nav.news" data-i18n-attr="news.href" data-i18n-attribute="href">News</a>
       <a href="https://api.marvnor.com/docs/api?lang=en" data-i18n="nav.api" data-portal-link>API docs</a>
       <a href="https://github.com/wendelxia/marvnor">GitHub</a>
       <a href="https://api.marvnor.com/login?lang=en" data-i18n="nav.signIn" data-portal-link>Sign in</a>
@@ -31,13 +32,13 @@
   </header>
   <main id="main" class="wrap">
     <section class="intro" aria-labelledby="headline">
-      <p class="eyebrow" data-i18n="hero.eyebrow">PROJECT MEMORY FOR AI AGENTS</p>
+      <p class="eyebrow" data-i18n="hero.eyebrow">TRUTH-PRESERVING MODEL SYSTEM</p>
       <h1 id="headline"><span data-i18n="hero.title1">Stop juggling chat windows.</span><br><span data-i18n="hero.title2">Complete your project in one seamless conversation.</span></h1>
-      <p class="lead" data-i18n="hero.lead">Marvnor is a proprietary hosted MCP/API memory service for AI agents. Save confirmed or sourced requirements, decisions and changes; retrieve relevant records, verify claims, flag conflicts for confirmation, and correct or delete records.</p>
-      <p class="lead" data-i18n="hero.lead2">Pass the current question and relevant results to your existing model, reducing repeated history and reminders.</p>
+      <p class="lead" data-i18n="hero.lead">Marvnor is a Truth-Preserving Model System. Keep project decisions available, verify claims against supplied records, flag conflicts for confirmation, and correct or delete outdated facts.</p>
+      <p class="lead" data-i18n="hero.lead2">Use relevant results instead of repeating project history. No need to rebuild your application.</p>
       <div class="actions">
         <a class="button primary" href="https://api.marvnor.com/home?lang=en&amp;utm_source=github_pages" data-portal-link><span data-i18n="hero.try">Create a test Key</span> <span aria-hidden="true">↗</span></a>
-        <a class="button secondary" href="#demo"><span data-i18n="hero.results">See actual API results</span> <span aria-hidden="true">↓</span></a>
+        <a class="button secondary" href="#demo"><span data-i18n="hero.results">See the recorded demonstration</span> <span aria-hidden="true">↓</span></a>
       </div>
       <p class="quiet" data-i18n="hero.trialNote">500 points · 30-day trial</p>
       <p><a href="https://api.marvnor.com/register?lang=en" data-i18n="hero.signupNote" data-portal-link>Register later for a separate 1,000 points ↗</a><br><a href="https://api.marvnor.com/docs?lang=en" data-i18n="signup.link" data-portal-link>Getting started ↗</a><br><span class="quiet" data-i18n="signup.summary">Test Key → Use your own material → Before expiry, register in the same browser to keep your Key and saved records.</span></p>
@@ -57,14 +58,7 @@
       <p class="section-copy" data-i18n="demo.description">An order has one payment status. What happens when saved records say both “pending” and “paid”?</p>
       <ol class="steps">
         <li><span class="number">01</span><div><h3 data-i18n="step1.title">Save a fact</h3><p><span data-i18n="step1.action">Store</span> <code>status = pending</code>.</p></div><div class="result"><strong>TRUE</strong><span data-i18n="step1.result">Pending is supported.</span></div></li>
-        <li class="conflict"><span class="number">02</span><div><h3 data-i18n="step2.title">Add a conflicting record</h3><p><span data-i18n="step2.action">Also store</span> <code>status = paid</code>.</p></div><div class="result"><strong>CONFLICT</strong><span data-i18n="step2.result">Both return UNKNOWN. Ask for clarification.</span><details><summary data-i18n="step2.response">See the actual response</summary><pre><code>{
-  "conclusion": "UNKNOWN",
-  "conflict": true,
-  "reason": "conflicting_values",
-  "path": ["paid", "pending"],
-  "decision": "needs_review",
-  "evidence_kind": "conflict"
-}</code></pre></details></div></li>
+        <li class="conflict"><span class="number">02</span><div><h3 data-i18n="step2.title">Add a conflicting record</h3><p><span data-i18n="step2.action">Also store</span> <code>status = paid</code>.</p></div><div class="result"><strong>CONFLICT</strong><span data-i18n="step2.result">Both return UNKNOWN. Ask for clarification.</span></div></li>
         <li><span class="number">03</span><div><h3 data-i18n="step3.title">Resolve the conflict</h3><p data-i18n="step3.action">Remove the incorrect “paid” record.</p></div><div class="result"><strong>TRUE</strong><span data-i18n="step3.result">Pending is supported again. No conflict.</span></div></li>
         <li><span class="number">04</span><div><h3 data-i18n="step4.title">Correct the remaining fact</h3><p><span data-i18n="step4.action">Edit the saved value to</span> <code>paid</code>.</p></div><div class="result"><strong>TRUE</strong><span data-i18n="step4.result">Paid is supported. Pending becomes UNKNOWN.</span></div></li>
         <li><span class="number">05</span><div><h3 data-i18n="step5.title">Delete the demo data</h3><p data-i18n="step5.action">Remove only this example’s records.</p></div><div class="result"><strong>UNKNOWN</strong><span data-i18n="step5.result">No remaining support for either value.</span></div></li>
@@ -91,6 +85,6 @@ Authorization: Bearer &lt;MARVNOR_API_KEY&gt;</code></pre><p class="quiet" data-
     </section>
     <section class="contact"><h2 data-i18n="contact.title">Building an agent or project-memory tool?</h2><p data-i18n="contact.description">Bring one concrete use case. Let’s test it with non-sensitive sample data.</p><a href="mailto:wendelxia@gmail.com?subject=Marvnor%20integration">wendelxia@gmail.com ↗</a></section>
   </main>
-  <footer class="wrap footer"><span data-i18n="footer.tagline">Marvnor · Record-based memory and conflict management</span><a href="https://api.marvnor.com/docs?lang=en" data-i18n="footer.llm" data-portal-link>How it fits your LLM</a><a href="https://github.com/wendelxia/marvnor/blob/main/TESTS.md" data-i18n="footer.tests">Tests &amp; methods</a></footer>
+  <footer class="wrap footer"><span data-i18n="footer.tagline">Marvnor · Truth-Preserving Model System</span><a href="https://api.marvnor.com/docs?lang=en" data-i18n="footer.llm" data-portal-link>How it fits your LLM</a><a href="https://github.com/wendelxia/marvnor/blob/main/TESTS.md" data-i18n="footer.tests">Tests &amp; methods</a></footer>
 </body>
 </html>

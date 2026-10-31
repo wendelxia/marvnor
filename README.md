@@ -1,18 +1,17 @@
 # Marvnor
 
-## Ready-to-use AI memory, connected through MCP
+## Truth-Preserving Model System
 
 [![M8ven Score](https://m8ven.ai/badge/mcp/wendelxia-marvnor-0jrgh6?v=1caeae5a89756c2dad15a4bd720eaa27)](https://m8ven.ai/mcp/wendelxia-marvnor-0jrgh6?s=readme)
 
-Marvnor is a hosted memory service for AI. It verifies claims against supplied records, not outside sources.
+Marvnor is a Truth-Preserving Model System for AI applications. Keep project decisions available, verify claims against supplied records, and surface conflicts before answering.
 
 ## What it does
 
-- **Save facts:** source, relation and target—for example, “Project X / uses database / Postgres”.
-- **Verify claims:** `TRUE` = supported, `FALSE` = refuted, `UNKNOWN` = insufficient evidence.
-- **Surface conflicting values** instead of silently choosing one.
-- **Correct or delete selected records.**
-- **Keep your model:** send the current question and relevant results; your model writes the answer.
+- **Carry project memory forward:** reuse confirmed requirements, decisions and changes.
+- **Answer with evidence:** distinguish supported, refuted and unknown claims; surface conflicting values for confirmation.
+- **Keep information current:** correct outdated facts and delete selected records.
+- **Reduce repeated history:** use the results relevant to the current question. No need to rebuild your application.
 
 Reuse confirmed project dependencies, business states and decisions across questions.
 
@@ -29,7 +28,7 @@ Reuse confirmed project dependencies, business states and decisions across quest
 
 Use one Key per independent project. Save confirmed or sourced facts; query Marvnor when project memory is needed. Other tasks stay with your existing AI and tools. [Usage test evidence](docs/benchmarks/2026-10-25/recommended-usage.md).
 
-Latest news, October 10: [Marvnor reports stronger record-based judgments and a 98.2% input reduction in a long-history test](NEWS.md) · [中文新闻稿](docs/news/2026-10-10-benchmark-results.zh-CN.md)
+Latest news, November 1: [Marvnor reports 40/40 record-verification results and 98.2% less final-question input](NEWS.md) · [中文新闻稿](docs/news/2026-11-01-results.zh-CN.md) · [Read on the website](https://wendelxia.github.io/marvnor/news.html)
 
 ## User feedback
 
@@ -49,13 +48,15 @@ October 10, 2026 rerun:
 
 | Test | Result | What it demonstrates |
 | --- | --- | --- |
-| Two structured record-verification sets | Marvnor: 20/20 in each. DeepSeek text answers across three runs: A 16/20 each; B 14/20, 15/20, 15/20 | More accurate judgments on the supplied records, including unknown and conflicting evidence |
+| Two structured record-verification sets | Marvnor: 20/20 in each. General-purpose model text answers across three runs: A 16/20 each; B 14/20, 15/20, 15/20 | More accurate judgments on the supplied records, including unknown and conflicting evidence |
 | Final question after 160 turns of synthetic history | Model input: 5,328 to 95 tokens, a 98.2% reduction; both answers correct | Reusable relevant facts sharply reduce repeated model input |
 | Original, shuffled and duplicated facts | 420/420 expected verdicts across seven datasets | Stable conclusions despite changes in input order and duplicate evidence |
 | Saved single-value conflicts, tested locally | Both incompatible values flagged; removing one restored support for the other | Conflict management across saved records |
 | Complex logic under 20 concurrent requests | Every request returned 20/20 expected verdicts; median request time 603 ms | Correct batch judgments during the measured concurrent workload |
 
 The public suite returned **1,227/1,227 expected verdicts across 62 requests**, covering input variants and repeated workloads. [Read the report and every comparison question](docs/benchmarks/2026-10-10/rerun.md) or [inspect the data](docs/benchmarks/2026-10-10/rerun-results.json).
+
+Team-run tests, not an independent audit. The verification comparison used the same facts and questions, submitted as structured records to Marvnor and text to the baseline; it does not measure general model intelligence. The 98.2% figure concerns one final request's model input, not total cost.
 
 [中文使用说明](https://api.marvnor.com/docs?lang=zh-CN) · [Test index and archives](TESTS.md) · [News](NEWS.md) · [Public materials license](LICENSE)
 
