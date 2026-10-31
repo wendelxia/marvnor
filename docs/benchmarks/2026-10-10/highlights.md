@@ -1,6 +1,6 @@
 # Marvnor: eight benefits demonstrated by tests
 
-Judge structured questions against supplied source, relation and target records before generating an answer. Flag conflicting values, reuse confirmed records and send the LLM only the results needed for the current question.
+Marvnor is a Truth-Preserving Model System for project memory and record-based verification. Flag conflicting values, reuse confirmed records and provide the results relevant to the current question.
 
 The October 10, 2026 public rerun returned **1,227/1,227 expected verdicts across 62 requests**, including input variants and concurrent repetitions. Local feature and maintenance tests checked saved-memory operations. Each result below links to its evidence.
 

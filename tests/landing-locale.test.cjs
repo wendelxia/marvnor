@@ -214,3 +214,20 @@ test('landing page starts with the guest test key and keeps signup distinct', ()
   assert.match(source, /'hero\.try': '免注册创建测试 Key'/);
   assert.match(source, /'hero\.trialNote': '500 积分 · 30 天试用'/);
 });
+
+test('retired news URLs point to current bilingual news without old implementation copy', () => {
+  const root = path.join(__dirname, '..');
+  for (const [file, target, brand] of [
+    ['2026-10-05-launch.md', 'news.html', 'Truth-Preserving Model System'],
+    ['2026-10-10-benchmark-results.zh-CN.md', 'news.zh-CN.html', '守真大模型系统'],
+  ]) {
+    const text = fs.readFileSync(path.join(root, 'docs', 'news', file), 'utf8');
+    assert.ok(text.includes(brand));
+    assert.ok(text.includes('https://wendelxia.github.io/marvnor/' + target));
+    assert.ok(text.includes('../../TESTS.md'));
+    assert.doesNotMatch(text, /source, relation and target|来源、关系和目标|专有托管|Decision Gateway/);
+  }
+  const highlights = fs.readFileSync(path.join(root, 'docs', 'benchmarks', '2026-10-10', 'highlights.md'), 'utf8');
+  assert.ok(highlights.includes('Truth-Preserving Model System'));
+  assert.doesNotMatch(highlights, /source, relation and target/);
+});
