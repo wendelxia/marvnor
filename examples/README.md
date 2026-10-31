@@ -1,8 +1,8 @@
 # Recorded demo and reproduction
 
-For everyday use, follow the [MCP quickstart](https://api.marvnor.com/docs?lang=en). The material below reproduces the recorded API demonstration; it is not another setup path.
+Everyday setup: [MCP quickstart](https://api.marvnor.com/docs?lang=en). Below: reproduce the recorded API demo.
 
-See a saved fact become a conflict, resolve it, correct the remaining record, then delete the demo data. The five-stage example calls the public API directly. No SDK or third-party Python packages.
+Five stages: save, conflict, resolve, correct, delete. Uses the public API; no SDK or third-party Python packages.
 
 ## Reproduce the recorded test
 
@@ -16,7 +16,7 @@ See a saved fact become a conflict, resolve it, correct the remaining record, th
 
 On macOS/Linux, use `python3` if that is your Python command. For automation, set `MARVNOR_API_TOKEN` in your server-side environment instead of using the prompt. The older `MARVNOR_API_KEY` name still works.
 
-This is a **live API call using your trial or account allowance**. It creates two synthetic facts under a new random subject, then deletes only those facts. It never clears your memory or revokes your key. The key is not printed, saved, or sent to a language model.
+**Live calls use your trial/account allowance.** The script creates two synthetic facts under a random subject and deletes only those facts. Other memory and your Key remain; the Key is never printed, saved or sent to a model.
 
 ## What you will see
 
@@ -28,7 +28,7 @@ This is a **live API call using your trial or account allowance**. It creates tw
 | Correct the remaining record to `paid` | UNKNOWN | TRUE | No |
 | Delete the demo data | UNKNOWN | UNKNOWN | No |
 
-The script checks all five stages and exits with status `0` only when they pass. Every printed answer retains the six public fields.
+Exit `0` means all five stages passed. Printed answers retain all six fields.
 
 This sequence passed against `https://api.marvnor.com` on October 10, 2026. [Inspect the recorded responses](recorded-run.json). To read that recording without an account, clone or download this repository and run:
 
@@ -36,7 +36,7 @@ This sequence passed against `https://api.marvnor.com` on October 10, 2026. [Ins
 python examples/quickstart.py --replay
 ```
 
-Replay reads the saved JSON only; it is **not** a new API call. A new live run can save its own synthetic results using `--output my-demo-run.json`; an existing file is never overwritten.
+Replay reads saved JSON **without API calls**. Use `--output my-demo-run.json` to save a live run's synthetic results; existing files are never overwritten.
 
 ## If the run stops
 
@@ -48,7 +48,7 @@ Replay reads the saved JSON only; it is **not** a new API call. A new live run c
 
 ## What you built
 
-A working record lifecycle for an AI application: verify, detect ambiguity, correct the source of truth and remove selected memory. Next, [send only the current question and relevant results to your LLM](https://api.marvnor.com/docs?lang=en).
+A verified record lifecycle. Next: [send the question and relevant results to your LLM](https://api.marvnor.com/docs?lang=en).
 
 ## Test the example locally
 
@@ -56,4 +56,4 @@ A working record lifecycle for an AI application: verify, detect ambiguity, corr
 python -m unittest discover -s examples -p "test_*.py" -v
 ```
 
-These tests use isolated fixtures, not a live account. They cover verdict checks, cleanup, timeouts, malformed responses, redirect refusal and keeping credentials out of errors.
+Isolated tests, no live account: verdicts, cleanup, timeouts, malformed responses, redirect refusal and credential-safe errors.
