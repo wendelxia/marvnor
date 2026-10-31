@@ -4,17 +4,17 @@
 
 [![M8ven Score](https://m8ven.ai/badge/mcp/wendelxia-marvnor-0jrgh6?v=1caeae5a89756c2dad15a4bd720eaa27)](https://m8ven.ai/mcp/wendelxia-marvnor-0jrgh6?s=readme)
 
-In one sentence: Marvnor is a hosted memory service for your AI. Save facts, then ask questions against those records. Its verdict is `TRUE` (supported), `FALSE` (contradicted), or `UNKNOWN` (not established). When saved values conflict, it flags them. Marvnor checks what the supplied records support; it does not invent missing evidence.
+Marvnor is a hosted memory service for AI. It verifies claims against supplied records, not outside sources.
 
 ## What it does
 
-- **Saves facts as records:** source, relation and target. For example, “Project X / uses database / Postgres”.
-- **Checks questions against those records.** `UNKNOWN` is a valid answer: when records do not cover a question, it says so instead of guessing.
-- **Flags conflicting values.** When two saved values conflict, it surfaces both rather than silently choosing one.
-- **Lets you correct or delete records.** Fix a saved fact in place or remove only the records you select.
-- **Leaves the final answer to your model.** Send the current question and relevant Marvnor results to your model, which writes the response.
+- **Save facts:** source, relation and target—for example, “Project X / uses database / Postgres”.
+- **Verify claims:** `TRUE` = supported, `FALSE` = refuted, `UNKNOWN` = insufficient evidence.
+- **Surface conflicting values** instead of silently choosing one.
+- **Correct or delete selected records.**
+- **Keep your model:** send the current question and relevant results; your model writes the answer.
 
-Use it to check project dependencies, track business states, manage changing records, and catch conflicting information. Reuse confirmed records across questions and retrieve only the facts needed for each answer.
+Reuse confirmed project dependencies, business states and decisions across questions.
 
 [Create a test Key](https://api.marvnor.com/home?lang=en) · [Quickstart](https://api.marvnor.com/docs?lang=en) · [API reference](https://api.marvnor.com/docs/api?lang=en) · [Recorded demo](https://wendelxia.github.io/marvnor/)
 
@@ -27,9 +27,7 @@ Use it to check project dependencies, track business states, manage changing rec
 - **MCP endpoint:** `https://api.marvnor.com/v1/mcp`
 - **Authentication header, if required by your AI:** `Authorization: Bearer <MARVNOR_API_KEY>` (replace the placeholder with your Key).
 
-Use one Key per independent project. Your AI saves confirmed or sourced facts and queries Marvnor when it needs project memory. Tasks that do not depend on saved facts stay with your existing AI and tools. [Usage test evidence](docs/benchmarks/2026-10-25/recommended-usage.md).
-
-Five actions cover everyday use: save, retrieve, verify, correct and delete. The [quickstart](https://api.marvnor.com/docs?lang=en) shows everyday examples; the API reference is available for field details.
+Use one Key per independent project. Save confirmed or sourced facts; query Marvnor when project memory is needed. Other tasks stay with your existing AI and tools. [Usage test evidence](docs/benchmarks/2026-10-25/recommended-usage.md).
 
 Latest news, October 10: [Marvnor reports stronger record-based judgments and a 98.2% input reduction in a long-history test](NEWS.md) · [中文新闻稿](docs/news/2026-10-10-benchmark-results.zh-CN.md)
 
@@ -61,6 +59,4 @@ The public suite returned **1,227/1,227 expected verdicts across 62 requests**, 
 
 [中文使用说明](https://api.marvnor.com/docs?lang=zh-CN) · [Test index and archives](TESTS.md) · [News](NEWS.md) · [Public materials license](LICENSE)
 
-Send feedback and test results to [wendelxia@gmail.com](mailto:wendelxia@gmail.com). Keep account keys and private customer material out of feedback.
-
-Building an agent or project-memory tool? [Bring one concrete use case](mailto:wendelxia@gmail.com?subject=Marvnor%20integration) and try the API with your own non-sensitive sample data.
+Send feedback to [wendelxia@gmail.com](mailto:wendelxia@gmail.com), or [discuss an integration](mailto:wendelxia@gmail.com?subject=Marvnor%20integration) with a non-sensitive sample. Omit keys and private customer data.
