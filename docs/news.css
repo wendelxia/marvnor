@@ -5,3 +5,5 @@
 .press p,.press li{line-height:1.85}.press p{margin-bottom:1.2rem}.press li{margin:.5rem 0}
 .press-date{color:var(--muted);font-size:.9rem}.press strong{font-weight:650}
 @media(max-width:767px){.press{width:calc(100% - 2rem);margin:2rem auto 3rem}.press .eyebrow{letter-spacing:.06em}}
+#news-analytics-toggle{font:inherit;color:inherit;background:none;border:0;padding:6px 0;cursor:pointer;text-align:left}
+#news-analytics-toggle:focus-visible{outline:2px solid currentColor;outline-offset:3px}
