@@ -15,11 +15,13 @@ Marvnor is a Truth-Preserving Model System for AI applications. Keep project dec
 
 Reuse confirmed project dependencies, business states and decisions across questions.
 
-[Create a test Key](https://api.marvnor.com/home?lang=en) · [Quickstart](https://api.marvnor.com/docs?lang=en) · [API reference](https://api.marvnor.com/docs/api?lang=en) · [Recorded demo](https://wendelxia.github.io/marvnor/)
+[Sign in](https://api.marvnor.com/login?lang=en) · [Quickstart](https://api.marvnor.com/docs?lang=en) · [API reference](https://api.marvnor.com/docs/api?lang=en) · [Recorded demo](https://wendelxia.github.io/marvnor/)
 
 ## Get started
 
-1. [Create a test Key](https://api.marvnor.com/home?lang=en).
+New account registration and trial access are paused. Existing customers can still use Marvnor.
+
+1. [Sign in](https://api.marvnor.com/login?lang=en) to create an API Key, or use one you already have.
 2. In your AI's MCP settings, add the server below and paste your Key into its API Key / Bearer Token field.
 3. Copy the working rule from the [connection page](https://api.marvnor.com/connect?lang=en), then keep talking to your AI normally.
 
@@ -27,6 +29,8 @@ Reuse confirmed project dependencies, business states and decisions across quest
 - **Authentication header, if required by your AI:** `Authorization: Bearer <MARVNOR_API_KEY>` (replace the placeholder with your Key).
 
 Use one Key per independent project. Save confirmed or sourced facts; query Marvnor when project memory is needed. Other tasks stay with your existing AI and tools. [Usage test evidence](docs/benchmarks/2026-10-25/recommended-usage.md).
+
+Inactivity no longer revokes an ordinary Key or removes its saved records. Explicit expiration and revocation still apply.
 
 ## User feedback
 

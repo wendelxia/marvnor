@@ -7,7 +7,7 @@ Five stages: save, conflict, resolve, correct, delete. Uses the public API; no S
 ## Reproduce the recorded test
 
 1. Install Python 3.9 or later and [download quickstart.py](https://raw.githubusercontent.com/wendelxia/marvnor/main/examples/quickstart.py).
-2. Create a test Key from the [product home](https://api.marvnor.com/home?lang=en) without signing up (500 points for 30 days), and save it when shown.
+2. [Sign in](https://api.marvnor.com/login?lang=en) to create an API Key, or use a Key from your existing account. New registration and trial access are paused.
 3. Run the file, then paste your key at the hidden prompt:
 
    ```sh
@@ -16,7 +16,7 @@ Five stages: save, conflict, resolve, correct, delete. Uses the public API; no S
 
 On macOS/Linux, use `python3` if that is your Python command. For automation, set `MARVNOR_API_TOKEN` in your server-side environment instead of using the prompt. The older `MARVNOR_API_KEY` name still works.
 
-**Live calls use your trial/account allowance.** The script creates two synthetic facts under a random subject and deletes only those facts. Other memory and your Key remain; the Key is never printed, saved or sent to a model.
+**Live calls use your account allowance.** The script creates two synthetic facts under a random subject and deletes only those facts. Other memory and your Key remain; the Key is never printed, saved or sent to a model.
 
 ## What you will see
 

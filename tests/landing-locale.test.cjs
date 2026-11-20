@@ -84,7 +84,7 @@ test('Chinese URL selects translated page, metadata, accessible labels and butto
   assert.equal(app.stored, 'zh-CN');
   assert.equal(app.switcher.hidden, false);
   assert.deepEqual(new Set(app.portalLinks.map(link => new URL(link.href).pathname)),
-    new Set(['/docs/api', '/login', '/home', '/register', '/docs']));
+    new Set(['/docs/api', '/login', '/docs']));
   assert(app.portalLinks.every(link => new URL(link.href).searchParams.get('lang') === 'zh-CN'));
   assert.equal(new URL(app.homeLink.href).searchParams.get('lang'), 'zh-CN');
 });
@@ -99,8 +99,9 @@ test('switching to English updates URL and preserves unrelated query parameters'
   assert.equal(app.buttons[0]['aria-pressed'], 'true');
   assert.equal(app.stored, 'en');
   assert(app.portalLinks.every(link => new URL(link.href).searchParams.get('lang') === 'en'));
-  const trialLink = app.portalLinks.find(link => new URL(link.href).pathname === '/home');
-  assert.equal(new URL(trialLink.href).searchParams.get('utm_source'), 'github_pages');
+  const signInLink = app.portalLinks.find(link => new URL(link.href).searchParams.has('utm_source'));
+  assert.equal(new URL(signInLink.href).pathname, '/login');
+  assert.equal(new URL(signInLink.href).searchParams.get('utm_source'), 'github_pages');
 });
 
 test('saved language works without URL and blocked storage falls back safely', () => {
@@ -199,13 +200,14 @@ test('feedback image, full-size link and dimensions follow language in both dire
   assert.match(html, /Original Chinese screenshots/);
 });
 
-test('landing page starts with the guest test key and keeps signup distinct', () => {
-  assert.match(html, /href="https:\/\/api\.marvnor\.com\/home\?lang=en[^\"]*"[^>]*data-portal-link>\s*<span data-i18n="hero\.try"/);
-  assert.match(html, /data-i18n="hero\.trialNote"/);
-  assert.match(html, /data-i18n="hero\.signupNote"/);
-  const source = fs.readFileSync(script, 'utf8');
-  assert.match(source, /'hero\.try': '免注册创建测试 Key'/);
-  assert.match(source, /'hero\.trialNote': '500 积分 · 30 天试用'/);
+test('landing page routes existing customers to sign-in and explains paused access and Key retention', () => {
+  const app = page('https://example.test/marvnor/?lang=zh-CN');
+  assert.match(app.elements.get('hero.access').textContent, /注册和试用已暂停/);
+  assert.match(app.elements.get('start.keyNote').textContent, /主动撤销仍然生效/);
+  assert.match(html, /New account registration and trial access are paused/);
+  assert.match(html, /Explicit expiration and revocation still apply/);
+  assert.doesNotMatch(html, /href="https:\/\/api\.marvnor\.com\/(?:register|try)|Create a test Key|30-day trial|1,000 points/);
+  assert.doesNotMatch(fs.readFileSync(script, 'utf8'), /免注册创建测试 Key|30 天试用|另领 1,000/);
 });
 
 test('retired news pages point to usage and dated evidence', () => {
