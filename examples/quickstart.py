@@ -135,7 +135,7 @@ def main(argv=None):
             for stage in report["stages"]:
                 print(json.dumps(stage, ensure_ascii=True))
             return 0
-        print("LIVE API DEMO: uses your trial or account allowance; writes two synthetic facts and removes only demo data.")
+        print("LIVE API DEMO: uses your account allowance; writes two synthetic facts and removes only demo data.")
         key = (os.environ.get("MARVNOR_API_TOKEN") or os.environ.get("MARVNOR_API_KEY")
                or getpass.getpass("Marvnor API key (hidden): "))
         report = run_demo(make_request(key.strip()))
