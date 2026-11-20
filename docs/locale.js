@@ -12,8 +12,6 @@
     'chart.label': '最后一个问题的模型输入：完整历史 5,328 个 token；相关结果 95 个 token，减少 98.2%。',
     'skip': '跳转到正文',
     'nav.api': 'API 文档',
-    'nav.news': '新闻稿',
-    'news.href': 'news.zh-CN.html',
     'nav.signIn': '登录',
     'hero.eyebrow': '守真大模型系统',
     'hero.title1': '告别多窗口拼凑，',

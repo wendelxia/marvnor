@@ -155,20 +155,13 @@ test('recorded evidence remains linked and onboarding uses only the MCP setup', 
   assert.match(html, /data-lang="zh-CN"/);
 });
 
-test('news follows the selected language and both published articles retain test scope', () => {
-  const app = page('https://example.test/marvnor/?lang=zh-CN');
-  assert.equal(app.attrs.get('news.href').href, 'news.zh-CN.html');
-  for (const [file, lang, brand, scope] of [
-    ['news.html', 'en', 'Truth-Preserving Model System', 'structured records'],
-    ['news.zh-CN.html', 'zh-CN', '守真大模型系统', '结构化记录'],
-  ]) {
-    const article = fs.readFileSync(path.join(__dirname, '..', 'docs', file), 'utf8');
-    assert.ok(article.includes('lang="' + lang + '"'));
-    assert.ok(article.includes(brand));
-    assert.ok(article.includes(scope));
-    assert.ok(article.includes('98.2%'));
-    assert.equal((article.match(/<h1>/g) || []).length, 1);
-    assert.doesNotMatch(article, /Bearer|source, relation|source.*target|djet_live_|PRIVATE KEY/);
+test('withdrawn articles are absent from the site and repository', () => {
+  const root = path.join(__dirname, '..');
+  assert.doesNotMatch(html, /data-i18n="nav\.news"|href="news(?:\.zh-CN)?\.html"/);
+  assert.doesNotMatch(fs.readFileSync(path.join(root, 'README.md'), 'utf8'), /\]\(NEWS\.md\)|2026-11-01-results/);
+  for (const file of ['NEWS.md', 'docs/news.html', 'docs/news.zh-CN.html',
+    'docs/news/2026-11-01-results.zh-CN.md', 'docs/news-analytics.js', 'docs/news.css']) {
+    assert.equal(fs.existsSync(path.join(root, file)), false);
   }
 });
 
@@ -215,17 +208,17 @@ test('landing page starts with the guest test key and keeps signup distinct', ()
   assert.match(source, /'hero\.trialNote': '500 积分 · 30 天试用'/);
 });
 
-test('retired news URLs point to current bilingual news without old implementation copy', () => {
+test('retired news pages point to usage and dated evidence', () => {
   const root = path.join(__dirname, '..');
-  for (const [file, target, brand] of [
-    ['2026-10-05-launch.md', 'news.html', 'Truth-Preserving Model System'],
-    ['2026-10-10-benchmark-results.zh-CN.md', 'news.zh-CN.html', '守真大模型系统'],
+  for (const [file, withdrawal, brand] of [
+    ['2026-10-05-launch.md', 'withdrawn', 'Truth-Preserving Model System'],
+    ['2026-10-10-benchmark-results.zh-CN.md', '撤回', '守真大模型系统'],
   ]) {
     const text = fs.readFileSync(path.join(root, 'docs', 'news', file), 'utf8');
     assert.ok(text.includes(brand));
-    assert.ok(text.includes('https://wendelxia.github.io/marvnor/' + target));
+    assert.ok(text.includes(withdrawal));
     assert.ok(text.includes('../../TESTS.md'));
-    assert.doesNotMatch(text, /source, relation and target|来源、关系和目标|专有托管|Decision Gateway/);
+    assert.doesNotMatch(text, /news(?:\.zh-CN)?\.html|source, relation and target|来源、关系和目标|专有托管|Decision Gateway/);
   }
   const highlights = fs.readFileSync(path.join(root, 'docs', 'benchmarks', '2026-10-10', 'highlights.md'), 'utf8');
   assert.ok(highlights.includes('Truth-Preserving Model System'));

@@ -28,8 +28,6 @@ Reuse confirmed project dependencies, business states and decisions across quest
 
 Use one Key per independent project. Save confirmed or sourced facts; query Marvnor when project memory is needed. Other tasks stay with your existing AI and tools. [Usage test evidence](docs/benchmarks/2026-10-25/recommended-usage.md).
 
-Latest news, November 1: [Marvnor reports 40/40 record-verification results and 98.2% less final-question input](NEWS.md) · [中文新闻稿](docs/news/2026-11-01-results.zh-CN.md) · [Read on the website](https://wendelxia.github.io/marvnor/news.html)
-
 ## User feedback
 
 **Before**
@@ -58,6 +56,6 @@ The public suite returned **1,227/1,227 expected verdicts across 62 requests**, 
 
 Team-run tests, not an independent audit. The verification comparison used the same facts and questions, submitted as structured records to Marvnor and text to the baseline; it does not measure general model intelligence. The 98.2% figure concerns one final request's model input, not total cost.
 
-[中文使用说明](https://api.marvnor.com/docs?lang=zh-CN) · [Test index and archives](TESTS.md) · [News](NEWS.md) · [Public materials license](LICENSE)
+[中文使用说明](https://api.marvnor.com/docs?lang=zh-CN) · [Test index and archives](TESTS.md) · [Public materials license](LICENSE)
 
 Send feedback to [wendelxia@gmail.com](mailto:wendelxia@gmail.com), or [discuss an integration](mailto:wendelxia@gmail.com?subject=Marvnor%20integration) with a non-sensitive sample. Omit keys and private customer data.
